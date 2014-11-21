@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<codeSmith xmlns="http://www.codesmithtools.com/schema/csp.xsd">
+  <propertySets>
+    <propertySet name="ClerkGenerator" template="C:\development\tools\CodeSmithTools\Templates\EntityFramework\ClerkGenerator.cst">
+      <property name="ProjectName">GlacialArchiving.ClerkService</property>
+      <property name="ClerkServiceNamespace">GlacialArchiving.ClerkService</property>
+      <property name="RepositoriesNamespace">GlacialArchiving.DataAccess.Repositories</property>
+      <property name="DataAccessDllName">GlacialArchiving.DataAccess</property>
+      <property name="ConnectionString">Data Source=CYPTBADEV1\TBADEV2008;Initial Catalog=GlacialArchiving;Persist Security Info=True;User ID=GlacialArchiving;Password=Glacial45Archiving!!;MultipleActiveResultSets=True;</property>
+      <property name="ProjectDirectoryPath">C:\Development\Projects\GlacialArchiving\</property>
+    </propertySet>
+  </propertySets>
+</codeSmith>

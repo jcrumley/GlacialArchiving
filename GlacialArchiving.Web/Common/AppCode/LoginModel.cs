@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using GlacialArchiving.DataAccess.DAL;
+using GlacialArchiving.DataAccess.Models;
+using GlacialArchiving.DataAccess.Repositories;
+
+namespace GlacialArchiving.Web.Common
+{
+    public partial class LoginModel
+    {
+    }
+}

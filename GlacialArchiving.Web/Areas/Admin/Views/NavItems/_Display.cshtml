@@ -1,0 +1,34 @@
+﻿@model GlacialArchiving.DataAccess.Models.NavItem
+
+<fieldset>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.Title)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.TopLevel.Name, label: "Top Level")                    
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.URL)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.Sequence)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.Icon.Name, label: "Icon")                    
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.SystemGenerated)
+        </section>
+    </div>
+</fieldset>

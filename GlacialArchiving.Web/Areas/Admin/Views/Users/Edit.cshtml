@@ -1,0 +1,217 @@
+﻿@model GlacialArchiving.DataAccess.Models.User
+@using TBADev.MVC.Security;
+
+@{
+    ViewBag.Title = "Edit :: " + @Model.NameFormat(NameMode.FirstLast);
+}
+
+<h2>Edit :: @Model.NameFormat(NameMode.FirstLast)</h2>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<input type="hidden" id="CurrentModelId" value="@Model.Id" />
+<input type="hidden" id="CurrentModelPrimaryKey" value="UserId" />
+<div class="tabs">
+    <ul>
+        <li><a href="#UserTab">User</a></li>
+        <li><a href="#MembershipsTab">Memberships</a></li>
+    </ul>
+    <div id="UserTab">
+        @using (Html.BeginForm("Edit", "Users", FormMethod.Post, new { id = "ModelForm", @class = "smart-form" }))
+        {
+            @Html.ValidationSummary(true)
+            <div id="UserTabPanel">
+                @Html.Partial("_CreateOrEdit", Model)
+            </div>
+            <footer>
+                <button type="submit" name="submit" class="btn btn-labeled btn-primary">
+                    <span class="btn-label"><i class="fa fa-save"></i></span>
+                    Save
+                </button>
+            </footer>
+        }
+    </div>
+    <div id="MembershipsTab" data-controller="Memberships" data-bagname="Member">
+        <div class="smart-form">
+            <fieldset>
+                <div id="MembershipsTabMessages"></div>
+                <div id="MembershipsTabList" class="smart-list">
+                    @Html.Partial("/Areas/Admin/Views/Memberships/_List.cshtml", Model.Memberships)
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+<div id="Modal" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+            </div>
+            @using (Html.BeginForm("Action", "Controller", FormMethod.Post, new { id = "ModalForm" }))
+            {
+                <div class="modal-body">
+                    <div id="ModalMessages"></div>
+                    <div id="ModalPlaceholder" class="smart-form inline-edit-form"></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="ModalDelete" type="button" class="btn btn-danger"></button>
+                    <button id="ModalSave" type="button" class="btn btn-primary"></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            }
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+<div id="ChangePasswordDIV" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Change Password</h4>
+            </div>
+            <div class="modal-body">
+                <div id="PasswordInputForm" class="smart-form">
+                    <div id="PasswordError" class="alert alert-danger fade in" style="display:none;">
+                        <button type="button" class="close" data-hide="alert" aria-hidden="true">×</button>
+                        <h4 id="alertMessage"></h4>
+                    </div>
+                    <div class="row">
+                        <section class="col col-6">
+                            <label class="label">Old Password:</label>
+                            <label class="input">
+                                <input id="OldPassword" maxlength="100" type="password" value="" />
+                            </label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col col-6">
+                            <label class="label">New Password:</label>
+                            <label class="input">
+                                <input id="NewPassword1" maxlength="100" type="password" value="" />
+                            </label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col col-6">
+                            <label class="label">Retype Password:</label>
+                            <label class="input">
+                                <input id="NewPassword2" maxlength="100" type="password" value="" />
+                            </label>
+                        </section>
+                    </div>
+                </div>
+                <div id="PasswordUpdatedMessage" style="display:none;">
+                    Password was updated successfully!
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="PasswordInputFormButtons">
+                    <button type="button" class="btn btn-primary" id="btnChangePasswordSave">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div id="ResetPasswordDIV" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Reset Password</h4>
+            </div>
+            <div class="modal-body">
+                <div id="ResetPasswordMessage">
+                    Do you want to reset this user's password?
+                </div>
+                <div id="ResetPasswordConfirm" style="display:none;">
+                    Password was reset, and the user will receive an email with the new password!
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="ResetPasswordButtons">
+                    <button type="button" class="btn btn-primary" id="btnResetPasswordContinue">Continue</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+@section pageScripts {
+    <script>
+        $("#ChangePasswordDIV").on("show.bs.modal", function (e) {
+            $("#PasswordError").hide();
+            $("#OldPassword").val("");
+            $("#NewPassword1").val("");
+            $("#NewPassword2").val("");
+
+            $("#PasswordInputForm").show();
+            $("#PasswordInputFormButtons").show();
+            $("#PasswordUpdatedMessage").hide();
+        });
+        $("#btnChangePasswordSave").click(function () {
+            var old = $("#OldPassword").val().trim();
+            var new1 = $("#NewPassword1").val().trim();
+            var new2 = $("#NewPassword2").val().trim();
+
+            var error = "";
+            if (old == "" || new1 == "" || new2 == "")
+                error = "Not all fields were supplied";
+            else if (new1 != new2)
+                error = "Passwords do not match";
+
+            if (error != "") {
+                $("#alertMessage").html(error);
+                $("#PasswordError").show();
+                return;
+            }
+            else
+                $("#PasswordError").hide();
+
+            var userId = $("#UserId").val();
+            var obj = {
+                OldPassword: old,
+                NewPassword1: new1,
+                NewPassword2: new2
+            }
+
+            $.post("/Admin/Users/ChangePassword/" + userId, obj, function (result) {
+                if (!result.IsValid) {
+                    $("#alertMessage").html(result.Error);
+                    $("#PasswordError").show();
+                }
+                else {
+                    $("#PasswordInputForm").hide();
+                    $("#PasswordInputFormButtons").hide();
+                    $("#PasswordUpdatedMessage").show();
+                }
+            });
+        });
+
+        $("#ResetPasswordDIV").on("show.bs.modal", function (e) {
+            $("#ResetPasswordMessage").show();
+            $("#ResetPasswordButtons").show();
+            $("#ResetPasswordConfirm").hide();
+        });
+        $("#btnResetPasswordContinue").click(function () {
+            var userId = $("#UserId").val();
+            $.post("/Admin/Users/ResetPassword/" + userId, null, function (result) {
+                if (!result) {
+                    alert("Unable to reset password.");
+                }
+                else {
+                    $("#ResetPasswordMessage").hide();
+                    $("#ResetPasswordButtons").hide();
+                    $("#ResetPasswordConfirm").show();
+                }
+            });
+        });
+    </script>
+}
+

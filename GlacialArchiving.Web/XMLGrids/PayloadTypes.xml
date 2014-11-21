@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ReportDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.tbadev.com/Schemas/GridConfiguration.xsd">
+  <Datasources>
+    <SqlDatasource DatasourceID="DS1" SqlStatement="
+            SELECT *
+              FROM [datastorage].[PayloadType]" />
+    <SqlDatasource DatasourceID="DS_User" SqlStatement="
+            SELECT *, NameFirst + ' ' + NameLast AS NameFull
+              FROM [dbo].[User]" />
+  </Datasources>
+  <Filters />
+  <Formats>
+    <GridFormat FormatID="Grid" DatasourceID="DS1" SortColumn="Name" PrimaryKeyColumn="PayloadTypeId"
+                GridWidth="100%" GridHeight="600px" RowSelectMode="Single" AllowEdit="false" AllowAdd="false"
+                RowCssClass="Row" AltRowCssClass="AltRow" RecordsPerPage="100" ExportFormat="Excel"
+                UpdateClass="GlacialArchiving.DataAccess.Models.PayloadType, GlacialArchiving.DataAccess">
+      <Buttons>
+        <TextActionButton ButtonID="btnExport" Text="Export" BuiltInType="Export" ButtonMode="AlwaysActive" />
+      </Buttons>
+      <Columns>
+        <SelectorColumn SourceID="Selector" Width="32px" />
+        <TextColumn SourceID="Name" Title="Name" SystemType="System.String" Width="90px"
+                    SortOrder="Name" SortOrderDESC="Name DESC" />
+        <TextColumn SourceID="MonthsToKeep" Title="MonthsToKeep" SystemType="System.String" Width="90px"
+                    SortOrder="MonthsToKeep" SortOrderDESC="MonthsToKeep DESC" Format="{0:n0}" />
+        <TextColumn SourceID="IsDeleted" Title="IsDeleted" SystemType="System.String" Width="90px"
+                    SortOrder="IsDeleted" SortOrderDESC="IsDeleted DESC" />
+        <TextColumn SourceID="CreatedOn" Title="CreatedOn" SystemType="System.String" Width="90px"
+                    SortOrder="CreatedOn" SortOrderDESC="CreatedOn DESC" />
+        <DropDownColumn SourceID="CreatedBy_UserId" Title="CreatedBy_UserId" SystemType="System.Int32" Width="90px"
+                        SortOrder="CreatedBy_UserId" SortOrderDESC="CreatedBy_UserId DESC"
+                        DatasourceID="DS_User" ValueMember="UserId" DisplayMember="NameFull" AllowNullValue="false" />
+        <TextColumn SourceID="ModifiedOn" Title="ModifiedOn" SystemType="System.String" Width="90px"
+                    SortOrder="ModifiedOn" SortOrderDESC="ModifiedOn DESC" />
+        <DropDownColumn SourceID="ModifiedBy_UserId" Title="ModifiedBy_UserId" SystemType="System.Int32" Width="90px"
+                        SortOrder="ModifiedBy_UserId" SortOrderDESC="ModifiedBy_UserId DESC"
+                        DatasourceID="DS_User" ValueMember="UserId" DisplayMember="NameFull" AllowNullValue="false" />
+      </Columns>
+    </GridFormat>
+    <ExcelFormat FormatID="Excel" OutputFileName="PayloadTypeListing.xls">
+      <Sheets>
+        <ExcelSheet Base="A1" DatasourceID="DS1">
+          <Columns ShowHeaders="true">
+            <ExcelColumn SourceID="Name" Title="Name"></ExcelColumn>
+            <ExcelColumn SourceID="MonthsToKeep" Title="MonthsToKeep"></ExcelColumn>
+            <ExcelColumn SourceID="IsDeleted" Title="IsDeleted"></ExcelColumn>
+            <ExcelColumn SourceID="CreatedOn" Title="CreatedOn"></ExcelColumn>
+            <ExcelColumn SourceID="CreatedBy_UserId" Title="CreatedBy_UserId"></ExcelColumn>
+            <ExcelColumn SourceID="ModifiedOn" Title="ModifiedOn"></ExcelColumn>
+            <ExcelColumn SourceID="ModifiedBy_UserId" Title="ModifiedBy_UserId"></ExcelColumn>
+          </Columns>
+        </ExcelSheet>
+      </Sheets>
+    </ExcelFormat>
+  </Formats>
+</ReportDefinition>

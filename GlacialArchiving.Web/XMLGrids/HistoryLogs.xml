@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ReportDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.tbadev.com/Schemas/GridConfiguration.xsd">
+  <Datasources>
+    <SqlDatasource DatasourceID="DS1" SqlStatement="
+            SELECT *
+              FROM [audit].[HistoryLog]" />
+    <SqlDatasource DatasourceID="DS_User" SqlStatement="
+            SELECT *, NameFirst + ' ' + NameLast AS NameFull
+              FROM [dbo].[User]" />
+  </Datasources>
+  <Filters />
+  <Formats>
+    <GridFormat FormatID="Grid" DatasourceID="DS1" SortColumn="Model" PrimaryKeyColumn="HistoryLogId"
+                GridWidth="100%" GridHeight="600px" RowSelectMode="Single" AllowEdit="false" AllowAdd="false"
+                RowCssClass="Row" AltRowCssClass="AltRow" RecordsPerPage="100" ExportFormat="Excel"
+                UpdateClass="GlacialArchiving.DataAccess.Models.HistoryLog, GlacialArchiving.DataAccess">
+      <Buttons>
+        <TextActionButton ButtonID="btnExport" Text="Export" BuiltInType="Export" ButtonMode="AlwaysActive" />
+      </Buttons>
+      <Columns>
+        <SelectorColumn SourceID="Selector" Width="32px" />
+        <TextColumn SourceID="Model" Title="Model" SystemType="System.String" Width="90px"
+                    SortOrder="Model" SortOrderDESC="Model DESC" />
+        <TextColumn SourceID="ModelId" Title="ModelId" SystemType="System.String" Width="90px"
+                    SortOrder="ModelId" SortOrderDESC="ModelId DESC" />
+        <TextColumn SourceID="PropertyName" Title="PropertyName" SystemType="System.String" Width="90px"
+                    SortOrder="PropertyName" SortOrderDESC="PropertyName DESC" />
+        <TextColumn SourceID="OldValue" Title="OldValue" SystemType="System.String" Width="90px"
+                    SortOrder="OldValue" SortOrderDESC="OldValue DESC" />
+        <TextColumn SourceID="OldModelId" Title="OldModelId" SystemType="System.String" Width="90px"
+                    SortOrder="OldModelId" SortOrderDESC="OldModelId DESC" />
+        <TextColumn SourceID="NewValue" Title="NewValue" SystemType="System.String" Width="90px"
+                    SortOrder="NewValue" SortOrderDESC="NewValue DESC" />
+        <TextColumn SourceID="NewModelId" Title="NewModelId" SystemType="System.String" Width="90px"
+                    SortOrder="NewModelId" SortOrderDESC="NewModelId DESC" />
+        <TextColumn SourceID="CreatedOn" Title="CreatedOn" SystemType="System.String" Width="90px"
+                    SortOrder="CreatedOn" SortOrderDESC="CreatedOn DESC" />
+        <DropDownColumn SourceID="CreatedBy_UserId" Title="CreatedBy_UserId" SystemType="System.Int32" Width="90px"
+                        SortOrder="CreatedBy_UserId" SortOrderDESC="CreatedBy_UserId DESC"
+                        DatasourceID="DS_User" ValueMember="UserId" DisplayMember="NameFull" AllowNullValue="false" />
+        <TextColumn SourceID="ModifiedOn" Title="ModifiedOn" SystemType="System.String" Width="90px"
+                    SortOrder="ModifiedOn" SortOrderDESC="ModifiedOn DESC" />
+        <DropDownColumn SourceID="ModifiedBy_UserId" Title="ModifiedBy_UserId" SystemType="System.Int32" Width="90px"
+                        SortOrder="ModifiedBy_UserId" SortOrderDESC="ModifiedBy_UserId DESC"
+                        DatasourceID="DS_User" ValueMember="UserId" DisplayMember="NameFull" AllowNullValue="false" />
+      </Columns>
+    </GridFormat>
+    <ExcelFormat FormatID="Excel" OutputFileName="HistoryLogListing.xls">
+      <Sheets>
+        <ExcelSheet Base="A1" DatasourceID="DS1">
+          <Columns ShowHeaders="true">
+            <ExcelColumn SourceID="Model" Title="Model"></ExcelColumn>
+            <ExcelColumn SourceID="ModelId" Title="ModelId"></ExcelColumn>
+            <ExcelColumn SourceID="PropertyName" Title="PropertyName"></ExcelColumn>
+            <ExcelColumn SourceID="OldValue" Title="OldValue"></ExcelColumn>
+            <ExcelColumn SourceID="OldModelId" Title="OldModelId"></ExcelColumn>
+            <ExcelColumn SourceID="NewValue" Title="NewValue"></ExcelColumn>
+            <ExcelColumn SourceID="NewModelId" Title="NewModelId"></ExcelColumn>
+            <ExcelColumn SourceID="CreatedOn" Title="CreatedOn"></ExcelColumn>
+            <ExcelColumn SourceID="CreatedBy_UserId" Title="CreatedBy_UserId"></ExcelColumn>
+            <ExcelColumn SourceID="ModifiedOn" Title="ModifiedOn"></ExcelColumn>
+            <ExcelColumn SourceID="ModifiedBy_UserId" Title="ModifiedBy_UserId"></ExcelColumn>
+          </Columns>
+        </ExcelSheet>
+      </Sheets>
+    </ExcelFormat>
+  </Formats>
+</ReportDefinition>

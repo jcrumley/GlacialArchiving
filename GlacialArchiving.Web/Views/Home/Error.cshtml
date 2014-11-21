@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/_Layout-SmartAdmin.cshtml";
+}
+@section featured {
+    <div class="hero-unit" style="margin-top: 30px;">
+        <h1>Error Occurred</h1>
+        An notification has been sent to the site administrator.  
+    </div>
+    
+    @if(ViewBag.PageError != null)
+    {
+        <div style="margin-top:30px;">
+            @Html.Raw(ViewBag.PageError)
+        </div>
+    }
+}

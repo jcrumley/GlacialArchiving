@@ -1,0 +1,30 @@
+﻿@model GlacialArchiving.DataAccess.Models.NavSubItem
+
+@{
+    ViewBag.Title = "Create Nav Sub Item";
+}
+
+<h2>Create</h2>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<div class="tabs">
+    <ul>
+        <li><a href="#NavSubItemTab">NavSubItem</a></li>
+    </ul>
+    <div id="NavSubItemTab">
+        @using (Html.BeginForm("Create", "NavSubItems", FormMethod.Post, new { @class = "smart-form" }))
+        {
+            @Html.Partial("_CreateOrEdit", Model)
+
+            <footer>
+                <button type="submit" name="submit" class="btn btn-labeled btn-primary">
+                    <span class="btn-label"><i class="fa fa-save"></i></span>
+                    Create
+                </button>
+            </footer>
+        }
+    </div>
+</div>
+

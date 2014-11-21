@@ -1,0 +1,15 @@
+﻿@model IEnumerable<GlacialArchiving.DataAccess.Models.UserGroup>
+
+@{
+    ViewBag.Title = "User Groups Listing";
+}
+
+<h2>
+    User Groups
+	@if (!string.IsNullOrWhiteSpace(ViewBag.FilteredType) && !string.IsNullOrWhiteSpace(ViewBag.FilteredBy))
+    {
+        @Html.Raw(" :: " + ViewBag.FilteredType + " = " + ViewBag.FilteredBy)
+    }
+</h2>
+
+@Html.Partial("_List", Model)

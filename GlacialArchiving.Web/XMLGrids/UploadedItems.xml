@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ReportDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.tbadev.com/Schemas/GridConfiguration.xsd">
+  <Datasources>
+    <SqlDatasource DatasourceID="DS1" SqlStatement="
+            SELECT *
+              FROM [datastorage].[UploadedItem]" />
+    <SqlDatasource DatasourceID="DS_Client" SqlStatement="
+            SELECT *
+              FROM [dbo].[Client]" />
+    <SqlDatasource DatasourceID="DS_PayloadType" SqlStatement="
+            SELECT *
+              FROM [datastorage].[PayloadType]" />
+    <SqlDatasource DatasourceID="DS_UploadedItemStatus" SqlStatement="
+            SELECT *
+              FROM [datastorage].[UploadedItemStatus]" />
+    <SqlDatasource DatasourceID="DS_User" SqlStatement="
+            SELECT *, NameFirst + ' ' + NameLast AS NameFull
+              FROM [dbo].[User]" />
+  </Datasources>
+  <Filters />
+  <Formats>
+    <GridFormat FormatID="Grid" DatasourceID="DS1" SortColumn="UniqueIdentifier" PrimaryKeyColumn="UploadedItemId"
+                GridWidth="100%" GridHeight="600px" RowSelectMode="Single" AllowEdit="false" AllowAdd="false"
+                RowCssClass="Row" AltRowCssClass="AltRow" RecordsPerPage="100" ExportFormat="Excel"
+                UpdateClass="GlacialArchiving.DataAccess.Models.UploadedItem, GlacialArchiving.DataAccess">
+      <Buttons>
+        <TextActionButton ButtonID="btnExport" Text="Export" BuiltInType="Export" ButtonMode="AlwaysActive" />
+      </Buttons>
+      <Columns>
+        <SelectorColumn SourceID="Selector" Width="32px" />
+        <DropDownColumn SourceID="ClientId" Title="ClientId" SystemType="System.Int32" Width="90px"
+                        SortOrder="ClientId" SortOrderDESC="ClientId DESC"
+                        DatasourceID="DS_Client" ValueMember="ClientId" DisplayMember="Name" AllowNullValue="false" />
+        <TextColumn SourceID="UniqueIdentifier" Title="UniqueIdentifier" SystemType="System.String" Width="90px"
+                    SortOrder="UniqueIdentifier" SortOrderDESC="UniqueIdentifier DESC" />
+        <DropDownColumn SourceID="PayloadTypeId" Title="PayloadTypeId" SystemType="System.Int32" Width="90px"
+                        SortOrder="PayloadTypeId" SortOrderDESC="PayloadTypeId DESC"
+                        DatasourceID="DS_PayloadType" ValueMember="PayloadTypeId" DisplayMember="Name" AllowNullValue="false" />
+        <TextColumn SourceID="PayloadFilename" Title="PayloadFilename" SystemType="System.String" Width="90px"
+                    SortOrder="PayloadFilename" SortOrderDESC="PayloadFilename DESC" />
+        <TextColumn SourceID="PayloadChecksum" Title="PayloadChecksum" SystemType="System.String" Width="90px"
+                    SortOrder="PayloadChecksum" SortOrderDESC="PayloadChecksum DESC" />
+        <TextColumn SourceID="PayloadFilesize" Title="PayloadFilesize" SystemType="System.String" Width="90px"
+                    SortOrder="PayloadFilesize" SortOrderDESC="PayloadFilesize DESC" />
+        <TextColumn SourceID="TradingDateStart" Title="TradingDateStart" SystemType="System.String" Width="90px"
+                    SortOrder="TradingDateStart" SortOrderDESC="TradingDateStart DESC" Format="{0:MM/dd/yyyy hh:mm:ss tt}" />
+        <TextColumn SourceID="TradingDateEnd" Title="TradingDateEnd" SystemType="System.String" Width="90px"
+                    SortOrder="TradingDateEnd" SortOrderDESC="TradingDateEnd DESC" Format="{0:MM/dd/yyyy hh:mm:ss tt}" />
+        <TextColumn SourceID="Description" Title="Description" SystemType="System.String" Width="90px"
+                    SortOrder="Description" SortOrderDESC="Description DESC" />
+        <TextColumn SourceID="ExpirationDate" Title="ExpirationDate" SystemType="System.String" Width="90px"
+                    SortOrder="ExpirationDate" SortOrderDESC="ExpirationDate DESC" Format="{0:MM/dd/yyyy hh:mm:ss tt}" />
+        <TextColumn SourceID="GenericField1" Title="GenericField1" SystemType="System.String" Width="90px"
+                    SortOrder="GenericField1" SortOrderDESC="GenericField1 DESC" />
+        <TextColumn SourceID="GenericField2" Title="GenericField2" SystemType="System.String" Width="90px"
+                    SortOrder="GenericField2" SortOrderDESC="GenericField2 DESC" />
+        <DropDownColumn SourceID="StatusId" Title="StatusId" SystemType="System.Int32" Width="90px"
+                        SortOrder="StatusId" SortOrderDESC="StatusId DESC"
+                        DatasourceID="DS_UploadedItemStatus" ValueMember="UploadedItemStatusId" DisplayMember="Name" AllowNullValue="false" />
+        <TextColumn SourceID="IsDeleted" Title="IsDeleted" SystemType="System.String" Width="90px"
+                    SortOrder="IsDeleted" SortOrderDESC="IsDeleted DESC" />
+        <TextColumn SourceID="CreatedOn" Title="CreatedOn" SystemType="System.String" Width="90px"
+                    SortOrder="CreatedOn" SortOrderDESC="CreatedOn DESC" />
+        <DropDownColumn SourceID="CreatedBy_UserId" Title="CreatedBy_UserId" SystemType="System.Int32" Width="90px"
+                        SortOrder="CreatedBy_UserId" SortOrderDESC="CreatedBy_UserId DESC"
+                        DatasourceID="DS_User" ValueMember="UserId" DisplayMember="NameFull" AllowNullValue="false" />
+        <TextColumn SourceID="ModifiedOn" Title="ModifiedOn" SystemType="System.String" Width="90px"
+                    SortOrder="ModifiedOn" SortOrderDESC="ModifiedOn DESC" />
+        <DropDownColumn SourceID="ModifiedBy_UserId" Title="ModifiedBy_UserId" SystemType="System.Int32" Width="90px"
+                        SortOrder="ModifiedBy_UserId" SortOrderDESC="ModifiedBy_UserId DESC"
+                        DatasourceID="DS_User" ValueMember="UserId" DisplayMember="NameFull" AllowNullValue="false" />
+      </Columns>
+    </GridFormat>
+    <ExcelFormat FormatID="Excel" OutputFileName="UploadedItemListing.xls">
+      <Sheets>
+        <ExcelSheet Base="A1" DatasourceID="DS1">
+          <Columns ShowHeaders="true">
+            <ExcelColumn SourceID="ClientId" Title="ClientId"></ExcelColumn>
+            <ExcelColumn SourceID="UniqueIdentifier" Title="UniqueIdentifier"></ExcelColumn>
+            <ExcelColumn SourceID="PayloadTypeId" Title="PayloadTypeId"></ExcelColumn>
+            <ExcelColumn SourceID="PayloadFilename" Title="PayloadFilename"></ExcelColumn>
+            <ExcelColumn SourceID="PayloadChecksum" Title="PayloadChecksum"></ExcelColumn>
+            <ExcelColumn SourceID="PayloadFilesize" Title="PayloadFilesize"></ExcelColumn>
+            <ExcelColumn SourceID="TradingDateStart" Title="TradingDateStart"></ExcelColumn>
+            <ExcelColumn SourceID="TradingDateEnd" Title="TradingDateEnd"></ExcelColumn>
+            <ExcelColumn SourceID="Description" Title="Description"></ExcelColumn>
+            <ExcelColumn SourceID="ExpirationDate" Title="ExpirationDate"></ExcelColumn>
+            <ExcelColumn SourceID="GenericField1" Title="GenericField1"></ExcelColumn>
+            <ExcelColumn SourceID="GenericField2" Title="GenericField2"></ExcelColumn>
+            <ExcelColumn SourceID="StatusId" Title="StatusId"></ExcelColumn>
+            <ExcelColumn SourceID="IsDeleted" Title="IsDeleted"></ExcelColumn>
+            <ExcelColumn SourceID="CreatedOn" Title="CreatedOn"></ExcelColumn>
+            <ExcelColumn SourceID="CreatedBy_UserId" Title="CreatedBy_UserId"></ExcelColumn>
+            <ExcelColumn SourceID="ModifiedOn" Title="ModifiedOn"></ExcelColumn>
+            <ExcelColumn SourceID="ModifiedBy_UserId" Title="ModifiedBy_UserId"></ExcelColumn>
+          </Columns>
+        </ExcelSheet>
+      </Sheets>
+    </ExcelFormat>
+  </Formats>
+</ReportDefinition>

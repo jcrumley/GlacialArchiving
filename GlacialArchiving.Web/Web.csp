@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<codeSmith xmlns="http://www.codesmithtools.com/schema/csp.xsd">
+  <propertySets>
+    <propertySet name="Web" template="C:\development\tools\CodeSmithTools\Templates\EntityFramework\WebSiteGenerator.cst">
+      <property name="DataAccessAssemblyPath">..\GlacialArchiving.DataAccess\bin\Debug\GlacialArchiving.DataAccess.dll</property>
+      <property name="DALNamespace">GlacialArchiving.DataAccess.DAL</property>
+      <property name="ModelsNamespace">GlacialArchiving.DataAccess.Models</property>
+      <property name="RepositoriesNamespace">GlacialArchiving.DataAccess.Repositories</property>
+      <property name="WebNamespace">GlacialArchiving.Web</property>
+      <property name="DataAccessDllName">GlacialArchiving.DataAccess</property>
+      <property name="ProjectName">GlacialArchiving</property>
+      <property name="SecureSiteAppName">GlacialArchiving Site</property>
+      <property name="ConnectionString">Data Source=CYPTBADEV1\TBADEV2008;Initial Catalog=GlacialArchiving;Persist Security Info=True;User ID=GlacialArchiving;Password=Glacial45Archiving!!;MultipleActiveResultSets=True;</property>
+    </propertySet>
+  </propertySets>
+</codeSmith>

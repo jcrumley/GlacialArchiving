@@ -1,0 +1,74 @@
+﻿@model GlacialArchiving.DataAccess.Models.NavSubItem
+
+@if (ViewBag.IsPost)
+{
+    <fieldset>
+        @if (ViewBag.Errors != null)
+        {
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            @foreach (string err in ViewBag.Errors)
+            {
+                @Html.Raw(err + "<br />")
+            }
+        </div>
+        }
+        else
+        {
+        <div id="EditAlert" class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Changes saved to the database.</strong>
+        </div>
+        <script>
+            $(function () {
+                setTimeout("$(\"#EditAlert\").alert('close')", 10 * 1000);
+                InitControls();
+            });
+        </script>
+        }
+    </fieldset>
+}
+
+<fieldset>
+    @Html.HiddenFor(model => model.NavSubItemId)
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDropDownListFor(model => model.NavItemId, ((IEnumerable<GlacialArchiving.DataAccess.Models.NavItem>)ViewBag.PossibleNavItems).Select(option => new SelectListItem
+            {
+                Text = (option == null ? "None" : option.Title.ToString()),
+                Value = option.Id.ToString(),
+                Selected = (Model != null) && (option.Id == Model.NavItemId)
+            }), "Choose...",  ControlType.Int, new { @class="selectpicker" }, "NavItem")
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jTextBoxFor(model => model.Title, ControlType.String, new { maxlength=50 })
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jTextBoxFor(model => model.URL, ControlType.String, new { maxlength=100 })
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jTextBoxFor(model => model.Sequence)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDropDownListFor(model => model.IconId, ((IEnumerable<GlacialArchiving.DataAccess.Models.NavIcon>)ViewBag.PossibleNavIcons).Select(option => new SelectListItem
+            {
+                Text = (option == null ? "None" : option.Name.ToString()),
+                Value = option.Id.ToString(),
+                Selected = (Model != null) && (option.Id == Model.IconId)
+            }), "Choose...",  ControlType.Int, new { @class="selectpicker" }, "Icon")
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jCheckBoxFor(model => model.SystemGenerated)
+        </section>
+    </div>
+</fieldset>

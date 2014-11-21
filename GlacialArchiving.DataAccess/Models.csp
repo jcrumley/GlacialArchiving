@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<codeSmith xmlns="http://www.codesmithtools.com/schema/csp.xsd">
+  <propertySets>
+    <propertySet name="Models" template="C:\development\tools\CodeSmithTools\Templates\EntityFramework\ModelGenerator.cst">
+      <property name="XmlFilesFolder">Generation</property>
+      <property name="Namespace">GlacialArchiving.DataAccess</property>
+      <property name="UserFirstName">John</property>
+      <property name="UserLastName">Crumley</property>
+      <property name="UserEmail">john@glptrading.com</property>
+      <property name="UserPassword">password</property>
+      <property name="ConnectionString">Data Source=CYPTBADEV1\TBADEV2008;Initial Catalog=GlacialArchiving;Persist Security Info=True;User ID=GlacialArchiving;Password=Glacial45Archiving!!;MultipleActiveResultSets=True;</property>
+    </propertySet>
+  </propertySets>
+</codeSmith>

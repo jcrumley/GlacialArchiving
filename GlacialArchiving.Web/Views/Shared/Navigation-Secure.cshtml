@@ -1,0 +1,57 @@
+﻿<div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">GlacialArchiving.DataAccess.Models</a>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            @{
+                if (ViewBag.CurrentNavigation != null)
+                {
+                    GlacialArchiving.DataAccess.Models.Navigation nav = (GlacialArchiving.DataAccess.Models.Navigation)ViewBag.CurrentNavigation;
+                    foreach (GlacialArchiving.DataAccess.Models.NavItem ni in nav.NavItems.OrderBy(t => t.Sequence))
+                    {
+                        if (!nav.InConstruction && ni.NavSubItems.Count == 0)
+                        {
+            <li><a href="@ni.URL">@ni.Title</a></li>
+                        }
+                        else
+                        {
+            <li class="dropdown">
+                <a href="@ni.URL" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">@ni.Title<b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                    @{
+                        foreach (GlacialArchiving.DataAccess.Models.NavSubItem si in ni.NavSubItems.OrderBy(s => s.Sequence))
+                        {
+                            <li><a href="@si.URL">@si.Title</a></li>
+                        }
+                    
+                        if (nav.InConstruction)
+                        { 
+                            <li><a href="#" onclick="$.post('/Common/Tools/AddSubItem', { navItemId : @ni.NavItemId })">Add SubItem</a></li>
+                        }
+                    }
+                </ul>
+            </li>
+                        }
+                    }
+                    if (nav.InConstruction)
+                    { 
+                        <li><a href="#" onclick="$.post('/Common/Tools/AddNavItem', { navigationId: 1 })">Add Menu</a></li>
+                    }
+                }
+            }
+            <li>
+                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-form", style="display:none;" }))
+                {
+                    @Html.AntiForgeryToken()
+                }
+            </li>
+        </ul>
+    </div>
+</div>

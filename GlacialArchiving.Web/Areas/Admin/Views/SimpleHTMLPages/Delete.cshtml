@@ -1,0 +1,30 @@
+﻿@model GlacialArchiving.DataAccess.Models.SimpleHTMLPage
+
+@{
+    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete :: " + @Model.Title;
+}
+
+<h2>Delete :: @Model.Title</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div class="tabs">
+    <ul>
+        <li><a href="#SimpleHTMLPageTab">SimpleHTMLPage</a></li>
+    </ul>
+    <div id="SimpleHTMLPageTab">
+        @using (Html.BeginForm("Delete", "SimpleHTMLPages", FormMethod.Post, new { @class = "smart-form" }))
+        {
+            @Html.Partial("_Display", Model)
+            
+            <footer>
+                <a class="btn btn-default" href="../Index">Cancel</a>
+                <button type="submit" name="submit" class="btn btn-labeled btn-danger">
+                    <span class="btn-label"><i class="fa fa-trash-o"></i></span>
+                    Delete
+                </button>
+            </footer>
+        }
+    </div>
+</div>

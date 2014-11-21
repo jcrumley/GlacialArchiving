@@ -1,0 +1,30 @@
+﻿@model GlacialArchiving.DataAccess.Models.DataTag
+
+@{
+    ViewBag.Title = "Create Data Tag";
+}
+
+<h2>Create</h2>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<div class="tabs">
+    <ul>
+        <li><a href="#DataTagTab">DataTag</a></li>
+    </ul>
+    <div id="DataTagTab">
+        @using (Html.BeginForm("Create", "DataTags", FormMethod.Post, new { @class = "smart-form" }))
+        {
+            @Html.Partial("_CreateOrEdit", Model)
+
+            <footer>
+                <button type="submit" name="submit" class="btn btn-labeled btn-primary">
+                    <span class="btn-label"><i class="fa fa-save"></i></span>
+                    Create
+                </button>
+            </footer>
+        }
+    </div>
+</div>
+

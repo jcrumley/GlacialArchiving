@@ -1,0 +1,31 @@
+﻿@model GlacialArchiving.DataAccess.Models.User
+@using TBADev.MVC.Security;
+
+@{
+    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete :: " + @Model.NameFormat(NameMode.FirstLast);
+}
+
+<h2>Delete :: @Model.NameFormat(NameMode.FirstLast)</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div class="tabs">
+    <ul>
+        <li><a href="#UserTab">User</a></li>
+    </ul>
+    <div id="UserTab">
+        @using (Html.BeginForm("Delete", "Users", FormMethod.Post, new { @class = "smart-form" }))
+        {
+            @Html.Partial("_Display", Model)
+            
+            <footer>
+                <a class="btn btn-default" href="../Index">Cancel</a>
+                <button type="submit" name="submit" class="btn btn-labeled btn-danger">
+                    <span class="btn-label"><i class="fa fa-trash-o"></i></span>
+                    Delete
+                </button>
+            </footer>
+        }
+    </div>
+</div>

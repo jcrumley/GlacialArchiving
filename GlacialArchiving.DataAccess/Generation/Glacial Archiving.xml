@@ -1,0 +1,1031 @@
+<?xml version="1.0"?>
+<model-mapping xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.tbadev.com/Schemas/ModelConfiguration.xsd">
+  <setting-model>
+    <settings>
+      <setting-item name="ErrorEmail" type="String" data="john.crumley@gmail.com" is-static="Yes" />
+      <setting-item name="WebUserId" type="Int" data="1" is-static="Yes" />
+    </settings>
+  </setting-model>
+  <data-model name="User" display-name="User" plural-name="Users" display-plural-name="Users" trackable="Yes" is-logic-delete="No" schema="dbo" special-type="User">
+    <properties>
+      <key name="UserId" />
+      <property name="Address" data-type="String" max-length="50" required="No" editing-control="MultiLine" num-of-rows="5" is-trackable="Yes" />
+      <property name="City" data-type="String" max-length="200" required="No" is-trackable="Yes" />
+      <property name="State" data-type="String" max-length="2" required="No" is-trackable="Yes" />
+      <property name="Zipcode" data-type="String" max-length="10" required="No" is-trackable="Yes" />
+      <bag name="Memberships" model="Membership" inverse-property="Member" />
+    </properties>
+  </data-model>
+  <data-model name="UserGroup" display-name="User Group" plural-name="UserGroups" display-plural-name="User Groups" display-property="Name" trackable="Yes" is-logic-delete="No" schema="dbo">
+    <properties>
+      <key name="UserGroupId" />
+      <property name="Name" data-type="String" max-length="50" required="Yes" is-trackable="Yes" />
+      <bag name="Memberships" model="Membership" inverse-property="Group" />
+    </properties>
+  </data-model>
+  <data-model name="Membership" display-name="Membership" plural-name="Memberships" display-plural-name="Memberships" display-property="Name" trackable="No" is-logic-delete="No" schema="dbo">
+    <properties>
+      <key name="MembershipId" />
+      <foreign-key name="MemberId" data-type="Int" required="Yes" reference-model="User" reference-name="Member" is-trackable="Yes" />
+      <foreign-key name="GroupId" data-type="Int" required="Yes" reference-model="UserGroup" reference-name="Group" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="Navigation" display-name="Navigation" plural-name="Navigations" display-plural-name="Navigations" display-property="Name" trackable="No" is-logic-delete="No" schema="nav">
+    <properties>
+      <key name="NavigationId" />
+      <property name="Name" data-type="String" max-length="50" required="Yes" is-trackable="Yes" />
+      <property name="InConstruction" data-type="Bool" required="Yes" is-trackable="Yes" />
+      <property name="SystemGenerated" display-name="System Generated" data-type="Bool" required="Yes" is-trackable="Yes" />
+      <bag name="NavItems" model="NavItem" inverse-property="TopLevel" />
+    </properties>
+  </data-model>
+  <data-model name="NavItem" display-name="Nav Item" plural-name="NavItems" display-plural-name="Nav Items" display-property="Title" trackable="No" is-logic-delete="No" schema="nav">
+    <properties>
+      <key name="NavItemId" />
+      <property name="Title" data-type="String" max-length="50" required="Yes" is-trackable="Yes" />
+      <foreign-key name="TopLevelId" display-name="Top Level" data-type="Int" required="Yes" reference-model="Navigation" reference-name="TopLevel" is-trackable="Yes" />
+      <property name="URL" data-type="String" max-length="100" required="No" is-trackable="Yes" />
+      <property name="Sequence" data-type="Int" required="Yes" is-trackable="Yes" />
+      <foreign-key name="IconId" data-type="Int" required="No" reference-model="NavIcon" reference-name="Icon" is-trackable="Yes" />
+      <property name="SystemGenerated" display-name="System Generated" data-type="Bool" required="Yes" is-trackable="Yes" />
+      <bag name="NavSubItems" model="NavSubItem" inverse-property="NavItem" />
+    </properties>
+  </data-model>
+  <data-model name="NavSubItem" display-name="Nav Sub Item" plural-name="NavSubItems" display-plural-name="Nav Sub Items" display-property="Title" trackable="No" is-logic-delete="No" schema="nav">
+    <properties>
+      <key name="NavSubItemId" />
+      <foreign-key name="NavItemId" data-type="Int" required="Yes" reference-model="NavItem" reference-name="NavItem" is-trackable="Yes" />
+      <property name="Title" data-type="String" max-length="50" required="Yes" is-trackable="Yes" />
+      <property name="URL" data-type="String" max-length="100" required="No" is-trackable="Yes" />
+      <property name="Sequence" data-type="Int" required="Yes" is-trackable="Yes" />
+      <foreign-key name="IconId" data-type="Int" required="No" reference-model="NavIcon" reference-name="Icon" is-trackable="Yes" />
+      <property name="SystemGenerated" display-name="System Generated" data-type="Bool" required="Yes" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="SimpleHTMLPage" display-name="Simple HTML Page" plural-name="SimpleHTMLPages" display-plural-name="Simple HTML Pages" display-property="Title" trackable="Yes" is-logic-delete="No" schema="dbo">
+    <properties>
+      <key name="SimpleHTMLPageId" />
+      <property name="Title" data-type="String" max-length="50" required="Yes" is-trackable="Yes" />
+      <property name="BodyHTML" display-name="Body HTML" data-type="HTML" required="Yes" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="NavIcon" display-name="Nav Icon" plural-name="NavIcons" display-plural-name="Nav Icons" display-property="Name" trackable="No" is-logic-delete="No" schema="nav">
+    <properties>
+      <key name="NavIconId" />
+      <property name="Name" data-type="String" max-length="50" required="Yes" is-trackable="Yes" />
+      <property name="CssClassName" display-name="Css Class" data-type="String" max-length="200" required="Yes" is-trackable="Yes" />
+    </properties>
+    <data create-enum="No" enum-name="">
+      <data-item>
+        <field name="Name" value="Asterisk" />
+        <field name="CssClassName" value="glyphicon glyphicon-asterisk" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Plus" />
+        <field name="CssClassName" value="glyphicon glyphicon-plus" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Euro" />
+        <field name="CssClassName" value="glyphicon glyphicon-euro" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Minus" />
+        <field name="CssClassName" value="glyphicon glyphicon-minus" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Cloud" />
+        <field name="CssClassName" value="glyphicon glyphicon-cloud" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Envelope" />
+        <field name="CssClassName" value="glyphicon glyphicon-envelope" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Pencil" />
+        <field name="CssClassName" value="glyphicon glyphicon-pencil" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Glass" />
+        <field name="CssClassName" value="glyphicon glyphicon-glass" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Music" />
+        <field name="CssClassName" value="glyphicon glyphicon-music" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Search" />
+        <field name="CssClassName" value="glyphicon glyphicon-search" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Heart" />
+        <field name="CssClassName" value="glyphicon glyphicon-heart" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Star" />
+        <field name="CssClassName" value="glyphicon glyphicon-star" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Star Empty" />
+        <field name="CssClassName" value="glyphicon glyphicon-star-empty" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="User" />
+        <field name="CssClassName" value="glyphicon glyphicon-user" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Film" />
+        <field name="CssClassName" value="glyphicon glyphicon-film" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="TH Large" />
+        <field name="CssClassName" value="glyphicon glyphicon-th-large" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="TH" />
+        <field name="CssClassName" value="glyphicon glyphicon-th" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="TH List" />
+        <field name="CssClassName" value="glyphicon glyphicon-th-list" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Ok" />
+        <field name="CssClassName" value="glyphicon glyphicon-ok" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Remove" />
+        <field name="CssClassName" value="glyphicon glyphicon-remove" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Zoom In" />
+        <field name="CssClassName" value="glyphicon glyphicon-zoom-in" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Zoom Out" />
+        <field name="CssClassName" value="glyphicon glyphicon-zoom-out" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Off" />
+        <field name="CssClassName" value="glyphicon glyphicon-off" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Signal" />
+        <field name="CssClassName" value="glyphicon glyphicon-signal" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Cog" />
+        <field name="CssClassName" value="glyphicon glyphicon-cog" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Trash" />
+        <field name="CssClassName" value="glyphicon glyphicon-trash" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Home" />
+        <field name="CssClassName" value="glyphicon glyphicon-home" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="File" />
+        <field name="CssClassName" value="glyphicon glyphicon-file" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Time" />
+        <field name="CssClassName" value="glyphicon glyphicon-time" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Road" />
+        <field name="CssClassName" value="glyphicon glyphicon-road" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Download Alt" />
+        <field name="CssClassName" value="glyphicon glyphicon-download-alt" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Download" />
+        <field name="CssClassName" value="glyphicon glyphicon-download" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Upload" />
+        <field name="CssClassName" value="glyphicon glyphicon-upload" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Inbox" />
+        <field name="CssClassName" value="glyphicon glyphicon-inbox" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Play Circle" />
+        <field name="CssClassName" value="glyphicon glyphicon-play-circle" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Repeat" />
+        <field name="CssClassName" value="glyphicon glyphicon-repeat" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Refresh" />
+        <field name="CssClassName" value="glyphicon glyphicon-refresh" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="List Alt" />
+        <field name="CssClassName" value="glyphicon glyphicon-list-alt" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Lock" />
+        <field name="CssClassName" value="glyphicon glyphicon-lock" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Flag" />
+        <field name="CssClassName" value="glyphicon glyphicon-flag" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Headphones" />
+        <field name="CssClassName" value="glyphicon glyphicon-headphones" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Volume Off" />
+        <field name="CssClassName" value="glyphicon glyphicon-volume-off" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Volume Down" />
+        <field name="CssClassName" value="glyphicon glyphicon-volume-down" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Volume Up" />
+        <field name="CssClassName" value="glyphicon glyphicon-volume-up" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="QRCode" />
+        <field name="CssClassName" value="glyphicon glyphicon-qrcode" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Barcode" />
+        <field name="CssClassName" value="glyphicon glyphicon-barcode" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Tag" />
+        <field name="CssClassName" value="glyphicon glyphicon-tag" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Tags" />
+        <field name="CssClassName" value="glyphicon glyphicon-tags" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Book" />
+        <field name="CssClassName" value="glyphicon glyphicon-book" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Bookmark" />
+        <field name="CssClassName" value="glyphicon glyphicon-bookmark" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Print" />
+        <field name="CssClassName" value="glyphicon glyphicon-print" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Camera" />
+        <field name="CssClassName" value="glyphicon glyphicon-camera" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Font" />
+        <field name="CssClassName" value="glyphicon glyphicon-font" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Bold" />
+        <field name="CssClassName" value="glyphicon glyphicon-bold" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Italic" />
+        <field name="CssClassName" value="glyphicon glyphicon-italic" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Text Height" />
+        <field name="CssClassName" value="glyphicon glyphicon-text-height" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Text Width" />
+        <field name="CssClassName" value="glyphicon glyphicon-text-width" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Align Left" />
+        <field name="CssClassName" value="glyphicon glyphicon-align-left" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Align Center" />
+        <field name="CssClassName" value="glyphicon glyphicon-align-center" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Align Right" />
+        <field name="CssClassName" value="glyphicon glyphicon-align-right" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Align Justify" />
+        <field name="CssClassName" value="glyphicon glyphicon-align-justify" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="List" />
+        <field name="CssClassName" value="glyphicon glyphicon-list" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Indent Left" />
+        <field name="CssClassName" value="glyphicon glyphicon-indent-left" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Indent Right" />
+        <field name="CssClassName" value="glyphicon glyphicon-indent-right" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="FaceTime" />
+        <field name="CssClassName" value="glyphicon glyphicon-facetime-video" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Picture" />
+        <field name="CssClassName" value="glyphicon glyphicon-picture" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Map Marker" />
+        <field name="CssClassName" value="glyphicon glyphicon-map-marker" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Adjust" />
+        <field name="CssClassName" value="glyphicon glyphicon-adjust" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Tint" />
+        <field name="CssClassName" value="glyphicon glyphicon-tint" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Edit" />
+        <field name="CssClassName" value="glyphicon glyphicon-edit" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Share" />
+        <field name="CssClassName" value="glyphicon glyphicon-share" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Check" />
+        <field name="CssClassName" value="glyphicon glyphicon-check" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Move" />
+        <field name="CssClassName" value="glyphicon glyphicon-move" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Step Backward" />
+        <field name="CssClassName" value="glyphicon glyphicon-step-backward" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Fast Backward" />
+        <field name="CssClassName" value="glyphicon glyphicon-fast-backward" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Backward" />
+        <field name="CssClassName" value="glyphicon glyphicon-backward" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Play" />
+        <field name="CssClassName" value="glyphicon glyphicon-play" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Pause" />
+        <field name="CssClassName" value="glyphicon glyphicon-pause" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Stop" />
+        <field name="CssClassName" value="glyphicon glyphicon-stop" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Forward" />
+        <field name="CssClassName" value="glyphicon glyphicon-forward" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Fast Forward" />
+        <field name="CssClassName" value="glyphicon glyphicon-fast-forward" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Step Forward" />
+        <field name="CssClassName" value="glyphicon glyphicon-step-forward" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Eject" />
+        <field name="CssClassName" value="glyphicon glyphicon-eject" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Chevron Left" />
+        <field name="CssClassName" value="glyphicon glyphicon-chevron-left" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Chevron Right" />
+        <field name="CssClassName" value="glyphicon glyphicon-chevron-right" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Plus Sign" />
+        <field name="CssClassName" value="glyphicon glyphicon-plus-sign" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Minus Sign" />
+        <field name="CssClassName" value="glyphicon glyphicon-minus-sign" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Remove Sign" />
+        <field name="CssClassName" value="glyphicon glyphicon-remove-sign" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Ok Sign" />
+        <field name="CssClassName" value="glyphicon glyphicon-ok-sign" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Question Sign" />
+        <field name="CssClassName" value="glyphicon glyphicon-question-sign" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Info Sign" />
+        <field name="CssClassName" value="glyphicon glyphicon-info-sign" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Screenshot" />
+        <field name="CssClassName" value="glyphicon glyphicon-screenshot" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Remove Circle" />
+        <field name="CssClassName" value="glyphicon glyphicon-remove-circle" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Ok Circle" />
+        <field name="CssClassName" value="glyphicon glyphicon-ok-circle" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Ban Circle" />
+        <field name="CssClassName" value="glyphicon glyphicon-ban-circle" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Arrow Left" />
+        <field name="CssClassName" value="glyphicon glyphicon-arrow-left" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Arrow Right" />
+        <field name="CssClassName" value="glyphicon glyphicon-arrow-right" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Arrow Up" />
+        <field name="CssClassName" value="glyphicon glyphicon-arrow-up" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Arrow Down" />
+        <field name="CssClassName" value="glyphicon glyphicon-arrow-down" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Share Alt" />
+        <field name="CssClassName" value="glyphicon glyphicon-share-alt" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Resize Full" />
+        <field name="CssClassName" value="glyphicon glyphicon-resize-full" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Resize Small" />
+        <field name="CssClassName" value="glyphicon glyphicon-resize-small" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Exclamation Sign" />
+        <field name="CssClassName" value="glyphicon glyphicon-exclamation-sign" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Gift" />
+        <field name="CssClassName" value="glyphicon glyphicon-gift" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Leaf" />
+        <field name="CssClassName" value="glyphicon glyphicon-leaf" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Fire" />
+        <field name="CssClassName" value="glyphicon glyphicon-fire" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Eye Open" />
+        <field name="CssClassName" value="glyphicon glyphicon-eye-open" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Eye Close" />
+        <field name="CssClassName" value="glyphicon glyphicon-eye-close" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Warning Sign" />
+        <field name="CssClassName" value="glyphicon glyphicon-warning-sign" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Plane" />
+        <field name="CssClassName" value="glyphicon glyphicon-plane" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Calendar" />
+        <field name="CssClassName" value="glyphicon glyphicon-calendar" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Random" />
+        <field name="CssClassName" value="glyphicon glyphicon-random" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Comment" />
+        <field name="CssClassName" value="glyphicon glyphicon-comment" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Magnet" />
+        <field name="CssClassName" value="glyphicon glyphicon-magnet" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Chevron Up" />
+        <field name="CssClassName" value="glyphicon glyphicon-chevron-up" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Chevron Down" />
+        <field name="CssClassName" value="glyphicon glyphicon-chevron-down" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Retweet" />
+        <field name="CssClassName" value="glyphicon glyphicon-retweet" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Shopping Cart" />
+        <field name="CssClassName" value="glyphicon glyphicon-shopping-cart" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Folder Close" />
+        <field name="CssClassName" value="glyphicon glyphicon-folder-close" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Folder Open" />
+        <field name="CssClassName" value="glyphicon glyphicon-folder-open" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Resize Vertical" />
+        <field name="CssClassName" value="glyphicon glyphicon-resize-vertical" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Resize Horizontal" />
+        <field name="CssClassName" value="glyphicon glyphicon-resize-horizontal" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="HDD" />
+        <field name="CssClassName" value="glyphicon glyphicon-hdd" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Bullhorn" />
+        <field name="CssClassName" value="glyphicon glyphicon-bullhorn" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Bell" />
+        <field name="CssClassName" value="glyphicon glyphicon-bell" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Certificate" />
+        <field name="CssClassName" value="glyphicon glyphicon-certificate" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Thumbs Up" />
+        <field name="CssClassName" value="glyphicon glyphicon-thumbs-up" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Thumbs Down" />
+        <field name="CssClassName" value="glyphicon glyphicon-thumbs-down" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Hand Right" />
+        <field name="CssClassName" value="glyphicon glyphicon-hand-right" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Hand Left" />
+        <field name="CssClassName" value="glyphicon glyphicon-hand-left" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Hand Up" />
+        <field name="CssClassName" value="glyphicon glyphicon-hand-up" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Hand Down" />
+        <field name="CssClassName" value="glyphicon glyphicon-hand-down" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Circle Arrow Right" />
+        <field name="CssClassName" value="glyphicon glyphicon-circle-arrow-right" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Circle Arrow Left" />
+        <field name="CssClassName" value="glyphicon glyphicon-circle-arrow-left" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Circle Arrow Up" />
+        <field name="CssClassName" value="glyphicon glyphicon-circle-arrow-up" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Circle Arrow Down" />
+        <field name="CssClassName" value="glyphicon glyphicon-circle-arrow-down" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Globe" />
+        <field name="CssClassName" value="glyphicon glyphicon-globe" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Wrench" />
+        <field name="CssClassName" value="glyphicon glyphicon-wrench" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Tasks" />
+        <field name="CssClassName" value="glyphicon glyphicon-tasks" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Filter" />
+        <field name="CssClassName" value="glyphicon glyphicon-filter" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Briefcase" />
+        <field name="CssClassName" value="glyphicon glyphicon-briefcase" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Fullscreen" />
+        <field name="CssClassName" value="glyphicon glyphicon-fullscreen" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Dashboard" />
+        <field name="CssClassName" value="glyphicon glyphicon-dashboard" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Paperclip" />
+        <field name="CssClassName" value="glyphicon glyphicon-paperclip" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Heart Empty" />
+        <field name="CssClassName" value="glyphicon glyphicon-heart-empty" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Link" />
+        <field name="CssClassName" value="glyphicon glyphicon-link" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Phone" />
+        <field name="CssClassName" value="glyphicon glyphicon-phone" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Pushpin" />
+        <field name="CssClassName" value="glyphicon glyphicon-pushpin" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="USD" />
+        <field name="CssClassName" value="glyphicon glyphicon-usd" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="GBP" />
+        <field name="CssClassName" value="glyphicon glyphicon-gbp" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Sort" />
+        <field name="CssClassName" value="glyphicon glyphicon-sort" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Sort By Alphabet" />
+        <field name="CssClassName" value="glyphicon glyphicon-sort-by-alphabet" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Sort By Alphabet Alt" />
+        <field name="CssClassName" value="glyphicon glyphicon-sort-by-alphabet-alt" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Sort By Order" />
+        <field name="CssClassName" value="glyphicon glyphicon-sort-by-order" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Sort By Order Alt" />
+        <field name="CssClassName" value="glyphicon glyphicon-sort-by-order-alt" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Sort By Attributes" />
+        <field name="CssClassName" value="glyphicon glyphicon-sort-by-attributes" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Sort By Attributes Alt" />
+        <field name="CssClassName" value="glyphicon glyphicon-sort-by-attributes-alt" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Unchecked" />
+        <field name="CssClassName" value="glyphicon glyphicon-unchecked" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Expand" />
+        <field name="CssClassName" value="glyphicon glyphicon-expand" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Collapse Down" />
+        <field name="CssClassName" value="glyphicon glyphicon-collapse-down" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Collapse Up" />
+        <field name="CssClassName" value="glyphicon glyphicon-collapse-up" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Log In" />
+        <field name="CssClassName" value="glyphicon glyphicon-log-in" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Flash" />
+        <field name="CssClassName" value="glyphicon glyphicon-flash" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Log Out" />
+        <field name="CssClassName" value="glyphicon glyphicon-log-out" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="New Window" />
+        <field name="CssClassName" value="glyphicon glyphicon-new-window" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Record" />
+        <field name="CssClassName" value="glyphicon glyphicon-record" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Save" />
+        <field name="CssClassName" value="glyphicon glyphicon-save" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Open" />
+        <field name="CssClassName" value="glyphicon glyphicon-open" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Saved" />
+        <field name="CssClassName" value="glyphicon glyphicon-saved" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Import" />
+        <field name="CssClassName" value="glyphicon glyphicon-import" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Export" />
+        <field name="CssClassName" value="glyphicon glyphicon-export" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Send" />
+        <field name="CssClassName" value="glyphicon glyphicon-send" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Floppy Disk" />
+        <field name="CssClassName" value="glyphicon glyphicon-floppy-disk" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Floppy Saved" />
+        <field name="CssClassName" value="glyphicon glyphicon-floppy-saved" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Floppy Remove" />
+        <field name="CssClassName" value="glyphicon glyphicon-floppy-remove" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Floppy Save" />
+        <field name="CssClassName" value="glyphicon glyphicon-floppy-save" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Floppy Open" />
+        <field name="CssClassName" value="glyphicon glyphicon-floppy-open" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Credit Card" />
+        <field name="CssClassName" value="glyphicon glyphicon-credit-card" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Transfer" />
+        <field name="CssClassName" value="glyphicon glyphicon-transfer" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Cutlery" />
+        <field name="CssClassName" value="glyphicon glyphicon-cutlery" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Header" />
+        <field name="CssClassName" value="glyphicon glyphicon-header" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Compressed" />
+        <field name="CssClassName" value="glyphicon glyphicon-compressed" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Earphone" />
+        <field name="CssClassName" value="glyphicon glyphicon-earphone" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Phone Alt" />
+        <field name="CssClassName" value="glyphicon glyphicon-phone-alt" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Tower" />
+        <field name="CssClassName" value="glyphicon glyphicon-tower" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Stats" />
+        <field name="CssClassName" value="glyphicon glyphicon-stats" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="SD Video" />
+        <field name="CssClassName" value="glyphicon glyphicon-sd-video" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="HD Video" />
+        <field name="CssClassName" value="glyphicon glyphicon-hd-video" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Subtitles" />
+        <field name="CssClassName" value="glyphicon glyphicon-subtitles" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Sound Stereo" />
+        <field name="CssClassName" value="glyphicon glyphicon-sound-stereo" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Sound Dolby" />
+        <field name="CssClassName" value="glyphicon glyphicon-sound-dolby" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Sound 5-1" />
+        <field name="CssClassName" value="glyphicon glyphicon-sound-5-1" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Sound 6-1" />
+        <field name="CssClassName" value="glyphicon glyphicon-sound-6-1" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Sound 7-1" />
+        <field name="CssClassName" value="glyphicon glyphicon-sound-7-1" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Copyright Mark" />
+        <field name="CssClassName" value="glyphicon glyphicon-copyright-mark" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Registration Mark" />
+        <field name="CssClassName" value="glyphicon glyphicon-registration-mark" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Cloud Download" />
+        <field name="CssClassName" value="glyphicon glyphicon-cloud-download" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Cloud Upload" />
+        <field name="CssClassName" value="glyphicon glyphicon-cloud-upload" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Tree Conifer" />
+        <field name="CssClassName" value="glyphicon glyphicon-tree-conifer" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Tree Deciduous" />
+        <field name="CssClassName" value="glyphicon glyphicon-tree-deciduous" />
+      </data-item>
+    </data>
+  </data-model>
+  <data-model name="StoredFile" display-name="StoredFile" plural-name="StoredFile" display-plural-name="StoredFile" display-property="FileName" trackable="Yes" is-logic-delete="No" schema="dbo">
+    <properties>
+      <key name="StoredFileId" />
+      <property name="FileName" data-type="String" max-length="50" required="Yes" is-trackable="Yes" />
+      <foreign-key name="FileTypeId" data-type="Int" required="Yes" reference-model="FileType" reference-name="FileType" is-trackable="Yes" />
+      <foreign-key name="FileDataId" data-type="Int" required="Yes" reference-model="FileData" reference-name="FileData" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="FileType" display-name="File Type" plural-name="FileTypes" display-plural-name="File Types" trackable="No" is-logic-delete="No" schema="enum">
+    <properties>
+      <key name="FileTypeId" />
+      <property name="Name" data-type="String" max-length="50" required="Yes" is-trackable="Yes" />
+      <property name="Extension" data-type="String" max-length="10" required="Yes" is-trackable="Yes" />
+      <property name="ContextType" data-type="String" max-length="50" required="Yes" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="FileData" display-name="File Data" plural-name="FileData" display-plural-name="File Data" trackable="No" is-logic-delete="No" schema="dbo">
+    <properties>
+      <key name="FileDataId" />
+      <property name="Data" data-type="ByteArray" required="Yes" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="HistoryLog" display-name="History Log" plural-name="HistoryLogs" display-plural-name="History Logs" display-property="Model" trackable="Yes" is-logic-delete="No" schema="audit">
+    <properties>
+      <key name="HistoryLogId" />
+      <property name="Model" data-type="String" max-length="250" required="Yes" is-trackable="Yes" />
+      <property name="ModelId" display-name="Model Id" data-type="Int" required="Yes" is-trackable="Yes" />
+      <property name="PropertyName" display-name="Property Name" data-type="String" max-length="250" required="Yes" is-trackable="Yes" />
+      <property name="OldValue" display-name="Old Value" data-type="String" required="No" is-trackable="Yes" />
+      <property name="OldModelId" display-name="Old Model Id" data-type="Int" required="No" is-trackable="Yes" />
+      <property name="NewValue" display-name="New Value" data-type="String" required="No" is-trackable="Yes" />
+      <property name="NewModelId" display-name="New Model Id" data-type="Int" required="No" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="UploadedItem" display-name="Uploaded Item" plural-name="UploadedItems" display-plural-name="Uploaded Items" display-property="UniqueIdentifier" trackable="Yes" is-logic-delete="Yes" track-history-mode="ByProperty" schema="datastorage">
+    <properties>
+      <key name="UploadedItemId" />
+      <foreign-key name="ClientId" data-type="Int" required="Yes" reference-model="Client" reference-name="Client" is-trackable="Yes" />
+      <property name="UniqueIdentifier" display-name="Unique Identifier" data-type="String" max-length="100" required="Yes" editing-control="Single line" is-trackable="Yes" />
+      <foreign-key name="PayloadTypeId" display-name="Payload Type" data-type="Int" required="Yes" reference-model="PayloadType" reference-name="PayloadType" is-trackable="Yes" />
+      <property name="PayloadFilename" display-name="Payload Filename" data-type="String" max-length="200" required="Yes" editing-control="Single line" is-trackable="Yes" />
+      <property name="PayloadChecksum" display-name="Payload Checksum" data-type="String" max-length="100" required="Yes" editing-control="Single line" is-trackable="Yes" />
+      <property name="PayloadFilesize" display-name="Payload Filesize" data-type="String" max-length="100" required="Yes" editing-control="Single line" is-trackable="Yes" />
+      <property name="TradingDateStart" display-name="Start Trading Date" data-type="DateTime" required="Yes" display-format="MM/dd/yyyy hh:mm:ss tt" is-trackable="Yes" />
+      <property name="TradingDateEnd" display-name="End Trading Date" data-type="DateTime" required="Yes" display-format="MM/dd/yyyy hh:mm:ss tt" is-trackable="Yes" />
+      <property name="Description" data-type="String" required="Yes" editing-control="Single line" is-trackable="Yes" />
+      <property name="ExpirationDate" display-name="Expiration Date" data-type="DateTime" required="No" display-format="MM/dd/yyyy hh:mm:ss tt" is-trackable="Yes" />
+      <property name="GenericField1" display-name="Generic Field 1" data-type="String" max-length="100" required="No" editing-control="Single line" is-trackable="Yes" />
+      <property name="GenericField2" display-name="Generic Field 2" data-type="String" max-length="100" required="No" editing-control="Single line" is-trackable="Yes" />
+      <foreign-key name="StatusId" data-type="Int" required="Yes" reference-model="UploadedItemStatus" reference-name="Status" is-trackable="Yes" />
+      <bag name="Replacements" model="Replacement" inverse-property="UploadedItem" />
+      <bag name="CustomerCoverages" model="CustomerCoverage" inverse-property="UploadedItem" />
+      <bag name="TradingUnitCoverages" model="TradingUnitCoverage" inverse-property="UploadedItem" />
+      <bag name="DataTags" model="DataTag" inverse-property="UploadedItem" />
+      <bag name="GlacierStorages" model="GlacierStorage" inverse-property="UploadedItem" />
+    </properties>
+  </data-model>
+  <data-model name="PayloadType" display-name="Payload Type" plural-name="PayloadTypes" display-plural-name="Payload Types" display-property="Name" trackable="Yes" is-logic-delete="Yes" track-history-mode="ByProperty" schema="datastorage">
+    <properties>
+      <key name="PayloadTypeId" />
+      <property name="Name" data-type="String" max-length="50" required="Yes" editing-control="Single line" is-trackable="Yes" />
+      <property name="MonthsToKeep" data-type="Int" required="Yes" display-format="n0" is-trackable="Yes" />
+      <bag name="UploadedItems" model="UploadedItem" inverse-property="PayloadType" />
+    </properties>
+  </data-model>
+  <data-model name="Replacement" display-name="Replacement" plural-name="Replacements" display-plural-name="Replacements" display-property="Reason" trackable="Yes" is-logic-delete="Yes" track-history-mode="ByProperty" schema="datastorage">
+    <properties>
+      <key name="ReplacementId" />
+      <foreign-key name="UploadedItemId" display-name="Uploaded Item" data-type="Int" required="Yes" reference-model="UploadedItem" reference-name="UploadedItem" is-trackable="Yes" />
+      <property name="UniqueIdentifier" data-type="String" max-length="100" required="Yes" editing-control="Single line" is-trackable="Yes" />
+      <property name="Reason" data-type="String" required="Yes" editing-control="Single line" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="CustomerCoverage" display-name="Customer Coverage" plural-name="CustomerCoverages" display-plural-name="Customer Coverages" display-property="Value" trackable="Yes" is-logic-delete="Yes" track-history-mode="ByProperty" schema="datastorage">
+    <properties>
+      <key name="CustomerCoverageId" />
+      <foreign-key name="UploadedItemId" display-name="Uploaded Item" data-type="Int" required="Yes" reference-model="UploadedItem" reference-name="UploadedItem" is-trackable="Yes" />
+      <property name="Value" data-type="String" required="No" editing-control="Single line" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="TradingUnitCoverage" display-name="Trading Unit Coverage" plural-name="TradingUnitCoverages" display-plural-name="Trading Unit Coverages" display-property="Value" trackable="Yes" is-logic-delete="Yes" track-history-mode="ByProperty" schema="datastorage">
+    <properties>
+      <key name="TradingUnitCoverageId" />
+      <foreign-key name="UploadedItemId" display-name="Uploaded Item" data-type="Int" required="Yes" reference-model="UploadedItem" reference-name="UploadedItem" is-trackable="Yes" />
+      <property name="Value" data-type="String" required="No" editing-control="Single line" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="DataTag" display-name="Data Tag" plural-name="DataTags" display-plural-name="Data Tags" display-property="Value" trackable="Yes" is-logic-delete="Yes" track-history-mode="ByProperty" schema="datastorage">
+    <properties>
+      <key name="DataTagId" />
+      <foreign-key name="UploadedItemId" data-type="Int" required="Yes" reference-model="UploadedItem" reference-name="UploadedItem" is-trackable="Yes" />
+      <property name="Value" data-type="String" max-length="100" required="No" editing-control="Single line" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="Client" display-name="Client" plural-name="Clients" display-plural-name="Clients" display-property="Name" trackable="Yes" is-logic-delete="No" track-history-mode="ByProperty" schema="dbo">
+    <properties>
+      <key name="ClientId" />
+      <property name="Name" data-type="String" max-length="100" required="Yes" editing-control="Single line" is-trackable="Yes" />
+      <property name="ClientIdTag" data-type="String" max-length="20" required="Yes" editing-control="Single line" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="fred" display-name="fred" plural-name="freds" display-plural-name="freds" trackable="Yes" is-logic-delete="No" schema="dbo">
+    <properties>
+      <key name="fredId" />
+      <property name="foo" display-name="foo" data-type="Int" required="Yes" display-format="n0" is-trackable="Yes" />
+      <property name="bar" display-name="bar" data-type="String" max-length="50" required="Yes" editing-control="Single line" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="UploadedItemValidation" display-name="Uploaded Item Validation" plural-name="UploadedItemValidations" display-plural-name="Uploaded Item Validations" trackable="Yes" is-logic-delete="No" schema="dbo">
+    <properties>
+      <key name="UploadedItemValidationId" />
+      <property name="UniqueIdentifier" data-type="String" max-length="100" required="Yes" editing-control="Single line" is-trackable="Yes" />
+      <property name="Succeeded" data-type="Bool" required="Yes" is-trackable="Yes" />
+      <property name="InputData" data-type="String" required="Yes" editing-control="Single line" is-trackable="Yes" />
+      <bag name="ValidationErrors" model="ValidationError" inverse-property="UploadedItemValidation" />
+    </properties>
+  </data-model>
+  <data-model name="ValidationError" display-name="Validation Error" plural-name="ValidationErrors" display-plural-name="Validation Errors" trackable="No" is-logic-delete="No" schema="dbo">
+    <properties>
+      <key name="ValidationErrorId" />
+      <foreign-key name="UploadedItemValidationId" data-type="Int" required="Yes" reference-model="UploadedItemValidation" reference-name="UploadedItemValidation" is-trackable="Yes" />
+      <property name="Error" data-type="String" required="Yes" editing-control="Single line" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="GlacierStorage" display-name="GlacierStorage" plural-name="GlacierStorages" display-plural-name="GlacierStorages" display-property="StorageId" trackable="Yes" is-logic-delete="No" schema="datastorage">
+    <properties>
+      <key name="GlacierStorageId" />
+      <foreign-key name="UploadedItemId" data-type="Int" required="Yes" reference-model="UploadedItem" reference-name="UploadedItem" is-trackable="Yes" />
+      <property name="Region" data-type="String" max-length="400" required="Yes" editing-control="Single line" is-trackable="Yes" />
+      <property name="Vault" data-type="String" max-length="400" required="Yes" editing-control="Single line" is-trackable="Yes" />
+      <property name="StorageId" data-type="String" max-length="400" required="Yes" editing-control="Single line" is-trackable="Yes" />
+    </properties>
+  </data-model>
+  <data-model name="UploadedItemStatus" display-name="UploadedItemStatus" plural-name="UploadedItemStatuss" display-plural-name="UploadedItemStatuss" display-property="Name" trackable="No" is-logic-delete="No" schema="datastorage">
+    <properties>
+      <key name="UploadedItemStatusId" />
+      <property name="Name" data-type="String" max-length="20" required="Yes" editing-control="Single line" is-trackable="Yes" />
+    </properties>
+    <data create-enum="Yes" enum-name="UploadedItemStatusEnum">
+      <data-item>
+        <field name="Name" value="Validated" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Partially Stored" />
+      </data-item>
+      <data-item>
+        <field name="Name" value="Fully Stored" />
+      </data-item>
+    </data>
+  </data-model>
+</model-mapping>

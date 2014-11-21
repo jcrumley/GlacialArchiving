@@ -1,0 +1,39 @@
+﻿@model GlacialArchiving.DataAccess.Models.UploadedItemValidation
+
+<fieldset>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.UniqueIdentifier)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.Succeeded)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.InputData)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.CreatedOn)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.CreatedBy.NameFull, label: "Created By")                    
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.ModifiedOn)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.ModifiedBy.NameFull, label: "Modified By")                    
+        </section>
+    </div>
+</fieldset>

@@ -1,0 +1,201 @@
+﻿@model GlacialArchiving.Web.Common.LoginModel
+@{
+    Layout = "/Views/_Layout-SmartAdmin-Empty.cshtml";
+    ViewBag.Title = "Login";
+    string userName = Model != null ? Model.UserName : string.Empty;
+    bool remember = Model != null ? Model.RememberMeValue : false;
+}
+
+<div id="login_dialog" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <img src="/Content/SmartAdmin/img/logo.png" alt="SmartAdmin">
+                </h4>
+            </div>
+            <div class="modal-body no-padding">
+                @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="smart-form">
+                        <fieldset>
+                            <section>
+                                <div class="row">
+                                    <label class="label col col-2">Username</label>
+                                    <div class="col col-10">
+                                        <label class="input">
+                                            <i class="icon-append fa fa-user"></i>
+                                            <input type="text" id="UserName" name="UserName" value="@userName">
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="row">
+                                    <label class="label col col-2">Password</label>
+                                    <div class="col col-10">
+                                        <label class="input">
+                                            <i class="icon-append fa fa-lock"></i>
+                                            <input type="password" id="Password" name="Password">
+                                        </label>
+                                        <div class="note">
+                                            <a id="forgot_password" href="#">Forgot password?</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="row">
+                                    <div class="col col-2"></div>
+                                    <div class="col col-10">
+                                        <label class="checkbox">
+                                            <input type="checkbox" id="RememberMe" name="RememberMe" checked="@remember">
+                                            <i></i>Remember User Name
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+                        </fieldset>
+
+                        <footer>
+                            <button type="submit" class="btn btn-labeled btn-primary">
+                                <span class="btn-label"><i class="glyphicon glyphicon-log-in"></i></span>
+                                Sign in
+                            </button>
+                        </footer>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>            
+
+<div id="forgot_password_dialog" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content smart-form">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Forgot Password
+                </h4>
+            </div>
+            <div class="modal-body no-padding">
+                <div class="smart-form">
+                    <fieldset id="forgot-form">
+                        <div class="row">
+                            <section class="col col-12">
+                                <label class="label">Enter your email address to recieve a verification link:</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-envelope"></i>
+                                    <input type="text" id="forgot-password-username">
+                                </label>
+                            </section>
+                        </div>
+                    </fieldset>
+                    <fieldset id="forgot-message" style="display:none;border:0;">
+                        <div class="row">
+                            <section class="col col-12">
+                                <label class="label">We are processing your request, and you will recieve an email shortly.</label>
+                            </section>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <footer>
+                <button id="forgot-password-close" class="btn btn-default" data-dismiss="modal">
+                    Close
+                </button>
+                <button id="forgot-password-submit" class="btn btn-labeled btn-primary">
+                    <span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>
+                    Send Email
+                </button>
+            </footer>
+        </div>
+    </div>
+</div>
+
+@section pageScripts{
+    <script>
+        $(function () {
+            $("#login_dialog").modal("show");
+            SetLoginFocus();
+        });
+        function SetLoginFocus() {
+            if ($("#UserName").val() == "")
+                setTimeout('$("#UserName").focus()', 500);
+            else
+                setTimeout('$("#Password").focus()', 500);
+        }
+
+        var showingForgotPassword = false;
+        $("#forgot_password").click(function () {
+
+            showingForgotPassword = true;
+
+            $("#forgot-password-username").prop('disabled', false);
+            $("#forgot-password-username").val("");
+
+            $("#forgot-password-submit").prop('disabled', false);
+            $("#forgot-password-submit i").removeClass("fa fa-gear fa-spin");
+            $("#forgot-password-submit i").addClass("glyphicon glyphicon-ok");
+            $("#forgot-password-submit").css("display", "block");
+
+            $("#forgot-password-close").prop('disabled', false);
+
+            $("#forgot-form").css("display", "block");
+            $("#forgot-message").css("display", "none");
+
+            $("#login_dialog").modal("hide");
+            $("#forgot_password_dialog").modal("show");
+            setTimeout('$("#forgot-password-username").focus()', 500);
+
+            showingForgotPassword = false;
+
+            return false;
+        });
+        $("#forgot-password-submit").click(function () {
+            var obj = {
+                "UserName": $("#forgot-password-username").val().trim(),
+                "Password": "unknown"
+            };
+
+            if (obj.UserName == "") {
+                alert("Please enter an email address.");
+                return;
+            }
+
+            $("#forgot-password-username").prop('disabled', true);
+            $("#forgot-password-submit").prop('disabled', true);
+            $("#forgot-password-submit i").removeClass("glyphicon glyphicon-ok");
+            $("#forgot-password-submit i").addClass("fa fa-gear fa-spin");
+
+            $("#forgot-password-close").prop('disabled', true);
+
+            $.post("/Account/ForgotPassword", obj, function (response) {
+                $("#forgot-password-close").prop('disabled', false);
+                $("#forgot-password-submit").css("display", "none");
+                $("#forgot-form").css("display", "none");
+                $("#forgot-message").css("display", "block");
+            });
+        });
+
+        var closeClicked = false;
+        $("#forgot-password-close").click(function () {
+            closeClicked = true;
+            $("#forgot_password_dialog").modal("hide");
+            $("#login_dialog").modal("show");
+            SetLoginFocus();
+            closeClicked = false;
+        });
+
+        $('#forgot_password_dialog').on('hide.bs.modal', function () {
+            if (!closeClicked)
+                return false;
+        });
+        $('#login_dialog').on('hide.bs.modal', function () {
+            if (!showingForgotPassword)
+                return false;
+        });
+    </script>
+}

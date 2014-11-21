@@ -1,0 +1,19 @@
+﻿@model GlacialArchiving.DataAccess.Models.Navigation
+
+<fieldset>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.Name)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.InConstruction)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.SystemGenerated)
+        </section>
+    </div>
+</fieldset>

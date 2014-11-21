@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ReportDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.tbadev.com/Schemas/GridConfiguration.xsd">
+  <Datasources>
+    <SqlDatasource DatasourceID="DS1" SqlStatement="
+            SELECT *
+              FROM [nav].[NavIcon]" />
+  </Datasources>
+  <Filters />
+  <Formats>
+    <GridFormat FormatID="Grid" DatasourceID="DS1" SortColumn="Name" PrimaryKeyColumn="NavIconId"
+                GridWidth="100%" GridHeight="600px" RowSelectMode="Single" AllowEdit="false" AllowAdd="false"
+                RowCssClass="Row" AltRowCssClass="AltRow" RecordsPerPage="100" ExportFormat="Excel"
+                UpdateClass="GlacialArchiving.DataAccess.Models.NavIcon, GlacialArchiving.DataAccess">
+      <Buttons>
+        <TextActionButton ButtonID="btnExport" Text="Export" BuiltInType="Export" ButtonMode="AlwaysActive" />
+      </Buttons>
+      <Columns>
+        <SelectorColumn SourceID="Selector" Width="32px" />
+        <TextColumn SourceID="Name" Title="Name" SystemType="System.String" Width="90px"
+                    SortOrder="Name" SortOrderDESC="Name DESC" />
+        <TextColumn SourceID="CssClassName" Title="CssClassName" SystemType="System.String" Width="90px"
+                    SortOrder="CssClassName" SortOrderDESC="CssClassName DESC" />
+      </Columns>
+    </GridFormat>
+    <ExcelFormat FormatID="Excel" OutputFileName="NavIconListing.xls">
+      <Sheets>
+        <ExcelSheet Base="A1" DatasourceID="DS1">
+          <Columns ShowHeaders="true">
+            <ExcelColumn SourceID="Name" Title="Name"></ExcelColumn>
+            <ExcelColumn SourceID="CssClassName" Title="CssClassName"></ExcelColumn>
+          </Columns>
+        </ExcelSheet>
+      </Sheets>
+    </ExcelFormat>
+  </Formats>
+</ReportDefinition>

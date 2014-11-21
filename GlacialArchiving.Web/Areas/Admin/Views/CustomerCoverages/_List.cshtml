@@ -1,0 +1,118 @@
+﻿@model IEnumerable<GlacialArchiving.DataAccess.Models.CustomerCoverage>
+@using TBADev.MVC.MVCHelpers
+
+@if (ViewBag.AllowCreate) {
+    if (ViewBag.PageDisplayMode == PageDisplayMode.Index) 
+    {
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+    }
+    else if (ViewBag.PageDisplayMode == PageDisplayMode.Inline) 
+    {
+<p>
+    <a href="#" onclick="CreateItem()">Create</a>
+</p>        
+    }
+}
+<div style="overflow-x:auto;">
+<table cellpadding="0" cellspacing="0" border="0" style="white-space: nowrap;" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Uploaded Item</th>            
+            <th>Value</th>            
+            <th>Is Deleted</th>            
+            @if (ViewBag.PageDisplayMode == PageDisplayMode.Index)
+            {
+            <th>Created On</th>            
+            }
+            @if (ViewBag.PageDisplayMode == PageDisplayMode.Index)
+            {
+            <th>Created By</th>            
+            }
+            @if (ViewBag.PageDisplayMode == PageDisplayMode.Index)
+            {
+            <th>Modified On</th>            
+            }
+            @if (ViewBag.PageDisplayMode == PageDisplayMode.Index)
+            {
+            <th>Modified By</th>            
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @if (ViewBag.PageDisplayMode == PageDisplayMode.Index)
+                    {
+                        if (ViewBag.AllowEdit) 
+                        { 
+                            @Html.ActionLink("Edit", "Edit", new { id = item.CustomerCoverageId }) 
+                        }
+                        if (ViewBag.AllowEdit && ViewBag.AllowDelete) 
+                        { 
+                            @Html.Raw(" | ") 
+                        }
+                        if (ViewBag.AllowDelete) 
+                        {
+                            @Html.ActionLink("Delete", "Delete", new { id = item.CustomerCoverageId })
+                        }
+                    }
+                    else if (ViewBag.PageDisplayMode == PageDisplayMode.Inline) 
+                    { 
+                        if (ViewBag.AllowEdit) 
+                        { 
+                    <a href="#" onclick="EditItem(@item.CustomerCoverageId)">Edit</a>
+                        }
+                        if (ViewBag.AllowEdit && ViewBag.AllowDelete) 
+                        { 
+                            @Html.Raw(" | ") 
+                        }
+                        if (ViewBag.AllowDelete)
+                        {
+                    <a href="#" onclick="DeleteItem(@item.CustomerCoverageId)">Delete</a>
+                        }
+                    }
+                </td>
+
+                <td>
+                @if (ViewBag.PageDisplayMode == PageDisplayMode.Index) { @Html.ActionLink(item.UploadedItem.UniqueIdentifier, "Edit", "UploadedItems", new { id = item.UploadedItemId }, null) }
+                else { @item.UploadedItem.UniqueIdentifier }
+                </td>
+                <td>@if (item.Value != null){ @item.Value } else { @Html.Raw("&nbsp;") }</td>
+                <td>@item.IsDeleted</td>                
+                @if (ViewBag.PageDisplayMode == PageDisplayMode.Index) 
+                {
+                <td>@if (item.CreatedOn != null){ @item.CreatedOn } else { @Html.Raw("&nbsp;") }</td>
+                }                
+                @if (ViewBag.PageDisplayMode == PageDisplayMode.Index) 
+                {
+                <td>@if (item.CreatedBy_UserId != null){ @Html.ActionLink(item.CreatedBy.NameFull, "Edit", "Users", new { id = item.CreatedBy_UserId }, null) } else { @Html.Raw("&nbsp;") }</td>
+                }                
+                @if (ViewBag.PageDisplayMode == PageDisplayMode.Index) 
+                {
+                <td>@if (item.ModifiedOn != null){ @item.ModifiedOn } else { @Html.Raw("&nbsp;") }</td>
+                }                
+                @if (ViewBag.PageDisplayMode == PageDisplayMode.Index) 
+                {
+                <td>@if (item.ModifiedBy_UserId != null){ @Html.ActionLink(item.ModifiedBy.NameFull, "Edit", "Users", new { id = item.ModifiedBy_UserId }, null) } else { @Html.Raw("&nbsp;") }</td>
+                }
+            </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="100">
+                    No records found.
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

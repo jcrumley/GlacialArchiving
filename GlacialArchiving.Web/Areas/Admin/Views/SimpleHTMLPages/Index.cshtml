@@ -1,0 +1,15 @@
+﻿@model IEnumerable<GlacialArchiving.DataAccess.Models.SimpleHTMLPage>
+
+@{
+    ViewBag.Title = "Simple HTML Pages Listing";
+}
+
+<h2>
+    Simple HTML Pages
+	@if (!string.IsNullOrWhiteSpace(ViewBag.FilteredType) && !string.IsNullOrWhiteSpace(ViewBag.FilteredBy))
+    {
+        @Html.Raw(" :: " + ViewBag.FilteredType + " = " + ViewBag.FilteredBy)
+    }
+</h2>
+
+@Html.Partial("_List", Model)

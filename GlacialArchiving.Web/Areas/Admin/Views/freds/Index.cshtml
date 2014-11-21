@@ -1,0 +1,15 @@
+﻿@model IEnumerable<GlacialArchiving.DataAccess.Models.fred>
+
+@{
+    ViewBag.Title = "freds Listing";
+}
+
+<h2>
+    freds
+	@if (!string.IsNullOrWhiteSpace(ViewBag.FilteredType) && !string.IsNullOrWhiteSpace(ViewBag.FilteredBy))
+    {
+        @Html.Raw(" :: " + ViewBag.FilteredType + " = " + ViewBag.FilteredBy)
+    }
+</h2>
+
+@Html.Partial("_List", Model)

@@ -1,0 +1,170 @@
+﻿@model GlacialArchiving.DataAccess.Models.User
+
+@if (ViewBag.IsPost)
+{
+    <fieldset>
+        @if (ViewBag.Errors != null)
+        {
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            @foreach (string err in ViewBag.Errors)
+            {
+                @Html.Raw(err + "<br />")
+            }
+        </div>
+        }
+        else
+        {
+        <div id="EditAlert" class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Changes saved to the database.</strong>
+        </div>
+        <script>
+            $(function () {
+                setTimeout("$(\"#EditAlert\").alert('close')", 10 * 1000);
+                InitControls();
+            });
+        </script>
+        }
+    </fieldset>
+}
+
+<fieldset>
+    @Html.HiddenFor(model => model.UserId)
+    <div class="row">
+        <section class="col col-6">
+            @Html.jTextBoxFor(model => model.NameFirst, ControlType.String, new { maxlength=100 })
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jTextBoxFor(model => model.NameLast, ControlType.String, new { maxlength=100 })
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jTextBoxFor(model => model.EmailAddress, ControlType.String, new { maxlength=200 })
+        </section>
+    </div>
+    @{
+        if (ViewBag.IsNewUser)
+        {
+            <div class="row">
+                <section class="col col-6">
+                    @Html.jPasswordFor(model => model.Password)
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-6">
+                    <label class="label">Retype Password:</label>
+                    <label class="input">
+                        <input id="RetypePassword" type="password" value="" />
+                    </label>
+                </section>
+            </div>
+        }
+        else if(ViewBag.IsCurrentUser)
+        {
+            <div class="row">
+                <section class="col col-6">
+                    <label class="label">Password <span class="italic">(Hidden)</span>:</label>
+                    <label class="input">
+                        <button id="btnChangePassword" style="padding: 6px 12px;" class="btn btn-primary" data-toggle="modal" data-target="#ChangePasswordDIV">
+                            Change Password
+                        </button>
+                    </label>
+                </section>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <section class="col col-6">
+                    <label class="label">Password <span class="italic">(Hidden)</span>:</label>
+                    <label class="input">
+                        <button id="btnResetPassword" style="padding: 6px 12px;" class="btn btn-primary" data-toggle="modal" data-target="#ResetPasswordDIV">
+                            Reset Password
+                        </button>
+                    </label>
+                </section>
+            </div>
+        }
+    }
+    <div class="row">
+        <section class="col col-6">
+            @Html.jTextBoxFor(model => model.LastLoginDate, ControlType.DateTime, 
+                new { @class = "datetimepicker", @Value = Model != null && Model.LastLoginDate.HasValue ? Model.LastLoginDate.Value.ToString("MM/dd/yyyy hh:mm:ss tt") : string.Empty })
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jTextBoxFor(model => model.LastLockoutDate, ControlType.DateTime, 
+                new { @class = "datetimepicker", @Value = Model != null && Model.LastLockoutDate.HasValue ? Model.LastLockoutDate.Value.ToString("MM/dd/yyyy hh:mm:ss tt") : string.Empty })
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jTextBoxFor(model => model.LastPasswordChangedDate, ControlType.DateTime, 
+                new { @class = "datetimepicker", @Value = Model != null && Model.LastPasswordChangedDate.HasValue ? Model.LastPasswordChangedDate.Value.ToString("MM/dd/yyyy hh:mm:ss tt") : string.Empty })
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jCheckBoxFor(model => model.IsVerified)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jCheckBoxFor(model => model.IsLockedOut)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jCheckBoxFor(model => model.IsActive)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jTextAreaFor(model => model.Address, ControlType.TextArea, new { maxlength=50, @rows=5 })
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jTextBoxFor(model => model.City, ControlType.String, new { maxlength=200 })
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jTextBoxFor(model => model.State, ControlType.String, new { maxlength=2 })
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jTextBoxFor(model => model.Zipcode, ControlType.String, new { maxlength=10 })
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.HiddenFor(model => model.CreatedOn)
+            @Html.jDisplayFor(model => model.CreatedOn)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.HiddenFor(model => model.CreatedBy_UserId)
+            @Html.jDisplayFor(model => model.CreatedBy.NameFull, label: "Created By")                    
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.HiddenFor(model => model.ModifiedOn)
+            @Html.jDisplayFor(model => model.ModifiedOn)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.HiddenFor(model => model.ModifiedBy_UserId)
+            @Html.jDisplayFor(model => model.ModifiedBy.NameFull, label: "Modified By")                    
+        </section>
+    </div>
+</fieldset>

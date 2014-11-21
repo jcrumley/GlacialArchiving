@@ -1,0 +1,94 @@
+﻿@model GlacialArchiving.DataAccess.Models.UploadedItem
+
+<fieldset>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.Client.Name, label: "Client")                    
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.UniqueIdentifier)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.PayloadType.Name, label: "Payload Type")                    
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.PayloadFilename)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.PayloadChecksum)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.PayloadFilesize)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.TradingDateStart)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.TradingDateEnd)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.Description)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.ExpirationDate)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.GenericField1)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.GenericField2)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.Status.Name, label: "Status")                    
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.IsDeleted)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.CreatedOn)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.CreatedBy.NameFull, label: "Created By")                    
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.ModifiedOn)
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.ModifiedBy.NameFull, label: "Modified By")                    
+        </section>
+    </div>
+</fieldset>

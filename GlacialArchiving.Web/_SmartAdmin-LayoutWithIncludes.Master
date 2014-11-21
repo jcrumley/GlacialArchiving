@@ -1,0 +1,63 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/_SmartAdmin-Layout.Master" AutoEventWireup="true" CodeBehind="_SmartAdmin-LayoutWithIncludes.master.cs" Inherits="GlacialArchiving.Web._SmartAdmin_LayoutWithIncludes" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link type="text/css" rel="stylesheet" href="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/jquery-ui-1.10.4.custom.min.css") %>" />
+    
+    <link type="text/css" rel="stylesheet" href="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/SmartAdmin/css/bootstrap.min.css") %>" />
+    <link type="text/css" rel="stylesheet" href="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/SmartAdmin/css/font-awesome.min.css") %>" />
+
+    <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+    <link type="text/css" rel="stylesheet" href="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/SmartAdmin/css/smartadmin-production.css") %>" />
+    <link type="text/css" rel="stylesheet" href="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/SmartAdmin/css/smartadmin-skins.css") %>" />
+
+    <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+    <!-- <link type="text/css" rel="stylesheet" href="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/SmartAdmin/css/demo.css") %>" /> -->
+
+    <link type="text/css" rel="stylesheet" href="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/bootstrap-select.css") %>" />
+    <link type="text/css" rel="stylesheet" href="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/bootstrap-datetimepicker.min.css") %>" />
+    <link type="text/css" rel="stylesheet" href="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/jquery.handsontable.css") %>" />
+    <link type="text/css" rel="stylesheet" href="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/jHtmlArea.css") %>" />
+    <link type="text/css" rel="stylesheet" href="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/jHtmlArea.ColorPickerMenu.css") %>" />
+    <link type="text/css" rel="stylesheet" href="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/Site.generated.css") %>" />
+    <link type="text/css" rel="stylesheet" href="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/Site.css") %>" />
+
+    <!-- GOOGLE FONT -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700" />
+    
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Scripts" runat="server">  
+    <script type="text/javascript" src="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jquery-2.0.3.min.js") %>"></script>
+    <script type="text/javascript" src="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/moment-2.4.0.js") %>"></script>
+    <script type="text/javascript" src="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jquery-ui-1.10.4.custom.min.js") %>"></script>
+    <script type="text/javascript" src="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/bootstrap.min.js") %>"></script>
+    <script type="text/javascript" src="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/bootstrap-select.min.js") %>"></script>
+    <script type="text/javascript" src="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/bootstrap-datetimepicker.js") %>"></script>
+    <script type="text/javascript" src="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jquery.dataTables.min.js") %>"></script>
+    <script type="text/javascript" src="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jquery.handsontable.js") %>"></script>
+    <script type="text/javascript" src="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jquery.contextMenu.js") %>"></script>
+    <script type="text/javascript" src="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jHtmlArea-0.7.5.min.js") %>"></script>
+    <script type="text/javascript" src="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jHtmlArea.ColorPickerMenu-0.7.0.min.js") %>"></script>
+    <script type="text/javascript" src="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/Functions.generated.js") %>"></script>
+    <script type="text/javascript" src="<%=TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/Functions.js") %>"></script>
+    
+    <!-- <script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> --> <!-- JS TOUCH : include this plugin for mobile drag / drop touch events -->
+    <script src="/Content/SmartAdmin/js/notification/SmartNotification.min.js"></script> <!-- CUSTOM NOTIFICATION -->
+    <script src="/Content/SmartAdmin/js/smartwidgets/jarvis.widget.min.js"></script> <!-- JARVIS WIDGETS -->
+    <script src="/Content/SmartAdmin/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script> <!-- EASY PIE CHARTS -->
+    <script src="/Content/SmartAdmin/js/plugin/sparkline/jquery.sparkline.min.js"></script> <!-- SPARKLINES -->
+    <script src="/Content/SmartAdmin/js/plugin/jquery-validate/jquery.validate.min.js"></script> <!-- JQUERY VALIDATE -->
+    <script src="/Content/SmartAdmin/js/plugin/masked-input/jquery.maskedinput.min.js"></script> <!-- JQUERY MASKED INPUT -->
+    <script src="/Content/SmartAdmin/js/plugin/select2/select2.min.js"></script> <!-- JQUERY SELECT2 INPUT -->
+    <script src="/Content/SmartAdmin/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script> <!-- JQUERY UI + Bootstrap Slider -->
+    <script src="/Content/SmartAdmin/js/plugin/msie-fix/jquery.mb.browser.min.js"></script> <!-- browser msie issue fix -->
+    <script src="/Content/SmartAdmin/js/plugin/smartclick/smartclick.js"></script> <!-- SmartClick: For mobile devices -->
+    
+    <asp:ContentPlaceHolder ID="ScriptPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

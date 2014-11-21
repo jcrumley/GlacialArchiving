@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ADDBB277-6604-442A-8588-1E418E4F20F1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GlacialArchiving.DataAccess</RootNamespace>
+    <AssemblyName>GlacialArchiving.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="TBADev.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\tools\TBADev\MVC1.0\Debug\TBADev.MVC.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Generation\Glacial Archiving.xml" />
+    <None Include="App.config" />
+    <None Include="DAL.csp" />
+    <None Include="Models.csp" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <Compile Include="Base\BaseObject.cs" />
+    <Compile Include="Base\BaseObject.generated.cs">
+      <DependentUpon>BaseObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Trackable.cs" />
+    <Compile Include="Base\Trackable.generated.cs">
+      <DependentUpon>Trackable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DataContext.cs" />
+    <Compile Include="DAL\DataContext.generated.cs">
+      <DependentUpon>DataContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406011934424_Test.cs" />
+    <Compile Include="Migrations\201406011934424_Test.Designer.cs">
+      <DependentUpon>201406011934424_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406060019463_Migration_20140605191928.cs" />
+    <Compile Include="Migrations\201406060019463_Migration_20140605191928.Designer.cs">
+      <DependentUpon>201406060019463_Migration_20140605191928.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408080056540_update1.cs" />
+    <Compile Include="Migrations\201408080056540_update1.Designer.cs">
+      <DependentUpon>201408080056540_update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408080106533_Migration_20140807200640.cs" />
+    <Compile Include="Migrations\201408080106533_Migration_20140807200640.Designer.cs">
+      <DependentUpon>201408080106533_Migration_20140807200640.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Configuration.generated.cs">
+      <DependentUpon>Configuration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Seeding.cs" />
+    <Compile Include="Migrations\Seeding.generated.cs">
+      <DependentUpon>Seeding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Client.generated.cs">
+      <DependentUpon>Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerCoverage.cs" />
+    <Compile Include="Models\CustomerCoverage.generated.cs">
+      <DependentUpon>CustomerCoverage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataTag.cs" />
+    <Compile Include="Models\DataTag.generated.cs">
+      <DependentUpon>DataTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FileData.cs" />
+    <Compile Include="Models\FileData.generated.cs">
+      <DependentUpon>FileData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FileType.cs" />
+    <Compile Include="Models\FileType.generated.cs">
+      <DependentUpon>FileType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HistoryLog.cs" />
+    <Compile Include="Models\HistoryLog.generated.cs">
+      <DependentUpon>HistoryLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Membership.cs" />
+    <Compile Include="Models\Membership.generated.cs">
+      <DependentUpon>Membership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NavIcon.cs" />
+    <Compile Include="Models\NavIcon.generated.cs">
+      <DependentUpon>NavIcon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Navigation.cs" />
+    <Compile Include="Models\Navigation.generated.cs">
+      <DependentUpon>Navigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NavItem.cs" />
+    <Compile Include="Models\NavItem.generated.cs">
+      <DependentUpon>NavItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NavSubItem.cs" />
+    <Compile Include="Models\NavSubItem.generated.cs">
+      <DependentUpon>NavSubItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PayloadType.cs" />
+    <Compile Include="Models\PayloadType.generated.cs">
+      <DependentUpon>PayloadType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Replacement.cs" />
+    <Compile Include="Models\Replacement.generated.cs">
+      <DependentUpon>Replacement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Setting.cs" />
+    <Compile Include="Models\Setting.generated.cs">
+      <DependentUpon>Setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SimpleHTMLPage.cs" />
+    <Compile Include="Models\SimpleHTMLPage.generated.cs">
+      <DependentUpon>SimpleHTMLPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StoredFile.cs" />
+    <Compile Include="Models\StoredFile.generated.cs">
+      <DependentUpon>StoredFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TradingUnitCoverage.cs" />
+    <Compile Include="Models\TradingUnitCoverage.generated.cs">
+      <DependentUpon>TradingUnitCoverage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UploadedItem.cs" />
+    <Compile Include="Models\UploadedItem.generated.cs">
+      <DependentUpon>UploadedItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\User.generated.cs">
+      <DependentUpon>User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserGroup.cs" />
+    <Compile Include="Models\UserGroup.generated.cs">
+      <DependentUpon>UserGroup.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\GenericRepository.cs" />
+    <Compile Include="Base\GenericRepository.generated.cs">
+      <DependentUpon>GenericRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\UnitOfWork.cs" />
+    <Compile Include="DAL\UnitOfWork.generated.cs">
+      <DependentUpon>UnitOfWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="Repositories\ClientRepository.generated.cs">
+      <DependentUpon>ClientRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CustomerCoverageRepository.cs" />
+    <Compile Include="Repositories\CustomerCoverageRepository.generated.cs">
+      <DependentUpon>CustomerCoverageRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\DataTagRepository.cs" />
+    <Compile Include="Repositories\DataTagRepository.generated.cs">
+      <DependentUpon>DataTagRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\FileDataRepository.cs" />
+    <Compile Include="Repositories\FileDataRepository.generated.cs">
+      <DependentUpon>FileDataRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\FileTypeRepository.cs" />
+    <Compile Include="Repositories\FileTypeRepository.generated.cs">
+      <DependentUpon>FileTypeRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\HistoryLogRepository.cs" />
+    <Compile Include="Repositories\HistoryLogRepository.generated.cs">
+      <DependentUpon>HistoryLogRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\MembershipRepository.cs" />
+    <Compile Include="Repositories\MembershipRepository.generated.cs">
+      <DependentUpon>MembershipRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\NavIconRepository.cs" />
+    <Compile Include="Repositories\NavIconRepository.generated.cs">
+      <DependentUpon>NavIconRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\NavigationRepository.cs" />
+    <Compile Include="Repositories\NavigationRepository.generated.cs">
+      <DependentUpon>NavigationRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\NavItemRepository.cs" />
+    <Compile Include="Repositories\NavItemRepository.generated.cs">
+      <DependentUpon>NavItemRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\NavSubItemRepository.cs" />
+    <Compile Include="Repositories\NavSubItemRepository.generated.cs">
+      <DependentUpon>NavSubItemRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\PayloadTypeRepository.cs" />
+    <Compile Include="Repositories\PayloadTypeRepository.generated.cs">
+      <DependentUpon>PayloadTypeRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\ReplacementRepository.cs" />
+    <Compile Include="Repositories\ReplacementRepository.generated.cs">
+      <DependentUpon>ReplacementRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\SettingRepository.cs" />
+    <Compile Include="Repositories\SettingRepository.generated.cs">
+      <DependentUpon>SettingRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\SimpleHTMLPageRepository.cs" />
+    <Compile Include="Repositories\SimpleHTMLPageRepository.generated.cs">
+      <DependentUpon>SimpleHTMLPageRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\StoredFileRepository.cs" />
+    <Compile Include="Repositories\StoredFileRepository.generated.cs">
+      <DependentUpon>StoredFileRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\TradingUnitCoverageRepository.cs" />
+    <Compile Include="Repositories\TradingUnitCoverageRepository.generated.cs">
+      <DependentUpon>TradingUnitCoverageRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\UploadedItemRepository.cs" />
+    <Compile Include="Repositories\UploadedItemRepository.generated.cs">
+      <DependentUpon>UploadedItemRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\UserGroupRepository.cs" />
+    <Compile Include="Repositories\UserGroupRepository.generated.cs">
+      <DependentUpon>UserGroupRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\UserRepository.generated.cs">
+      <DependentUpon>UserRepository.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201406011934424_Test.resx">
+      <DependentUpon>201406011934424_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406060019463_Migration_20140605191928.resx">
+      <DependentUpon>201406060019463_Migration_20140605191928.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408080056540_update1.resx">
+      <DependentUpon>201408080056540_update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408080106533_Migration_20140807200640.resx">
+      <DependentUpon>201408080106533_Migration_20140807200640.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\fred.cs" />
+    <Compile Include="Models\fred.generated.cs">
+      <DependentUpon>fred.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UploadedItemValidation.cs" />
+    <Compile Include="Models\UploadedItemValidation.generated.cs">
+      <DependentUpon>UploadedItemValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ValidationError.cs" />
+    <Compile Include="Models\ValidationError.generated.cs">
+      <DependentUpon>ValidationError.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Repositories\fredRepository.cs" />
+    <Compile Include="Repositories\fredRepository.generated.cs">
+      <DependentUpon>fredRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\UploadedItemValidationRepository.cs" />
+    <Compile Include="Repositories\UploadedItemValidationRepository.generated.cs">
+      <DependentUpon>UploadedItemValidationRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\ValidationErrorRepository.cs" />
+    <Compile Include="Repositories\ValidationErrorRepository.generated.cs">
+      <DependentUpon>ValidationErrorRepository.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\GlacierStorage.cs" />
+    <Compile Include="Models\GlacierStorage.generated.cs">
+      <DependentUpon>GlacierStorage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UploadedItemStatus.cs" />
+    <Compile Include="Models\UploadedItemStatus.generated.cs">
+      <DependentUpon>UploadedItemStatus.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Repositories\GlacierStorageRepository.cs" />
+    <Compile Include="Repositories\GlacierStorageRepository.generated.cs">
+      <DependentUpon>GlacierStorageRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\UploadedItemStatusRepository.cs" />
+    <Compile Include="Repositories\UploadedItemStatusRepository.generated.cs">
+      <DependentUpon>UploadedItemStatusRepository.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

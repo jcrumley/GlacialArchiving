@@ -1,0 +1,125 @@
+﻿<style type="text/css">
+    .modal-backdrop {
+        z-index: 1001;
+    }
+    .navediticon {
+        border-width: 1px;
+        border-color: white;
+        border-style: solid;
+        border-radius: 10%;
+        background-color:gray;
+        cursor:crosshair;
+    }
+</style>
+<nav class="replaceMe">
+    <ul>
+        @{
+            if (ViewBag.CurrentNavigation != null)
+            {
+                GlacialArchiving.DataAccess.Models.Navigation nav = (GlacialArchiving.DataAccess.Models.Navigation)ViewBag.CurrentNavigation;
+                foreach (GlacialArchiving.DataAccess.Models.NavItem ni in nav.NavItems.OrderBy(t => t.Sequence))
+                {
+                    if (ni.NavSubItems.Count == 0)
+                    {
+						<li>
+							<a href="@ni.URL" title="@ni.Title">
+								<i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">@ni.Title</span>
+							</a>
+                            @if (nav.InConstruction)
+							{
+						        <span class="addNavSub navediticon"
+						              style="position:absolute;color:white;top:7px;right:50px;padding:3px;"
+						              data-navitemid="@ni.NavItemId">
+						            <span class="glyphicon glyphicon-plus "></span>
+						        </span>
+						        <span class="editNav navediticon" style="position:absolute;color:white;top:7px;right:27px;padding:3px;"
+						              data-navitemid="@ni.NavItemId" data-title="@ni.Title" data-url="@ni.URL" data-sequence="@ni.Sequence">
+						            <span class="glyphicon glyphicon-pencil "></span>
+						        </span>
+						        <span class="deleteNav navediticon" style="position:absolute;color:white;top:7px;right:4px;padding:3px;"
+						              data-navitemid="@ni.NavItemId" data-title="@ni.Title">
+						            <span class="glyphicon glyphicon-remove"></span>
+						        </span>
+							}
+                       </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">@ni.Title</span></a>
+                            @if (nav.InConstruction)
+                            { 
+                            <span style="position:relative;display:block;">
+                                <span class="addNavSub navediticon" style="position:absolute;color:white;top:-29px;right:50px;padding:3px;"
+                                      data-navitemid="@ni.NavItemId">
+                                    <span class="glyphicon glyphicon-plus "></span>
+                                </span>
+                                <span class="editNav navediticon" style="position: absolute; color: white; top: -29px; right: 27px; padding: 3px;"
+                                      data-navitemid="@ni.NavItemId" data-title="@ni.Title" data-url="@ni.URL" data-sequence="@ni.Sequence">
+                                    <span class="glyphicon glyphicon-pencil "></span>
+                                </span>
+                                <span class="deleteNav navediticon" style="position: absolute; color: white; top: -29px; right: 4px; padding: 3px;"
+                                      data-navitemid="@ni.NavItemId" data-title="@ni.Title">
+                                    <span class="glyphicon glyphicon-remove "></span>
+                                </span>
+                            </span>
+                            }
+                            <ul>
+                                @{
+                        foreach (GlacialArchiving.DataAccess.Models.NavSubItem si in ni.NavSubItems.OrderBy(s => s.Sequence))
+                        {
+                            <li>
+
+                                <a href="@si.URL">@si.Title</a>
+                                @if (nav.InConstruction)
+                                { 
+                                <span style="position:relative;display:block;">
+                                    <span class="editNavSub navediticon" style="position:absolute;color:white;top:-26px;right:27px;padding:3px;"
+                                          data-navsubitemid="@si.NavSubItemId" data-title="@si.Title" data-url="@si.URL" data-sequence="@si.Sequence">
+                                        <span class="glyphicon glyphicon-pencil "></span>
+                                    </span>
+                                    <span class="deleteNavSub navediticon" style="position:absolute;color:white;top:-26px;right:4px;padding:3px;"
+                                          data-navsubitemid="@si.NavSubItemId" data-title="@si.Title">
+                                        <span class="glyphicon glyphicon-remove "></span>
+                                    </span>
+                                </span>
+                                }
+                            </li>
+                        }
+
+                                }
+                            </ul>
+                        </li>
+                    }
+                }
+                if (nav.InConstruction)
+                { 
+                <li>
+                    <a href="javascript:void(0)"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> Add Menu Item</a>
+                    <span style="position:relative;display:block;">
+                        <span class="addNav navediticon" style="position:absolute;color:white;top:-26px;right:50px;padding:4px;"
+                              data-navigationid="@nav.NavigationId">
+                            <span class="glyphicon glyphicon-plus "></span>
+                        </span>
+                    </span>
+                </li>
+                }
+            }
+        }
+
+
+        <li>
+            <div class="logout">
+                <a href="/Account/LogOff">
+                    <i class="fa fa-lg fa-fw fa-sign-out"></i>
+                    <span class="menu-item-parent">Sign Out</span>
+                </a>
+            </div>
+        </li>
+
+    </ul>
+</nav>
+
+<script>
+    setNavs();
+</script>

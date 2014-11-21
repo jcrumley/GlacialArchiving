@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ReportDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.tbadev.com/Schemas/GridConfiguration.xsd">
+  <Datasources>
+    <SqlDatasource DatasourceID="DS1" SqlStatement="
+            SELECT *, NameFirst + ' ' + NameLast AS NameFull
+              FROM [dbo].[User]" />
+    <SqlDatasource DatasourceID="DS_User" SqlStatement="
+            SELECT *, NameFirst + ' ' + NameLast AS NameFull
+              FROM [dbo].[User]" />
+  </Datasources>
+  <Filters />
+  <Formats>
+    <GridFormat FormatID="Grid" DatasourceID="DS1" SortColumn="NameFull" PrimaryKeyColumn="UserId"
+                GridWidth="100%" GridHeight="600px" RowSelectMode="Single" AllowEdit="false" AllowAdd="false"
+                RowCssClass="Row" AltRowCssClass="AltRow" RecordsPerPage="100" ExportFormat="Excel"
+                UpdateClass="GlacialArchiving.DataAccess.Models.User, GlacialArchiving.DataAccess">
+      <Buttons>
+        <TextActionButton ButtonID="btnExport" Text="Export" BuiltInType="Export" ButtonMode="AlwaysActive" />
+      </Buttons>
+      <Columns>
+        <SelectorColumn SourceID="Selector" Width="32px" />
+        <TextColumn SourceID="NameFirst" Title="NameFirst" SystemType="System.String" Width="90px"
+                    SortOrder="NameFirst" SortOrderDESC="NameFirst DESC" />
+        <TextColumn SourceID="NameLast" Title="NameLast" SystemType="System.String" Width="90px"
+                    SortOrder="NameLast" SortOrderDESC="NameLast DESC" />
+        <TextColumn SourceID="EmailAddress" Title="EmailAddress" SystemType="System.String" Width="90px"
+                    SortOrder="EmailAddress" SortOrderDESC="EmailAddress DESC" />
+        <TextColumn SourceID="LastLoginDate" Title="LastLoginDate" SystemType="System.String" Width="90px"
+                    SortOrder="LastLoginDate" SortOrderDESC="LastLoginDate DESC" />
+        <TextColumn SourceID="LastLockoutDate" Title="LastLockoutDate" SystemType="System.String" Width="90px"
+                    SortOrder="LastLockoutDate" SortOrderDESC="LastLockoutDate DESC" />
+        <TextColumn SourceID="LastPasswordChangedDate" Title="LastPasswordChangedDate" SystemType="System.String" Width="90px"
+                    SortOrder="LastPasswordChangedDate" SortOrderDESC="LastPasswordChangedDate DESC" />
+        <TextColumn SourceID="IsVerified" Title="IsVerified" SystemType="System.String" Width="90px"
+                    SortOrder="IsVerified" SortOrderDESC="IsVerified DESC" />
+        <TextColumn SourceID="IsLockedOut" Title="IsLockedOut" SystemType="System.String" Width="90px"
+                    SortOrder="IsLockedOut" SortOrderDESC="IsLockedOut DESC" />
+        <TextColumn SourceID="IsActive" Title="IsActive" SystemType="System.String" Width="90px"
+                    SortOrder="IsActive" SortOrderDESC="IsActive DESC" />
+        <TextColumn SourceID="Address" Title="Address" SystemType="System.String" Width="90px"
+                    SortOrder="Address" SortOrderDESC="Address DESC" />
+        <TextColumn SourceID="City" Title="City" SystemType="System.String" Width="90px"
+                    SortOrder="City" SortOrderDESC="City DESC" />
+        <TextColumn SourceID="State" Title="State" SystemType="System.String" Width="90px"
+                    SortOrder="State" SortOrderDESC="State DESC" />
+        <TextColumn SourceID="Zipcode" Title="Zipcode" SystemType="System.String" Width="90px"
+                    SortOrder="Zipcode" SortOrderDESC="Zipcode DESC" />
+        <TextColumn SourceID="CreatedOn" Title="CreatedOn" SystemType="System.String" Width="90px"
+                    SortOrder="CreatedOn" SortOrderDESC="CreatedOn DESC" />
+        <DropDownColumn SourceID="CreatedBy_UserId" Title="CreatedBy_UserId" SystemType="System.Int32" Width="90px"
+                        SortOrder="CreatedBy_UserId" SortOrderDESC="CreatedBy_UserId DESC"
+                        DatasourceID="DS_User" ValueMember="UserId" DisplayMember="NameFull" AllowNullValue="false" />
+        <TextColumn SourceID="ModifiedOn" Title="ModifiedOn" SystemType="System.String" Width="90px"
+                    SortOrder="ModifiedOn" SortOrderDESC="ModifiedOn DESC" />
+        <DropDownColumn SourceID="ModifiedBy_UserId" Title="ModifiedBy_UserId" SystemType="System.Int32" Width="90px"
+                        SortOrder="ModifiedBy_UserId" SortOrderDESC="ModifiedBy_UserId DESC"
+                        DatasourceID="DS_User" ValueMember="UserId" DisplayMember="NameFull" AllowNullValue="false" />
+      </Columns>
+    </GridFormat>
+    <ExcelFormat FormatID="Excel" OutputFileName="UserListing.xls">
+      <Sheets>
+        <ExcelSheet Base="A1" DatasourceID="DS1">
+          <Columns ShowHeaders="true">
+            <ExcelColumn SourceID="NameFirst" Title="NameFirst"></ExcelColumn>
+            <ExcelColumn SourceID="NameLast" Title="NameLast"></ExcelColumn>
+            <ExcelColumn SourceID="EmailAddress" Title="EmailAddress"></ExcelColumn>
+            <ExcelColumn SourceID="LastLoginDate" Title="LastLoginDate"></ExcelColumn>
+            <ExcelColumn SourceID="LastLockoutDate" Title="LastLockoutDate"></ExcelColumn>
+            <ExcelColumn SourceID="LastPasswordChangedDate" Title="LastPasswordChangedDate"></ExcelColumn>
+            <ExcelColumn SourceID="IsVerified" Title="IsVerified"></ExcelColumn>
+            <ExcelColumn SourceID="IsLockedOut" Title="IsLockedOut"></ExcelColumn>
+            <ExcelColumn SourceID="IsActive" Title="IsActive"></ExcelColumn>
+            <ExcelColumn SourceID="Address" Title="Address"></ExcelColumn>
+            <ExcelColumn SourceID="City" Title="City"></ExcelColumn>
+            <ExcelColumn SourceID="State" Title="State"></ExcelColumn>
+            <ExcelColumn SourceID="Zipcode" Title="Zipcode"></ExcelColumn>
+            <ExcelColumn SourceID="CreatedOn" Title="CreatedOn"></ExcelColumn>
+            <ExcelColumn SourceID="CreatedBy_UserId" Title="CreatedBy_UserId"></ExcelColumn>
+            <ExcelColumn SourceID="ModifiedOn" Title="ModifiedOn"></ExcelColumn>
+            <ExcelColumn SourceID="ModifiedBy_UserId" Title="ModifiedBy_UserId"></ExcelColumn>
+          </Columns>
+        </ExcelSheet>
+      </Sheets>
+    </ExcelFormat>
+  </Formats>
+</ReportDefinition>

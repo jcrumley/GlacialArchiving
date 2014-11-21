@@ -1,0 +1,14 @@
+﻿@model GlacialArchiving.DataAccess.Models.Membership
+
+<fieldset>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.Member.NameFull, label: "Member")                    
+        </section>
+    </div>
+    <div class="row">
+        <section class="col col-6">
+            @Html.jDisplayFor(model => model.Group.Name, label: "Group")                    
+        </section>
+    </div>
+</fieldset>

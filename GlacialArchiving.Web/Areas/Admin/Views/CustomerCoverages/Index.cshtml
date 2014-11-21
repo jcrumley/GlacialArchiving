@@ -1,0 +1,15 @@
+﻿@model IEnumerable<GlacialArchiving.DataAccess.Models.CustomerCoverage>
+
+@{
+    ViewBag.Title = "Customer Coverages Listing";
+}
+
+<h2>
+    Customer Coverages
+	@if (!string.IsNullOrWhiteSpace(ViewBag.FilteredType) && !string.IsNullOrWhiteSpace(ViewBag.FilteredBy))
+    {
+        @Html.Raw(" :: " + ViewBag.FilteredType + " = " + ViewBag.FilteredBy)
+    }
+</h2>
+
+@Html.Partial("_List", Model)

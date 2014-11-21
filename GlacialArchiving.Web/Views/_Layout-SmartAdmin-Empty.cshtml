@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @*<meta name="viewport" content="width=device-width" />*@
+    @*added*@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Use the correct meta names below for your web application
+             Ref: http://davidbcalhoun.com/2010/viewport-metatag
+
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">-->
+
+    <link type="text/css" rel="stylesheet" href="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/jquery-ui-1.10.4.custom.min.css")" />
+
+    <link type="text/css" rel="stylesheet" href="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/SmartAdmin/css/bootstrap.min.css")" />
+    <link type="text/css" rel="stylesheet" href="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/SmartAdmin/css/font-awesome.min.css")" />
+
+    <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+    <link type="text/css" rel="stylesheet" href="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/SmartAdmin/css/smartadmin-production.css")" />
+    <link type="text/css" rel="stylesheet" href="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/SmartAdmin/css/smartadmin-skins.css")" />
+
+    <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/SmartAdmin/css/demo.css")" /> -->
+
+    <link type="text/css" rel="stylesheet" href="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/bootstrap-select.css")" />
+    <link type="text/css" rel="stylesheet" href="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/bootstrap-datetimepicker.min.css")" />
+    <link type="text/css" rel="stylesheet" href="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/jquery.handsontable.css")" />
+    <link type="text/css" rel="stylesheet" href="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/jHtmlArea.css")" />
+    <link type="text/css" rel="stylesheet" href="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/jHtmlArea.ColorPickerMenu.css")" />
+    <link type="text/css" rel="stylesheet" href="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/Site.generated.css")" />
+    <link type="text/css" rel="stylesheet" href="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Styles/Site.css")" />
+
+    <!-- GOOGLE FONT -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700" />
+</head>
+<body class="">
+    <div role="main">
+        <!-- MAIN CONTENT -->
+        @RenderBody()
+    </div>
+
+    <script type="text/javascript" src="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jquery-2.0.3.min.js")"></script>
+    <script type="text/javascript" src="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/moment-2.4.0.js")"></script>
+    <script type="text/javascript" src="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jquery-ui-1.10.4.custom.min.js")"></script>
+    <script type="text/javascript" src="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/bootstrap.min.js")"></script>
+    <script type="text/javascript" src="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/bootstrap-select.min.js")"></script>
+    <script type="text/javascript" src="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/bootstrap-datetimepicker.js")"></script>
+    <script type="text/javascript" src="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jquery.dataTables.min.js")"></script>
+    <script type="text/javascript" src="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jquery.handsontable.js")"></script>
+    <script type="text/javascript" src="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jquery.contextMenu.js")"></script>
+    <script type="text/javascript" src="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jHtmlArea-0.7.5.min.js")"></script>
+    <script type="text/javascript" src="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/jHtmlArea.ColorPickerMenu-0.7.0.min.js")"></script>
+    <script type="text/javascript" src="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/Functions.generated.js")"></script>
+    <script type="text/javascript" src="@TBADev.MVC.Tools.Utilities.UrlVersioning("/Content/Scripts/Functions.js")"></script>
+
+    <!-- <script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> --> <!-- JS TOUCH : include this plugin for mobile drag / drop touch events -->
+    <script src="/Content/SmartAdmin/js/notification/SmartNotification.min.js"></script> <!-- CUSTOM NOTIFICATION -->
+    <script src="/Content/SmartAdmin/js/smartwidgets/jarvis.widget.min.js"></script> <!-- JARVIS WIDGETS -->
+    <script src="/Content/SmartAdmin/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script> <!-- EASY PIE CHARTS -->
+    <script src="/Content/SmartAdmin/js/plugin/sparkline/jquery.sparkline.min.js"></script> <!-- SPARKLINES -->
+    <script src="/Content/SmartAdmin/js/plugin/jquery-validate/jquery.validate.min.js"></script> <!-- JQUERY VALIDATE -->
+    <script src="/Content/SmartAdmin/js/plugin/masked-input/jquery.maskedinput.js"></script> <!-- JQUERY MASKED INPUT -->
+    <script src="/Content/SmartAdmin/js/plugin/select2/select2.min.js"></script> <!-- JQUERY SELECT2 INPUT -->
+    <script src="/Content/SmartAdmin/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script> <!-- JQUERY UI + Bootstrap Slider -->
+    <script src="/Content/SmartAdmin/js/plugin/msie-fix/jquery.mb.browser.min.js"></script> <!-- browser msie issue fix -->
+    <script src="/Content/SmartAdmin/js/plugin/smartclick/smartclick.js"></script> <!-- SmartClick: For mobile devices -->
+    @RenderSection("pageScripts", required: false)
+
+    <!--[if IE 7]>
+
+    <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+    <![endif]-->
+
+    <!-- MAIN APP JS FILE -->
+    <script src="/Content/SmartAdmin/js/app.js"></script>
+
+    <!-- Demo purpose only -->
+    <!-- <script src="/Content/SmartAdmin/js/demo.js"></script> -->
+	<div id="AddEditNavItemDIV" role="dialog" class="modal fade">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title">Add or Top Level or Second Level Nav Item</h4>
+	            </div>
+	            <div class="modal-body">
+	                <div class="container-fluid">
+	                    <div class="row">
+	                        <div class="col-md-3">Title :</div>
+
+	                        <div class="col-md-9">
+	                            <input type="text" id="NavItemTitle" />
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row">
+	                    <div class="col-md-3">
+	                        URL :
+	                    </div>
+	                    <div class="col-md-9">
+	                        <input type="text" id="NavItemURL" />
+	                    </div>
+	                </div>
+	                <div class="row">
+	                    <div class="col-md-3">
+	                        Sequence :
+	                    </div>
+	                    <div class="col-md-9">
+	                        <input type="text" id="NavItemSequence" />
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	                <div id="ResetPasswordButtons">
+	                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	                    <button type="button" class="btn btn-primary" id="btnSaveAddEditNavItem">Save</button>
+	                </div>
+	            </div>
+	        </div><!-- /.modal-content -->
+	    </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<div id="DeleteConfirmationDIV" role="dialog" class="modal fade">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title">Delete Something</h4>
+	            </div>
+	            <div class="modal-body">
+	                <div id="ResetPasswordMessage">
+	                    Are you sure you want to delete this item?
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	                <div id="ResetPasswordButtons">
+	                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	                    <button type="button" class="btn btn-primary" id="btnDeleteConfirmed">Delete</button>
+	                </div>
+	            </div>
+	        </div><!-- /.modal-content -->
+	    </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+    <script src="/Content/Scripts/MenuEditing.js"></script>
+</body>
+</html>

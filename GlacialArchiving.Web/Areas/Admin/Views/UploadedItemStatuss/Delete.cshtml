@@ -1,0 +1,30 @@
+﻿@model GlacialArchiving.DataAccess.Models.UploadedItemStatus
+
+@{
+    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete :: " + @Model.Name;
+}
+
+<h2>Delete :: @Model.Name</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div class="tabs">
+    <ul>
+        <li><a href="#UploadedItemStatusTab">UploadedItemStatus</a></li>
+    </ul>
+    <div id="UploadedItemStatusTab">
+        @using (Html.BeginForm("Delete", "UploadedItemStatuss", FormMethod.Post, new { @class = "smart-form" }))
+        {
+            @Html.Partial("_Display", Model)
+            
+            <footer>
+                <a class="btn btn-default" href="../Index">Cancel</a>
+                <button type="submit" name="submit" class="btn btn-labeled btn-danger">
+                    <span class="btn-label"><i class="fa fa-trash-o"></i></span>
+                    Delete
+                </button>
+            </footer>
+        }
+    </div>
+</div>

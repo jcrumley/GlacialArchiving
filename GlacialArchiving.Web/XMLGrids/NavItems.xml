@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ReportDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.tbadev.com/Schemas/GridConfiguration.xsd">
+  <Datasources>
+    <SqlDatasource DatasourceID="DS1" SqlStatement="
+            SELECT *
+              FROM [nav].[NavItem]" />
+    <SqlDatasource DatasourceID="DS_Navigation" SqlStatement="
+            SELECT *
+              FROM [nav].[Navigation]" />
+    <SqlDatasource DatasourceID="DS_NavIcon" SqlStatement="
+            SELECT *
+              FROM [nav].[NavIcon]" />
+  </Datasources>
+  <Filters />
+  <Formats>
+    <GridFormat FormatID="Grid" DatasourceID="DS1" SortColumn="Title" PrimaryKeyColumn="NavItemId"
+                GridWidth="100%" GridHeight="600px" RowSelectMode="Single" AllowEdit="false" AllowAdd="false"
+                RowCssClass="Row" AltRowCssClass="AltRow" RecordsPerPage="100" ExportFormat="Excel"
+                UpdateClass="GlacialArchiving.DataAccess.Models.NavItem, GlacialArchiving.DataAccess">
+      <Buttons>
+        <TextActionButton ButtonID="btnExport" Text="Export" BuiltInType="Export" ButtonMode="AlwaysActive" />
+      </Buttons>
+      <Columns>
+        <SelectorColumn SourceID="Selector" Width="32px" />
+        <TextColumn SourceID="Title" Title="Title" SystemType="System.String" Width="90px"
+                    SortOrder="Title" SortOrderDESC="Title DESC" />
+        <DropDownColumn SourceID="TopLevelId" Title="TopLevelId" SystemType="System.Int32" Width="90px"
+                        SortOrder="TopLevelId" SortOrderDESC="TopLevelId DESC"
+                        DatasourceID="DS_Navigation" ValueMember="NavigationId" DisplayMember="Name" AllowNullValue="false" />
+        <TextColumn SourceID="URL" Title="URL" SystemType="System.String" Width="90px"
+                    SortOrder="URL" SortOrderDESC="URL DESC" />
+        <TextColumn SourceID="Sequence" Title="Sequence" SystemType="System.String" Width="90px"
+                    SortOrder="Sequence" SortOrderDESC="Sequence DESC" />
+        <DropDownColumn SourceID="IconId" Title="IconId" SystemType="System.Int32" Width="90px"
+                        SortOrder="IconId" SortOrderDESC="IconId DESC"
+                        DatasourceID="DS_NavIcon" ValueMember="NavIconId" DisplayMember="Name" AllowNullValue="false" />
+        <TextColumn SourceID="SystemGenerated" Title="SystemGenerated" SystemType="System.String" Width="90px"
+                    SortOrder="SystemGenerated" SortOrderDESC="SystemGenerated DESC" />
+      </Columns>
+    </GridFormat>
+    <ExcelFormat FormatID="Excel" OutputFileName="NavItemListing.xls">
+      <Sheets>
+        <ExcelSheet Base="A1" DatasourceID="DS1">
+          <Columns ShowHeaders="true">
+            <ExcelColumn SourceID="Title" Title="Title"></ExcelColumn>
+            <ExcelColumn SourceID="TopLevelId" Title="TopLevelId"></ExcelColumn>
+            <ExcelColumn SourceID="URL" Title="URL"></ExcelColumn>
+            <ExcelColumn SourceID="Sequence" Title="Sequence"></ExcelColumn>
+            <ExcelColumn SourceID="IconId" Title="IconId"></ExcelColumn>
+            <ExcelColumn SourceID="SystemGenerated" Title="SystemGenerated"></ExcelColumn>
+          </Columns>
+        </ExcelSheet>
+      </Sheets>
+    </ExcelFormat>
+  </Formats>
+</ReportDefinition>

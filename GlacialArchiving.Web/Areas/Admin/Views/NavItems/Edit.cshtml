@@ -1,0 +1,67 @@
+﻿@model GlacialArchiving.DataAccess.Models.NavItem
+
+@{
+    ViewBag.Title = "Edit :: " + @Model.Title;
+}
+
+<h2>Edit :: @Model.Title</h2>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<input type="hidden" id="CurrentModelId" value="@Model.Id" />
+<input type="hidden" id="CurrentModelPrimaryKey" value="NavItemId" />
+<div class="tabs">
+    <ul>
+        <li><a href="#NavItemTab">NavItem</a></li>
+        <li><a href="#NavSubItemsTab">NavSubItems</a></li>
+    </ul>
+    <div id="NavItemTab">
+        @using (Html.BeginForm("Edit", "NavItems", FormMethod.Post, new { id = "ModelForm", @class = "smart-form" }))
+        {
+            @Html.ValidationSummary(true)
+            <div id="NavItemTabPanel">
+                @Html.Partial("_CreateOrEdit", Model)
+            </div>
+            <footer>
+                <button type="submit" name="submit" class="btn btn-labeled btn-primary">
+                    <span class="btn-label"><i class="fa fa-save"></i></span>
+                    Save
+                </button>
+            </footer>
+        }
+    </div>
+    <div id="NavSubItemsTab" data-controller="NavSubItems" data-bagname="NavItem">
+        <div class="smart-form">
+            <fieldset>
+                <div id="NavSubItemsTabMessages"></div>
+                <div id="NavSubItemsTabList" class="smart-list">
+                    @Html.Partial("/Areas/Admin/Views/NavSubItems/_List.cshtml", Model.NavSubItems)
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+<div id="Modal" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+            </div>
+            @using (Html.BeginForm("Action", "Controller", FormMethod.Post, new { id = "ModalForm" }))
+            {
+                <div class="modal-body">
+                    <div id="ModalMessages"></div>
+                    <div id="ModalPlaceholder" class="smart-form inline-edit-form"></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="ModalDelete" type="button" class="btn btn-danger"></button>
+                    <button id="ModalSave" type="button" class="btn btn-primary"></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            }
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+

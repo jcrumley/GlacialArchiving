@@ -1,0 +1,26 @@
+﻿@model GlacialArchiving.DataAccess.Models.SimpleHTMLPage
+
+@{
+
+    ViewBag.Title = (Model == null ? "Bad Configuration No Data" : Model.Title);
+}
+
+<div class="tabs">
+    <ul>
+        <li><a href="#Description">Description</a></li>
+        <li><a href="#Edit">Edit</a></li>
+    </ul>
+    <div id="Description">
+        @Html.Raw((Model == null ? "Bad Configuration No Data" : Model.BodyHTML))
+    </div>
+    <div id="Edit">
+@using (Html.BeginForm("Edit","SimpleHTMLPages"))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.SimpleHTMLPageId)
+    @Html.jTextAreaFor(model => model.BodyHTML, ControlType.HTML, new { @class = "htmlarea" })
+        <br />
+        <input type="submit" class="btn" value="Save" />
+}
+    </div>
+</div>

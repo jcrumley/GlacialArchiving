@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ReportDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.tbadev.com/Schemas/GridConfiguration.xsd">
+  <Datasources>
+    <SqlDatasource DatasourceID="DS1" SqlStatement="
+            SELECT *
+              FROM [dbo].[Membership]" />
+    <SqlDatasource DatasourceID="DS_User" SqlStatement="
+            SELECT *, NameFirst + ' ' + NameLast AS NameFull
+              FROM [dbo].[User]" />
+    <SqlDatasource DatasourceID="DS_UserGroup" SqlStatement="
+            SELECT *
+              FROM [dbo].[UserGroup]" />
+  </Datasources>
+  <Filters />
+  <Formats>
+    <GridFormat FormatID="Grid" DatasourceID="DS1" SortColumn="Name" PrimaryKeyColumn="MembershipId"
+                GridWidth="100%" GridHeight="600px" RowSelectMode="Single" AllowEdit="false" AllowAdd="false"
+                RowCssClass="Row" AltRowCssClass="AltRow" RecordsPerPage="100" ExportFormat="Excel"
+                UpdateClass="GlacialArchiving.DataAccess.Models.Membership, GlacialArchiving.DataAccess">
+      <Buttons>
+        <TextActionButton ButtonID="btnExport" Text="Export" BuiltInType="Export" ButtonMode="AlwaysActive" />
+      </Buttons>
+      <Columns>
+        <SelectorColumn SourceID="Selector" Width="32px" />
+        <DropDownColumn SourceID="MemberId" Title="MemberId" SystemType="System.Int32" Width="90px"
+                        SortOrder="MemberId" SortOrderDESC="MemberId DESC"
+                        DatasourceID="DS_User" ValueMember="UserId" DisplayMember="NameFull" AllowNullValue="false" />
+        <DropDownColumn SourceID="GroupId" Title="GroupId" SystemType="System.Int32" Width="90px"
+                        SortOrder="GroupId" SortOrderDESC="GroupId DESC"
+                        DatasourceID="DS_UserGroup" ValueMember="UserGroupId" DisplayMember="Name" AllowNullValue="false" />
+      </Columns>
+    </GridFormat>
+    <ExcelFormat FormatID="Excel" OutputFileName="MembershipListing.xls">
+      <Sheets>
+        <ExcelSheet Base="A1" DatasourceID="DS1">
+          <Columns ShowHeaders="true">
+            <ExcelColumn SourceID="MemberId" Title="MemberId"></ExcelColumn>
+            <ExcelColumn SourceID="GroupId" Title="GroupId"></ExcelColumn>
+          </Columns>
+        </ExcelSheet>
+      </Sheets>
+    </ExcelFormat>
+  </Formats>
+</ReportDefinition>

@@ -1,0 +1,30 @@
+﻿@model GlacialArchiving.DataAccess.Models.Client
+
+@{
+    ViewBag.Title = "Create Client";
+}
+
+<h2>Create</h2>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<div class="tabs">
+    <ul>
+        <li><a href="#ClientTab">Client</a></li>
+    </ul>
+    <div id="ClientTab">
+        @using (Html.BeginForm("Create", "Clients", FormMethod.Post, new { @class = "smart-form" }))
+        {
+            @Html.Partial("_CreateOrEdit", Model)
+
+            <footer>
+                <button type="submit" name="submit" class="btn btn-labeled btn-primary">
+                    <span class="btn-label"><i class="fa fa-save"></i></span>
+                    Create
+                </button>
+            </footer>
+        }
+    </div>
+</div>
+

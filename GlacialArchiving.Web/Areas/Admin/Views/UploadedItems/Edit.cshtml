@@ -1,0 +1,111 @@
+﻿@model GlacialArchiving.DataAccess.Models.UploadedItem
+
+@{
+    ViewBag.Title = "Edit :: " + @Model.UniqueIdentifier;
+}
+
+<h2>Edit :: @Model.UniqueIdentifier</h2>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<input type="hidden" id="CurrentModelId" value="@Model.Id" />
+<input type="hidden" id="CurrentModelPrimaryKey" value="UploadedItemId" />
+<div class="tabs">
+    <ul>
+        <li><a href="#UploadedItemTab">UploadedItem</a></li>
+        <li><a href="#ReplacementsTab">Replacements</a></li>
+        <li><a href="#CustomerCoveragesTab">CustomerCoverages</a></li>
+        <li><a href="#TradingUnitCoveragesTab">TradingUnitCoverages</a></li>
+        <li><a href="#DataTagsTab">DataTags</a></li>
+        <li><a href="#GlacierStoragesTab">GlacierStorages</a></li>
+    </ul>
+    <div id="UploadedItemTab">
+        @using (Html.BeginForm("Edit", "UploadedItems", FormMethod.Post, new { id = "ModelForm", @class = "smart-form" }))
+        {
+            @Html.ValidationSummary(true)
+            <div id="UploadedItemTabPanel">
+                @Html.Partial("_CreateOrEdit", Model)
+            </div>
+            <footer>
+                <button type="submit" name="submit" class="btn btn-labeled btn-primary">
+                    <span class="btn-label"><i class="fa fa-save"></i></span>
+                    Save
+                </button>
+            </footer>
+        }
+    </div>
+    <div id="ReplacementsTab" data-controller="Replacements" data-bagname="UploadedItem">
+        <div class="smart-form">
+            <fieldset>
+                <div id="ReplacementsTabMessages"></div>
+                <div id="ReplacementsTabList" class="smart-list">
+                    @Html.Partial("/Areas/Admin/Views/Replacements/_List.cshtml", Model.Replacements)
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div id="CustomerCoveragesTab" data-controller="CustomerCoverages" data-bagname="UploadedItem">
+        <div class="smart-form">
+            <fieldset>
+                <div id="CustomerCoveragesTabMessages"></div>
+                <div id="CustomerCoveragesTabList" class="smart-list">
+                    @Html.Partial("/Areas/Admin/Views/CustomerCoverages/_List.cshtml", Model.CustomerCoverages)
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div id="TradingUnitCoveragesTab" data-controller="TradingUnitCoverages" data-bagname="UploadedItem">
+        <div class="smart-form">
+            <fieldset>
+                <div id="TradingUnitCoveragesTabMessages"></div>
+                <div id="TradingUnitCoveragesTabList" class="smart-list">
+                    @Html.Partial("/Areas/Admin/Views/TradingUnitCoverages/_List.cshtml", Model.TradingUnitCoverages)
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div id="DataTagsTab" data-controller="DataTags" data-bagname="UploadedItem">
+        <div class="smart-form">
+            <fieldset>
+                <div id="DataTagsTabMessages"></div>
+                <div id="DataTagsTabList" class="smart-list">
+                    @Html.Partial("/Areas/Admin/Views/DataTags/_List.cshtml", Model.DataTags)
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div id="GlacierStoragesTab" data-controller="GlacierStorages" data-bagname="UploadedItem">
+        <div class="smart-form">
+            <fieldset>
+                <div id="GlacierStoragesTabMessages"></div>
+                <div id="GlacierStoragesTabList" class="smart-list">
+                    @Html.Partial("/Areas/Admin/Views/GlacierStorages/_List.cshtml", Model.GlacierStorages)
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+<div id="Modal" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+            </div>
+            @using (Html.BeginForm("Action", "Controller", FormMethod.Post, new { id = "ModalForm" }))
+            {
+                <div class="modal-body">
+                    <div id="ModalMessages"></div>
+                    <div id="ModalPlaceholder" class="smart-form inline-edit-form"></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="ModalDelete" type="button" class="btn btn-danger"></button>
+                    <button id="ModalSave" type="button" class="btn btn-primary"></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            }
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+

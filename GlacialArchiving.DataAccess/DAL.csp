@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<codeSmith xmlns="http://www.codesmithtools.com/schema/csp.xsd">
+  <propertySets>
+    <propertySet name="DataAccessGenerator" template="C:\development\tools\CodeSmithTools\Templates\EntityFramework\DataAccessGenerator.cst">
+      <property name="Namespace">GlacialArchiving.DataAccess</property>
+      <property name="DataAccessAssemblyPath">bin\Debug\GlacialArchiving.DataAccess.dll</property>
+    </propertySet>
+  </propertySets>
+</codeSmith>

@@ -1,0 +1,2080 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E6DE6712-E27B-4DB8-B667-3134A1FDA1AD}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GlacialArchiving.Web</RootNamespace>
+    <AssemblyName>GlacialArchiving.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Translator.Web.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="BeginCollectionItem, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BeginCollectionItem.1.2.1.0\lib\net35\BeginCollectionItem.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core">
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.3.13295\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Web.v12.1, Version=12.1.20121.1005, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.WebUI.Shared.v12.1, Version=12.1.20121.1005, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.15\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.1.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.15\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.1.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.1.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="TBADev.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\tools\TBADev\MVC1.0\Debug\TBADev.MVC.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.3\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web.csp" />
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Debug.pubxml" />
+    <None Include="Properties\PublishProfiles\Release.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GlacialArchiving.DataAccess\GlacialArchiving.DataAccess.csproj">
+      <Project>{ADDBB277-6604-442A-8588-1E418E4F20F1}</Project>
+      <Name>GlacialArchiving.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GlacialArchiving.BusinessLogic\GlacialArchiving.BusinessLogic.csproj">
+      <Project>{7F447005-2129-4776-B1B3-91DEDBDA8CFB}</Project>
+      <Name>GlacialArchiving.BusinessLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>11136</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:19030/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Compile Include="Areas\API\v1\Controllers\ExternalVaultStoreController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\ExternalStoreController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\ExternalValidateController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="_SmartAdmin-Layout.Master" />
+    <Compile Include="_SmartAdmin-Layout.Master.cs">
+      <DependentUpon>_SmartAdmin-Layout.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_SmartAdmin-Layout.Master.designer.cs">
+      <DependentUpon>_SmartAdmin-Layout.Master</DependentUpon>
+    </Compile>
+    <Content Include="_SmartAdmin-LayoutWithIncludes.Master" />
+    <Compile Include="_SmartAdmin-LayoutWithIncludes.Master.cs">
+      <DependentUpon>_SmartAdmin-LayoutWithIncludes.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_SmartAdmin-LayoutWithIncludes.Master.designer.cs">
+      <DependentUpon>_SmartAdmin-LayoutWithIncludes.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.generated.cs">
+      <DependentUpon>AdminAreaRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\ClientsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClientsController.generated.cs">
+      <DependentUpon>ClientsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\CustomerCoveragesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerCoveragesController.generated.cs">
+      <DependentUpon>CustomerCoveragesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\DataTagsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DataTagsController.generated.cs">
+      <DependentUpon>DataTagsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\FileDataController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FileDataController.generated.cs">
+      <DependentUpon>FileDataController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\FileTypesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FileTypesController.generated.cs">
+      <DependentUpon>FileTypesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\HistoryLogsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HistoryLogsController.generated.cs">
+      <DependentUpon>HistoryLogsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\MembershipsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MembershipsController.generated.cs">
+      <DependentUpon>MembershipsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\NavIconsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NavIconsController.generated.cs">
+      <DependentUpon>NavIconsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\NavigationsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NavigationsController.generated.cs">
+      <DependentUpon>NavigationsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\NavItemsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NavItemsController.generated.cs">
+      <DependentUpon>NavItemsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\NavSubItemsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NavSubItemsController.generated.cs">
+      <DependentUpon>NavSubItemsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\PayloadTypesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PayloadTypesController.generated.cs">
+      <DependentUpon>PayloadTypesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\ReplacementsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReplacementsController.generated.cs">
+      <DependentUpon>ReplacementsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\SettingsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SettingsController.generated.cs">
+      <DependentUpon>SettingsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\SimpleHTMLPagesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SimpleHTMLPagesController.generated.cs">
+      <DependentUpon>SimpleHTMLPagesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\StoredFileController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StoredFileController.generated.cs">
+      <DependentUpon>StoredFileController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\TradingUnitCoveragesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TradingUnitCoveragesController.generated.cs">
+      <DependentUpon>TradingUnitCoveragesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\UploadedItemsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UploadedItemsController.generated.cs">
+      <DependentUpon>UploadedItemsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\UserGroupsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserGroupsController.generated.cs">
+      <DependentUpon>UserGroupsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.generated.cs">
+      <DependentUpon>UsersController.cs</DependentUpon>
+    </Compile>
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Clients\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Clients\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Clients\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Clients\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Clients\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Clients\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\Clients\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\CustomerCoverages\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CustomerCoverages\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CustomerCoverages\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CustomerCoverages\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CustomerCoverages\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\CustomerCoverages\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\CustomerCoverages\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\DataTags\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DataTags\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DataTags\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DataTags\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DataTags\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\DataTags\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\DataTags\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\FileData\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\FileData\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\FileData\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\FileData\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\FileData\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\FileData\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\FileData\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\FileTypes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\FileTypes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\FileTypes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\FileTypes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\FileTypes\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\FileTypes\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\FileTypes\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\HistoryLogs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\HistoryLogs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\HistoryLogs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\HistoryLogs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HistoryLogs\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\HistoryLogs\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\HistoryLogs\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\Memberships\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Memberships\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Memberships\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Memberships\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Memberships\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Memberships\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\Memberships\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\NavIcons\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NavIcons\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NavIcons\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NavIcons\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NavIcons\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\NavIcons\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\NavIcons\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\Navigations\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Navigations\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Navigations\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Navigations\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Navigations\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Navigations\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\Navigations\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\NavItems\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NavItems\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NavItems\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NavItems\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NavItems\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\NavItems\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\NavItems\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\NavSubItems\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NavSubItems\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NavSubItems\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NavSubItems\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NavSubItems\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\NavSubItems\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\NavSubItems\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\PayloadTypes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PayloadTypes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\PayloadTypes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PayloadTypes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PayloadTypes\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\PayloadTypes\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\PayloadTypes\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\Replacements\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Replacements\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Replacements\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Replacements\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Replacements\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Replacements\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\Replacements\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\Settings\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Settings\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Settings\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Settings\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Settings\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Settings\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\Settings\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\SimpleHTMLPages\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SimpleHTMLPages\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SimpleHTMLPages\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SimpleHTMLPages\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SimpleHTMLPages\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\SimpleHTMLPages\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\SimpleHTMLPages\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\StoredFile\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\StoredFile\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\StoredFile\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\StoredFile\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\StoredFile\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\StoredFile\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\StoredFile\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\TradingUnitCoverages\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TradingUnitCoverages\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\TradingUnitCoverages\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TradingUnitCoverages\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TradingUnitCoverages\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\TradingUnitCoverages\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\TradingUnitCoverages\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItems\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItems\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItems\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItems\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItems\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItems\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItems\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroups\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroups\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroups\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroups\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroups\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroups\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroups\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\_List.cshtml" />
+    <Compile Include="Areas\API\v1\Controllers\ClientsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\ClientsController.generated.cs">
+      <DependentUpon>ClientsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\CustomerCoveragesController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\CustomerCoveragesController.generated.cs">
+      <DependentUpon>CustomerCoveragesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\DataTagsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\DataTagsController.generated.cs">
+      <DependentUpon>DataTagsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\FileDataController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\FileDataController.generated.cs">
+      <DependentUpon>FileDataController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\FileTypesController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\FileTypesController.generated.cs">
+      <DependentUpon>FileTypesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\HistoryLogsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\HistoryLogsController.generated.cs">
+      <DependentUpon>HistoryLogsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\MembershipsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\MembershipsController.generated.cs">
+      <DependentUpon>MembershipsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\NavIconsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\NavIconsController.generated.cs">
+      <DependentUpon>NavIconsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\NavigationsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\NavigationsController.generated.cs">
+      <DependentUpon>NavigationsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\NavItemsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\NavItemsController.generated.cs">
+      <DependentUpon>NavItemsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\NavSubItemsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\NavSubItemsController.generated.cs">
+      <DependentUpon>NavSubItemsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\PayloadTypesController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\PayloadTypesController.generated.cs">
+      <DependentUpon>PayloadTypesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\ReplacementsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\ReplacementsController.generated.cs">
+      <DependentUpon>ReplacementsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\SettingsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\SettingsController.generated.cs">
+      <DependentUpon>SettingsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\SimpleHTMLPagesController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\SimpleHTMLPagesController.generated.cs">
+      <DependentUpon>SimpleHTMLPagesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\StoredFileController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\StoredFileController.generated.cs">
+      <DependentUpon>StoredFileController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\TradingUnitCoveragesController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\TradingUnitCoveragesController.generated.cs">
+      <DependentUpon>TradingUnitCoveragesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\UploadedItemsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\UploadedItemsController.generated.cs">
+      <DependentUpon>UploadedItemsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\UserGroupsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\UserGroupsController.generated.cs">
+      <DependentUpon>UserGroupsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\UsersController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\UsersController.generated.cs">
+      <DependentUpon>UsersController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Core\CoreAreaRegistration.cs" />
+    <Compile Include="Areas\Core\CoreAreaRegistration.generated.cs">
+      <DependentUpon>CoreAreaRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Core\Controllers\ConfigurationController.cs" />
+    <Compile Include="Areas\Core\Controllers\ConfigurationController.generated.cs">
+      <DependentUpon>ConfigurationController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Core\Controllers\SimpleHTMLPagesController.cs" />
+    <Compile Include="Areas\Core\Controllers\SimpleHTMLPagesController.generated.cs">
+      <DependentUpon>SimpleHTMLPagesController.cs</DependentUpon>
+    </Compile>
+    <Content Include="Areas\Core\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Core\Views\SimpleHTMLPages\Display.cshtml" />
+    <Compile Include="Common\AppCode\BaseApiController.cs" />
+    <Compile Include="Common\AppCode\BaseApiController.generated.cs">
+      <DependentUpon>BaseApiController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AppCode\BaseController.cs" />
+    <Compile Include="Common\AppCode\BaseController.generated.cs">
+      <DependentUpon>BaseController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AppCode\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\AppCode\BasePage.generated.cs">
+      <DependentUpon>BasePage.cs</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\AppCode\LoggedInUser.cs" />
+    <Compile Include="Common\AppCode\LoggedInUser.generated.cs">
+      <DependentUpon>LoggedInUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AppCode\LoginModel.cs" />
+    <Compile Include="Common\AppCode\LoginModel.generated.cs">
+      <DependentUpon>LoginModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AppCode\SecureApiController.cs" />
+    <Compile Include="Common\AppCode\SecureApiController.generated.cs">
+      <DependentUpon>SecureApiController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AppCode\SecureController.cs" />
+    <Compile Include="Common\AppCode\SecureController.generated.cs">
+      <DependentUpon>SecureController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AppCode\SecurePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\AppCode\SecurePage.generated.cs">
+      <DependentUpon>SecurePage.cs</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\AppStart\AuthConfig.cs" />
+    <Compile Include="Common\AppStart\AuthConfig.generated.cs">
+      <DependentUpon>AuthConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AppStart\FilterConfig.cs" />
+    <Compile Include="Common\AppStart\FilterConfig.generated.cs">
+      <DependentUpon>FilterConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AppStart\RouteConfig.cs" />
+    <Compile Include="Common\AppStart\RouteConfig.generated.cs">
+      <DependentUpon>RouteConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AppStart\WebApiConfig.cs" />
+    <Compile Include="Common\AppStart\WebApiConfig.generated.cs">
+      <DependentUpon>WebApiConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AppStart\WebApiControllerSelector.cs" />
+    <Compile Include="Common\AppStart\WebApiControllerSelector.generated.cs">
+      <DependentUpon>WebApiControllerSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Binders\LoggedInUserBinder.cs" />
+    <Compile Include="Common\Binders\LoggedInUserBinder.generated.cs">
+      <DependentUpon>LoggedInUserBinder.cs</DependentUpon>
+    </Compile>
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Images\jqueryui\jHtmlArea\jHtmlArea.png" />
+    <Content Include="Content\Images\jqueryui\jHtmlArea\jHtmlArea_Toolbar_Group_BG.png" />
+    <Content Include="Content\Images\jqueryui\jHtmlArea\jHtmlArea_Toolbar_Group__Btn_Select_BG.png" />
+    <Content Include="Content\Images\jqueryui\ui\animated-overlay.gif" />
+    <Content Include="Content\Images\jqueryui\ui\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\Images\jqueryui\ui\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\Images\jqueryui\ui\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\Images\jqueryui\ui\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\Images\jqueryui\ui\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\Images\jqueryui\ui\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\Images\jqueryui\ui\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\Images\jqueryui\ui\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\Images\jqueryui\ui\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\Images\jqueryui\ui\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Images\jqueryui\ui\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\Images\jqueryui\ui\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\Images\jqueryui\ui\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\Images\jqueryui\ui\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Content\Scripts\bootstrap-select.min.js" />
+    <Content Include="Content\Scripts\bootstrap.min.js" />
+    <Content Include="Content\Scripts\Functions.generated.js">
+      <DependentUpon>Functions.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Functions.js" />
+    <Content Include="Content\Scripts\jHtmlArea-0.7.5.min.js" />
+    <Content Include="Content\Scripts\jHtmlArea.ColorPickerMenu-0.7.0.min.js" />
+    <Content Include="Content\Scripts\jquery-2.0.3.min.js" />
+    <Content Include="Content\Scripts\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="Content\Scripts\jquery.contextMenu.js" />
+    <Content Include="Content\Scripts\jquery.dataTables.min.js" />
+    <Content Include="Content\Scripts\jquery.handsontable.js" />
+    <Content Include="Content\Scripts\MenuEditing.js" />
+    <Content Include="Content\Scripts\moment-2.4.0.js" />
+    <Content Include="Content\SmartAdmin\css\bootstrap.min.css" />
+    <Content Include="Content\SmartAdmin\css\demo.css" />
+    <Content Include="Content\SmartAdmin\css\font-awesome.min.css" />
+    <Content Include="Content\SmartAdmin\css\invoice.css" />
+    <Content Include="Content\SmartAdmin\css\lockscreen.css" />
+    <Content Include="Content\SmartAdmin\css\smartadmin-production.css" />
+    <Content Include="Content\SmartAdmin\css\smartadmin-production_unminified.css" />
+    <Content Include="Content\SmartAdmin\css\smartadmin-rtl.css" />
+    <Content Include="Content\SmartAdmin\css\smartadmin-skins.css" />
+    <Content Include="Content\SmartAdmin\css\your_style.css" />
+    <Content Include="Content\SmartAdmin\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\SmartAdmin\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\SmartAdmin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\SmartAdmin\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\SmartAdmin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\SmartAdmin\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\SmartAdmin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\SmartAdmin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\SmartAdmin\goodies\email-templates\border.png" />
+    <Content Include="Content\SmartAdmin\goodies\email-templates\logo.png" />
+    <Content Include="Content\SmartAdmin\img\ajax-loader.gif" />
+    <Content Include="Content\SmartAdmin\img\alpha.png" />
+    <Content Include="Content\SmartAdmin\img\fcr-default.png" />
+    <Content Include="Content\SmartAdmin\img\hue.png" />
+    <Content Include="Content\SmartAdmin\img\loading.gif" />
+    <Content Include="Content\SmartAdmin\img\logo-blacknwhite.png" />
+    <Content Include="Content\SmartAdmin\img\logo-blue.png" />
+    <Content Include="Content\SmartAdmin\img\logo-o.png" />
+    <Content Include="Content\SmartAdmin\img\logo-white.png" />
+    <Content Include="Content\SmartAdmin\img\logo.png" />
+    <Content Include="Content\SmartAdmin\img\logoOriginal.png" />
+    <Content Include="Content\SmartAdmin\img\mybg.png" />
+    <Content Include="Content\SmartAdmin\img\ribbon.png" />
+    <Content Include="Content\SmartAdmin\img\saturation.png" />
+    <Content Include="Content\SmartAdmin\img\select2-spinner.gif" />
+    <Content Include="Content\SmartAdmin\img\sort_asc.png" />
+    <Content Include="Content\SmartAdmin\img\sort_asc_disabled.png" />
+    <Content Include="Content\SmartAdmin\img\sort_both.png" />
+    <Content Include="Content\SmartAdmin\img\sort_desc.png" />
+    <Content Include="Content\SmartAdmin\img\sort_desc_disabled.png" />
+    <Content Include="Content\SmartAdmin\img\avatars\1.png" />
+    <Content Include="Content\SmartAdmin\img\avatars\2.png" />
+    <Content Include="Content\SmartAdmin\img\avatars\3.png" />
+    <Content Include="Content\SmartAdmin\img\avatars\4.png" />
+    <Content Include="Content\SmartAdmin\img\avatars\5.png" />
+    <Content Include="Content\SmartAdmin\img\avatars\female.png" />
+    <Content Include="Content\SmartAdmin\img\avatars\male.png" />
+    <Content Include="Content\SmartAdmin\img\avatars\sunny-big.png" />
+    <Content Include="Content\SmartAdmin\img\avatars\sunny.png" />
+    <Content Include="Content\SmartAdmin\img\demo\64x64.png" />
+    <Content Include="Content\SmartAdmin\img\demo\basic.png" />
+    <Content Include="Content\SmartAdmin\img\demo\demo-smartbig-alert.png" />
+    <Content Include="Content\SmartAdmin\img\demo\demo-smartmedium-alert.png" />
+    <Content Include="Content\SmartAdmin\img\demo\demo-smartsmall-alert.png" />
+    <Content Include="Content\SmartAdmin\img\demo\hero.png" />
+    <Content Include="Content\SmartAdmin\img\demo\image-placeholder-64x64.png" />
+    <Content Include="Content\SmartAdmin\img\demo\iphoneview.png" />
+    <Content Include="Content\SmartAdmin\img\demo\m1.jpg" />
+    <Content Include="Content\SmartAdmin\img\demo\m2.jpg" />
+    <Content Include="Content\SmartAdmin\img\demo\m3.jpg" />
+    <Content Include="Content\SmartAdmin\img\demo\newsletter.png" />
+    <Content Include="Content\SmartAdmin\img\demo\responseimg.png" />
+    <Content Include="Content\SmartAdmin\img\demo\s1.jpg" />
+    <Content Include="Content\SmartAdmin\img\demo\s2.jpg" />
+    <Content Include="Content\SmartAdmin\img\demo\s3.jpg" />
+    <Content Include="Content\SmartAdmin\img\demo\sample.jpg" />
+    <Content Include="Content\SmartAdmin\img\demo\sidebar.png" />
+    <Content Include="Content\SmartAdmin\img\demo\sidebarhero.png" />
+    <Content Include="Content\SmartAdmin\img\demo\site-1.jpg" />
+    <Content Include="Content\SmartAdmin\img\demo\site-2.jpg" />
+    <Content Include="Content\SmartAdmin\img\demo\widget-colorpicker.png" />
+    <Content Include="Content\SmartAdmin\img\dropzone\spritemap.png" />
+    <Content Include="Content\SmartAdmin\img\dropzone\spritemap@2x.png" />
+    <Content Include="Content\SmartAdmin\img\favicon\1favicon.ico" />
+    <Content Include="Content\SmartAdmin\img\favicon\favicon.ico" />
+    <Content Include="Content\SmartAdmin\img\favicon\favicon.png" />
+    <Content Include="Content\SmartAdmin\img\flags\de.png" />
+    <Content Include="Content\SmartAdmin\img\flags\es.png" />
+    <Content Include="Content\SmartAdmin\img\flags\us.png" />
+    <Content Include="Content\SmartAdmin\img\gradient\login.png" />
+    <Content Include="Content\SmartAdmin\img\invoice\americanexpress.png" />
+    <Content Include="Content\SmartAdmin\img\invoice\mastercard.png" />
+    <Content Include="Content\SmartAdmin\img\invoice\paypal.png" />
+    <Content Include="Content\SmartAdmin\img\invoice\visa.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-bg_flat_0_999999_40x100.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-bg_glass_75_ffffff_1x400.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-icons_222222_256x240.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-icons_428bca_256x240.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-icons_454545_256x240.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-icons_555555_256x240.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-icons_888888_256x240.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-icons_999999_256x240.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-icons_f0ad4e_256x240.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-icons_f6cf3b_256x240.png" />
+    <Content Include="Content\SmartAdmin\img\jqueryui\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\divider.jpg" />
+    <Content Include="Content\SmartAdmin\img\pattern\graphy-xs.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\graphy.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\lightpaperfibers.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\movable.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\nistri-xs.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\nistri.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\overlay-pattern.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\paper-xs.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\paper.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\pattern.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\sneaker_mesh_fabric-xs.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\sneaker_mesh_fabric.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\tileable_wood_texture-xs.png" />
+    <Content Include="Content\SmartAdmin\img\pattern\tileable_wood_texture.png" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-1.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-10.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-11.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-12.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-13.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-14.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-15.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-16.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-17.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-18.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-19.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-2.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-20.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-21.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-22.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-23.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-24.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-3.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-4.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-5.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-6.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-7.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-8.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-full-9.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-1.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-10.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-11.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-12.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-13.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-14.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-15.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-16.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-17.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-18.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-19.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-2.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-20.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-21.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-22.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-23.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-24.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-3.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-4.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-5.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-6.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-7.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-8.jpg" />
+    <Content Include="Content\SmartAdmin\img\superbox\superbox-thumb-9.jpg" />
+    <Content Include="Content\SmartAdmin\js\app.js" />
+    <Content Include="Content\SmartAdmin\js\demo.js" />
+    <Content Include="Content\SmartAdmin\js\bootstrap\bootstrap.js" />
+    <Content Include="Content\SmartAdmin\js\bootstrap\bootstrap.min.js" />
+    <Content Include="Content\SmartAdmin\js\libs\jquery-2.0.2.min.js" />
+    <Content Include="Content\SmartAdmin\js\libs\jquery-ui-1.10.3.min.js" />
+    <Content Include="Content\SmartAdmin\js\notification\SmartNotification.js" />
+    <Content Include="Content\SmartAdmin\js\notification\SmartNotification.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\bootstrap-progressbar\bootstrap-progressbar.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\bootstrap-slider\bootstrap-slider.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\bootstrap-slider\bootstrap-slider.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\bootstrap-tags\bootstrap-tagsinput-angular.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\bootstrap-tags\bootstrap-tagsinput.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\bootstrap-tags\bootstrap-tagsinput.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\bootstrap-timepicker\bootstrap-timepicker.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\bootstrap-timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\bootstrap-wizard\jquery.bootstrap.wizard.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\bootstraptree\bootstrap-tree.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\build-config.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\ckeditor-.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\ckeditor.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\config.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\contents.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\styles.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\adapters\jquery.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\af.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\ar.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\bg.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\bn.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\bs.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\ca.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\cs.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\cy.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\da.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\de.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\el.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\en-au.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\en-ca.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\en-gb.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\en.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\eo.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\es.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\et.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\eu.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\fa.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\fi.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\fo.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\fr-ca.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\fr.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\gl.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\gu.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\he.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\hi.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\hr.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\hu.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\id.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\is.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\it.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\ja.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\ka.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\km.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\ko.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\ku.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\lt.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\lv.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\mk.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\mn.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\ms.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\nb.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\nl.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\no.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\pl.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\pt-br.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\pt.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\ro.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\ru.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\si.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\sk.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\sl.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\sq.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\sr-latn.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\sr.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\sv.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\th.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\tr.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\ug.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\uk.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\vi.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\zh-cn.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\lang\zh.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\icons.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\colordialog\dialogs\colordialog.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\div\dialogs\div.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\fakeobjects\images\spacer.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\find\dialogs\find.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\flash\dialogs\flash.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\flash\images\placeholder.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\forms\dialogs\button.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\forms\dialogs\checkbox.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\forms\dialogs\form.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\forms\dialogs\hiddenfield.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\forms\dialogs\radio.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\forms\dialogs\select.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\forms\dialogs\textarea.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\forms\dialogs\textfield.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\forms\images\hiddenfield.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\iframe\dialogs\iframe.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\iframe\images\placeholder.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\liststyle\dialogs\liststyle.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\pagebreak\images\pagebreak.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\showblocks\images\block_address.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\showblocks\images\block_blockquote.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\showblocks\images\block_div.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\showblocks\images\block_h1.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\showblocks\images\block_h2.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\showblocks\images\block_h3.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\showblocks\images\block_h4.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\showblocks\images\block_h5.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\showblocks\images\block_h6.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\showblocks\images\block_p.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\showblocks\images\block_pre.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\dialogs\smiley.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\angel_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\angry_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\broken_heart.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\confused_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\cry_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\devil_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\embaressed_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\embarrassed_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\envelope.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\heart.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\kiss.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\lightbulb.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\omg_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\regular_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\sad_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\shades_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\teeth_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\thumbs_down.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\thumbs_up.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\tongue_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\tounge_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\whatchutalkingabout_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\smiley\images\wink_smile.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\templates\dialogs\templates.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\templates\dialogs\templates.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\templates\templates\default.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\templates\templates\images\template1.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\templates\templates\images\template2.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\templates\templates\images\template3.gif" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\samples\sample.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\samples\sample.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\samples\assets\sample.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\samples\assets\sample.jpg" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\samples\assets\inlineall\logo.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\dialog.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\dialog_opera.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\editor.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\icons.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\icons_hidpi.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\images\close.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\images\lock-open.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\images\lock.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\images\refresh.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\images\hidpi\close.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\images\hidpi\lock-open.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\images\hidpi\lock.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\ckeditor\skins\moono\images\hidpi\refresh.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\colorpicker\bootstrap-colorpicker.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\colorpicker\bootstrap-colorpicker.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\ColReorder.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\ColVis.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\DT_bootstrap.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\FixedColumns.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\jquery.dataTables-cust.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\jquery.dataTables-cust.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\ZeroClipboard.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\css\TableTools.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\css\TableTools_JUI.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\images\background.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\images\collection.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\images\collection_hover.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\images\copy.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\images\copy_hover.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\images\csv.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\images\csv_hover.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\images\pdf.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\images\pdf_hover.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\images\print.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\images\print_hover.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\images\xls.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\images\xls_hover.png" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\js\TableTools.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\js\TableTools.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\datatables\media\js\ZeroClipboard.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\delete-table-row\delete-table-row.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\dropzone\dropzone-amd-module.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\dropzone\dropzone.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\dropzone\dropzone.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\easy-pie-chart\jquery.easy-pie-chart.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\easy-pie-chart\jquery.easy-pie-chart.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\easy-pie-chart\examples\excanvas.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\easy-pie-chart\examples\style.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\flot\jquery.flot.cust.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\flot\jquery.flot.fillbetween.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\flot\jquery.flot.orderBar.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\flot\jquery.flot.orderBar.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\flot\jquery.flot.pie.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\flot\jquery.flot.pie.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\flot\jquery.flot.resize.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\flot\jquery.flot.resize.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\flot\jquery.flot.tooltip.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\fuelux\wizard\wizard.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\fullcalendar\jquery.fullcalendar.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\fullcalendar\jquery.fullcalendar.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ie-placeholder\jquery.placeholder.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ion-slider\ion.rangeSlider.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\ion-slider\ion.rangeSlider.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\jquery-form\jquery-form.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\jquery-nestable\jquery.nestable.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\jquery-touch\jquery.ui.touch-punch.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\jquery-touch\jquery.ui.touch-punch.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\jquery-validate\jquery.validate.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\js-migrate\jquery-migrate-1.2.1.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\js-migrate\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\knob\jquery.knob.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\knob\jquery.knob.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\markdown\bootstrap-markdown.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\markdown\bootstrap-markdown.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\markdown\markdown.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\markdown\markdown.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\markdown\to-markdown.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\markdown\to-markdown.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\masked-input\jquery.maskedinput.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\masked-input\jquery.maskedinput.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\maxlength\bootstrap-maxlength.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\maxlength\bootstrap-maxlength.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\morris\morris-chart-settings.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\morris\morris.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\morris\morris.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\morris\raphael.2.1.0.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\msie-fix\jquery.mb.browser.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\msie-fix\jquery.mb.browser.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\multiselect\bootstrap-multiselect.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\multiselect\bootstrap-multiselect.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\noUiSlider\jquery.nouislider.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\noUiSlider\jquery.nouislider.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\noUiSlider\jquery.nouislider.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\pace\pace.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\select2\select2.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\select2\select2.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\selectToUISlider\selectToUISlider.jQuery.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\selectToUISlider\selectToUISlider.jQuery.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\slick.core.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\slick.dataview.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\slick.editors.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\slick.formatters.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\slick.grid.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\slick.groupitemmetadataprovider.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\slick.remotemodel.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\controls\slick.allcontrols.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\controls\slick.columnpicker.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\controls\slick.columnpicker.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\controls\slick.pager.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\controls\slick.pager.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\lib\jquery.event.drag-2.2.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\lib\jquery.event.drop-2.2.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\plugins\slick.allplugins.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\plugins\slick.autotooltips.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\plugins\slick.cellcopymanager.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\plugins\slick.cellrangedecorator.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\plugins\slick.cellrangeselector.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\plugins\slick.cellselectionmodel.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\plugins\slick.checkboxselectcolumn.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\plugins\slick.headerbuttons.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\plugins\slick.headerbuttons.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\plugins\slick.headermenu.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\plugins\slick.headermenu.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\plugins\slick.rowmovemanager.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\slickgrid\plugins\slick.rowselectionmodel.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\smartclick\smartclick.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\sparkline\jquery.sparkline.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\sparkline\jquery.sparkline.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\summernote\summernote.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\superbox\superbox.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\superbox\superbox.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\throttle-denounce\jquery.ba-throttle-debounce.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\typeahead\typeahead.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\typeahead\typeahead.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\typeahead\typeaheadjs.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\typeahead\typeaheadjs.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\vectormap\jquery-jvectormap-1.1.1.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\vectormap\jquery-jvectormap-1.1.1.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\vectormap\jquery-jvectormap-1.2.2.css" />
+    <Content Include="Content\SmartAdmin\js\plugin\vectormap\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\vectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\x-editable\jquery.mockjax.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\x-editable\moment.min.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\x-editable\x-editable.js" />
+    <Content Include="Content\SmartAdmin\js\plugin\x-editable\x-editable.min.js" />
+    <Content Include="Content\SmartAdmin\js\smartwidgets\jarvis.widget.js" />
+    <Content Include="Content\SmartAdmin\js\smartwidgets\jarvis.widget.min.js" />
+    <Content Include="Content\SmartAdmin\less\rtl\bootstrap-rtl.css" />
+    <Content Include="Content\SmartAdmin\sound\bigbox.mp3" />
+    <Content Include="Content\SmartAdmin\sound\bigbox.ogg" />
+    <Content Include="Content\SmartAdmin\sound\messagebox.mp3" />
+    <Content Include="Content\SmartAdmin\sound\messagebox.ogg" />
+    <Content Include="Content\SmartAdmin\sound\smallbox.mp3" />
+    <Content Include="Content\SmartAdmin\sound\smallbox.ogg" />
+    <Content Include="Content\Styles\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\Styles\bootstrap-select.css" />
+    <Content Include="Content\Styles\jHtmlArea.ColorPickerMenu.css" />
+    <Content Include="Content\Styles\jHtmlArea.css" />
+    <Content Include="Content\Styles\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="Content\Styles\jquery.handsontable.css" />
+    <Content Include="Content\Styles\Site.css" />
+    <Content Include="Content\Styles\Site.generated.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountController.generated.cs">
+      <DependentUpon>AccountController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DashboardController.generated.cs">
+      <DependentUpon>DashboardController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeController.generated.cs">
+      <DependentUpon>HomeController.cs</DependentUpon>
+    </Compile>
+    <Content Include="ig_res\Default\ig_calendar.css" />
+    <Content Include="ig_res\Default\ig_calendar2.css" />
+    <Content Include="ig_res\Default\ig_calendarview.css" />
+    <Content Include="ig_res\Default\ig_captcha.css" />
+    <Content Include="ig_res\Default\ig_combo.css" />
+    <Content Include="ig_res\Default\ig_dataGrid.css" />
+    <Content Include="ig_res\Default\ig_datamenu.css" />
+    <Content Include="ig_res\Default\ig_datatree.css" />
+    <Content Include="ig_res\Default\ig_datechooser.css" />
+    <Content Include="ig_res\Default\ig_dayview.css" />
+    <Content Include="ig_res\Default\ig_dialogwindow.css" />
+    <Content Include="ig_res\Default\ig_dropDown.css" />
+    <Content Include="ig_res\Default\ig_explorerbar.css" />
+    <Content Include="ig_res\Default\ig_fishEyeBar.css" />
+    <Content Include="ig_res\Default\ig_grid.css" />
+    <Content Include="ig_res\Default\ig_grid_opt.css" />
+    <Content Include="ig_res\Default\ig_hierarchicalDataGrid.css" />
+    <Content Include="ig_res\Default\ig_imageViewer.css" />
+    <Content Include="ig_res\Default\ig_listbar.css" />
+    <Content Include="ig_res\Default\ig_menu.css" />
+    <Content Include="ig_res\Default\ig_monthcalendar.css" />
+    <Content Include="ig_res\Default\ig_monthview.css" />
+    <Content Include="ig_res\Default\ig_navbar.css" />
+    <Content Include="ig_res\Default\ig_panel.css" />
+    <Content Include="ig_res\Default\ig_progressbar.css" />
+    <Content Include="ig_res\Default\ig_rating.css" />
+    <Content Include="ig_res\Default\ig_shared.css" />
+    <Content Include="ig_res\Default\ig_slider.css" />
+    <Content Include="ig_res\Default\ig_spellCheckerDialog.css" />
+    <Content Include="ig_res\Default\ig_splitter.css" />
+    <Content Include="ig_res\Default\ig_tab.css" />
+    <Content Include="ig_res\Default\ig_textedit.css" />
+    <Content Include="ig_res\Default\ig_texteditor.css" />
+    <Content Include="ig_res\Default\ig_toolbar.css" />
+    <Content Include="ig_res\Default\ig_tree.css" />
+    <Content Include="ig_res\Default\ig_webschedule.css" />
+    <Content Include="ig_res\Default\ig_webtab.css" />
+    <Content Include="ig_res\Default\ig_weekview.css" />
+    <Content Include="ig_res\Default\images\ActiveRowSelector.gif" />
+    <Content Include="ig_res\Default\images\addnewrow.gif" />
+    <Content Include="ig_res\Default\images\addnewrow_image.gif" />
+    <Content Include="ig_res\Default\images\add_disabled.gif" />
+    <Content Include="ig_res\Default\images\add_down.gif" />
+    <Content Include="ig_res\Default\images\add_hover.gif" />
+    <Content Include="ig_res\Default\images\add_up.gif" />
+    <Content Include="ig_res\Default\images\back_horiz.gif" />
+    <Content Include="ig_res\Default\images\back_vert.gif" />
+    <Content Include="ig_res\Default\images\buttonBG.png" />
+    <Content Include="ig_res\Default\images\button_bg.jpg" />
+    <Content Include="ig_res\Default\images\button_officeBlue.gif" />
+    <Content Include="ig_res\Default\images\button_officeBlue.png" />
+    <Content Include="ig_res\Default\images\button_silver.gif" />
+    <Content Include="ig_res\Default\images\Caption_bg.jpg" />
+    <Content Include="ig_res\Default\images\dayheader.jpg" />
+    <Content Include="ig_res\Default\images\day_header.jpg" />
+    <Content Include="ig_res\Default\images\day_header1.gif" />
+    <Content Include="ig_res\Default\images\day_header_active.jpg" />
+    <Content Include="ig_res\Default\images\del_disabled.gif" />
+    <Content Include="ig_res\Default\images\del_down.gif" />
+    <Content Include="ig_res\Default\images\del_hover.gif" />
+    <Content Include="ig_res\Default\images\del_up.gif" />
+    <Content Include="ig_res\Default\images\downarrows_white.gif" />
+    <Content Include="ig_res\Default\images\end_disabled.gif" />
+    <Content Include="ig_res\Default\images\end_down.gif" />
+    <Content Include="ig_res\Default\images\end_hover.gif" />
+    <Content Include="ig_res\Default\images\end_up.gif" />
+    <Content Include="ig_res\Default\images\ff_disabled.gif" />
+    <Content Include="ig_res\Default\images\ff_down.gif" />
+    <Content Include="ig_res\Default\images\ff_hover.gif" />
+    <Content Include="ig_res\Default\images\ff_up.gif" />
+    <Content Include="ig_res\Default\images\fill_horiz.gif" />
+    <Content Include="ig_res\Default\images\fill_vert.gif" />
+    <Content Include="ig_res\Default\images\groupbyHeader.gif" />
+    <Content Include="ig_res\Default\images\header.gif" />
+    <Content Include="ig_res\Default\images\header_hover.gif" />
+    <Content Include="ig_res\Default\images\igc_AudioButton.gif" />
+    <Content Include="ig_res\Default\images\igc_DefautImage.gif" />
+    <Content Include="ig_res\Default\images\igc_RefreshButton.gif" />
+    <Content Include="ig_res\Default\images\igc_submitButtonBg.png" />
+    <Content Include="ig_res\Default\images\igdd_DropDownButton.png" />
+    <Content Include="ig_res\Default\images\igdd_DropDownButtonDisabled.png" />
+    <Content Include="ig_res\Default\images\igdd_DropDownButtonHover.png" />
+    <Content Include="ig_res\Default\images\igdd_DropDownButtonPressed.png" />
+    <Content Include="ig_res\Default\images\igdd_DropDownListContainerBG.png" />
+    <Content Include="ig_res\Default\images\igdd_ListItemHover.png" />
+    <Content Include="ig_res\Default\images\igdm_bg_normal.jpg" />
+    <Content Include="ig_res\Default\images\igdm_ControlBackground.png" />
+    <Content Include="ig_res\Default\images\igdm_ItemHover.png" />
+    <Content Include="ig_res\Default\images\igdm_ItemHoverParent.png" />
+    <Content Include="ig_res\Default\images\igdm_RootHover.png" />
+    <Content Include="ig_res\Default\images\igdt_Blank.gif" />
+    <Content Include="ig_res\Default\images\igdt_DropIndicatorBg.jpg" />
+    <Content Include="ig_res\Default\images\igdt_First.gif" />
+    <Content Include="ig_res\Default\images\igdt_FirstMinus.gif" />
+    <Content Include="ig_res\Default\images\igdt_FirstPlus.gif" />
+    <Content Include="ig_res\Default\images\igdt_folder.gif" />
+    <Content Include="ig_res\Default\images\igdt_folder_open.gif" />
+    <Content Include="ig_res\Default\images\igdt_Last.gif" />
+    <Content Include="ig_res\Default\images\igdt_LastMinus.gif" />
+    <Content Include="ig_res\Default\images\igdt_LastPlus.gif" />
+    <Content Include="ig_res\Default\images\igdt_Leaf.gif" />
+    <Content Include="ig_res\Default\images\igdt_Line.gif" />
+    <Content Include="ig_res\Default\images\igdt_Middle.gif" />
+    <Content Include="ig_res\Default\images\igdt_MiddleMinus.gif" />
+    <Content Include="ig_res\Default\images\igdt_MiddlePlus.gif" />
+    <Content Include="ig_res\Default\images\igdt_Minus.gif" />
+    <Content Include="ig_res\Default\images\igdt_Plus.gif" />
+    <Content Include="ig_res\Default\images\igdt_Single.gif" />
+    <Content Include="ig_res\Default\images\igdt_SingleMinus.gif" />
+    <Content Include="ig_res\Default\images\igdt_SinglePlus.gif" />
+    <Content Include="ig_res\Default\images\igdw_BodyCornerBottomLeft.gif" />
+    <Content Include="ig_res\Default\images\igdw_BodyCornerBottomRight.gif" />
+    <Content Include="ig_res\Default\images\igdw_BodyCornerTopLeft.gif" />
+    <Content Include="ig_res\Default\images\igdw_BodyCornerTopRight.gif" />
+    <Content Include="ig_res\Default\images\igdw_BodyEdgeBottom.gif" />
+    <Content Include="ig_res\Default\images\igdw_BodyEdgeTop.gif" />
+    <Content Include="ig_res\Default\images\igdw_Bottom.gif" />
+    <Content Include="ig_res\Default\images\igdw_BottomLeft.gif" />
+    <Content Include="ig_res\Default\images\igdw_BottomRight.gif" />
+    <Content Include="ig_res\Default\images\igdw_Close.gif" />
+    <Content Include="ig_res\Default\images\igdw_CloseHover.gif" />
+    <Content Include="ig_res\Default\images\igdw_CloseMouseDown.gif" />
+    <Content Include="ig_res\Default\images\igdw_EdgeLeft.gif" />
+    <Content Include="ig_res\Default\images\igdw_EdgeRight.gif" />
+    <Content Include="ig_res\Default\images\igdw_HeaderContent.gif" />
+    <Content Include="ig_res\Default\images\igdw_HeaderCornerLeft.gif" />
+    <Content Include="ig_res\Default\images\igdw_HeaderCornerRight.gif" />
+    <Content Include="ig_res\Default\images\igdw_Maximize.gif" />
+    <Content Include="ig_res\Default\images\igdw_MaximizeHover.gif" />
+    <Content Include="ig_res\Default\images\igdw_MaximizeMouseDown.gif" />
+    <Content Include="ig_res\Default\images\igdw_Minimize.gif" />
+    <Content Include="ig_res\Default\images\igdw_MinimizeHover.gif" />
+    <Content Include="ig_res\Default\images\igdw_MinimizeMouseDown.gif" />
+    <Content Include="ig_res\Default\images\igdw_Pin.gif" />
+    <Content Include="ig_res\Default\images\igdw_PinHover.gif" />
+    <Content Include="ig_res\Default\images\igdw_PinMouseDown.gif" />
+    <Content Include="ig_res\Default\images\igdw_ResizingHandle.gif" />
+    <Content Include="ig_res\Default\images\igdw_Restore.gif" />
+    <Content Include="ig_res\Default\images\igdw_RestoreHover.gif" />
+    <Content Include="ig_res\Default\images\igdw_RestoreMouseDown.gif" />
+    <Content Include="ig_res\Default\images\igdw_top.gif" />
+    <Content Include="ig_res\Default\images\igdw_topHidden.gif" />
+    <Content Include="ig_res\Default\images\igdw_TopLeft.gif" />
+    <Content Include="ig_res\Default\images\igdw_TopLeftHidden.gif" />
+    <Content Include="ig_res\Default\images\igdw_TopRight.gif" />
+    <Content Include="ig_res\Default\images\igdw_TopRightHidden.gif" />
+    <Content Include="ig_res\Default\images\igdw_Unpin.gif" />
+    <Content Include="ig_res\Default\images\igdw_UnpinHover.gif" />
+    <Content Include="ig_res\Default\images\igdw_UnpinMouseDown.gif" />
+    <Content Include="ig_res\Default\images\igeb_Bullet.png" />
+    <Content Include="ig_res\Default\images\igeb_ExpanderExpanded.png" />
+    <Content Include="ig_res\Default\images\igeb_ExpanderExpandedHover.png" />
+    <Content Include="ig_res\Default\images\igeb_ExpanderNormal.png" />
+    <Content Include="ig_res\Default\images\igeb_ExpanderNormalHover.png" />
+    <Content Include="ig_res\Default\images\igeb_GroupBg.png" />
+    <Content Include="ig_res\Default\images\igeb_grouphoverbg.png" />
+    <Content Include="ig_res\Default\images\igeb_itemselected.png" />
+    <Content Include="ig_res\Default\images\igeb_ItemSelectedBg.png" />
+    <Content Include="ig_res\Default\images\igg_BottomDragIndicator.png" />
+    <Content Include="ig_res\Default\images\igg_ButtonsBG.png" />
+    <Content Include="ig_res\Default\images\igg_Filter.gif" />
+    <Content Include="ig_res\Default\images\igg_FilterApplied.gif" />
+    <Content Include="ig_res\Default\images\igg_FilterBtn.gif" />
+    <Content Include="ig_res\Default\images\igg_FilterBtnHover.gif" />
+    <Content Include="ig_res\Default\images\igg_FilterBtnPressed.gif" />
+    <Content Include="ig_res\Default\images\igg_FilteredBtn.gif" />
+    <Content Include="ig_res\Default\images\igg_FilteredBtnHover.gif" />
+    <Content Include="ig_res\Default\images\igg_FilteredBtnPressed.gif" />
+    <Content Include="ig_res\Default\images\igg_filterrow.gif" />
+    <Content Include="ig_res\Default\images\igg_Filter_Black.gif" />
+    <Content Include="ig_res\Default\images\igg_Fix.gif" />
+    <Content Include="ig_res\Default\images\igg_FixHover.gif" />
+    <Content Include="ig_res\Default\images\igg_FixPressed.gif" />
+    <Content Include="ig_res\Default\images\igg_FooterBG.png" />
+    <Content Include="ig_res\Default\images\igg_FooterSummariesBG.png" />
+    <Content Include="ig_res\Default\images\igg_header.gif" />
+    <Content Include="ig_res\Default\images\igg_MiddleDragIndicator.png" />
+    <Content Include="ig_res\Default\images\igg_rowselector.gif" />
+    <Content Include="ig_res\Default\images\igg_Selected.gif" />
+    <Content Include="ig_res\Default\images\igg_sortAsc.gif" />
+    <Content Include="ig_res\Default\images\igg_sortDesc.gif" />
+    <Content Include="ig_res\Default\images\igg_Sum.gif" />
+    <Content Include="ig_res\Default\images\igg_SumHover.gif" />
+    <Content Include="ig_res\Default\images\igg_SummaryDropDownBG.png" />
+    <Content Include="ig_res\Default\images\igg_SumPressed.gif" />
+    <Content Include="ig_res\Default\images\igg_TopDragIndicator.png" />
+    <Content Include="ig_res\Default\images\igg_Unfix.gif" />
+    <Content Include="ig_res\Default\images\igg_UnfixHover.gif" />
+    <Content Include="ig_res\Default\images\igg_UnfixPressed.gif" />
+    <Content Include="ig_res\Default\images\ighg_BottomDragIndicator.gif" />
+    <Content Include="ig_res\Default\images\ighg_Collapse.gif" />
+    <Content Include="ig_res\Default\images\ighg_CollapseHover.gif" />
+    <Content Include="ig_res\Default\images\ighg_CollapsePressed.gif" />
+    <Content Include="ig_res\Default\images\ighg_Expand.gif" />
+    <Content Include="ig_res\Default\images\ighg_ExpandHover.gif" />
+    <Content Include="ig_res\Default\images\ighg_ExpandPressed.gif" />
+    <Content Include="ig_res\Default\images\ighg_GroupAreaBg.png" />
+    <Content Include="ig_res\Default\images\ighg_GroupedBandBg.png" />
+    <Content Include="ig_res\Default\images\ighg_GroupedColumnBg.png" />
+    <Content Include="ig_res\Default\images\ighg_GroupedColumnLeftEdgeBg.gif" />
+    <Content Include="ig_res\Default\images\ighg_GroupedColumnRightEdgeBg.png" />
+    <Content Include="ig_res\Default\images\ighg_GroupedColumnRightEdgeEndBg.gif" />
+    <Content Include="ig_res\Default\images\ighg_GroupedRowBg.png" />
+    <Content Include="ig_res\Default\images\ighg_MiddleDragIndicator.gif" />
+    <Content Include="ig_res\Default\images\ighg_Remove.gif" />
+    <Content Include="ig_res\Default\images\ighg_RemoveHover.gif" />
+    <Content Include="ig_res\Default\images\ighg_RemovePressed.gif" />
+    <Content Include="ig_res\Default\images\ighg_TopDragIndicator.gif" />
+    <Content Include="ig_res\Default\images\igiv_CornerBottomLeft.gif" />
+    <Content Include="ig_res\Default\images\igiv_CornerBottomLeft_Vert.gif" />
+    <Content Include="ig_res\Default\images\igiv_CornerBottomRight.gif" />
+    <Content Include="ig_res\Default\images\igiv_CornerBottomRight_Vert.gif" />
+    <Content Include="ig_res\Default\images\igiv_CornerTopLeft.gif" />
+    <Content Include="ig_res\Default\images\igiv_CornerTopLeft_Vert.gif" />
+    <Content Include="ig_res\Default\images\igiv_CornerTopRight.gif" />
+    <Content Include="ig_res\Default\images\igiv_CornerTopRight_Vert.gif" />
+    <Content Include="ig_res\Default\images\igiv_EdgeBottom.gif" />
+    <Content Include="ig_res\Default\images\igiv_EdgeBottom_Vert.gif" />
+    <Content Include="ig_res\Default\images\igiv_EdgeLeft.gif" />
+    <Content Include="ig_res\Default\images\igiv_EdgeLeft_Vert.gif" />
+    <Content Include="ig_res\Default\images\igiv_EdgeRight.gif" />
+    <Content Include="ig_res\Default\images\igiv_EdgeRight_Vert.gif" />
+    <Content Include="ig_res\Default\images\igiv_EdgeTop.gif" />
+    <Content Include="ig_res\Default\images\igiv_EdgeTop_Vert.gif" />
+    <Content Include="ig_res\Default\images\igiv_H_NextButton.png" />
+    <Content Include="ig_res\Default\images\igiv_H_NextButtonDisabled.png" />
+    <Content Include="ig_res\Default\images\igiv_H_NextButtonHover.png" />
+    <Content Include="ig_res\Default\images\igiv_H_NextButtonPressed.png" />
+    <Content Include="ig_res\Default\images\igiv_H_PrevButton.png" />
+    <Content Include="ig_res\Default\images\igiv_H_PrevButtonDisabled.png" />
+    <Content Include="ig_res\Default\images\igiv_H_PrevButtonHover.png" />
+    <Content Include="ig_res\Default\images\igiv_H_PrevButtonPressed.png" />
+    <Content Include="ig_res\Default\images\igiv_V_NextButton.png" />
+    <Content Include="ig_res\Default\images\igiv_V_NextButtonDisabled.png" />
+    <Content Include="ig_res\Default\images\igiv_V_NextButtonHover.png" />
+    <Content Include="ig_res\Default\images\igiv_V_NextButtonPressed.png" />
+    <Content Include="ig_res\Default\images\igiv_V_PNextButtonPressed.png" />
+    <Content Include="ig_res\Default\images\igiv_V_PrevButton.png" />
+    <Content Include="ig_res\Default\images\igiv_V_PrevButtonDisabled.png" />
+    <Content Include="ig_res\Default\images\igiv_V_PrevButtonHover.png" />
+    <Content Include="ig_res\Default\images\igiv_V_PrevButtonPressed.png" />
+    <Content Include="ig_res\Default\images\igmc_dayselected.gif" />
+    <Content Include="ig_res\Default\images\igmc_dowbg.gif" />
+    <Content Include="ig_res\Default\images\igmc_footerbg.gif" />
+    <Content Include="ig_res\Default\images\igmc_footerbghover.gif" />
+    <Content Include="ig_res\Default\images\igmc_footerbgpressed.gif" />
+    <Content Include="ig_res\Default\images\igmc_headerbg.png" />
+    <Content Include="ig_res\Default\images\igmc_next.gif" />
+    <Content Include="ig_res\Default\images\igmc_nextHover.gif" />
+    <Content Include="ig_res\Default\images\igmc_nextPress.gif" />
+    <Content Include="ig_res\Default\images\igmc_prev.gif" />
+    <Content Include="ig_res\Default\images\igmc_prevHover.gif" />
+    <Content Include="ig_res\Default\images\igmc_prevPress.gif" />
+    <Content Include="ig_res\Default\images\igmc_weekbg.gif" />
+    <Content Include="ig_res\Default\images\igpb_horizontalFill.gif" />
+    <Content Include="ig_res\Default\images\igpb_VerticalFill.gif" />
+    <Content Include="ig_res\Default\images\igpnl_dwn.gif" />
+    <Content Include="ig_res\Default\images\igpnl_up.gif" />
+    <Content Include="ig_res\Default\images\igr_RatingSprite.png" />
+    <Content Include="ig_res\Default\images\igsch_xpbluedn.gif" />
+    <Content Include="ig_res\Default\images\igsch_xpblueup.gif" />
+    <Content Include="ig_res\Default\images\igsli_MinusDisableH.gif" />
+    <Content Include="ig_res\Default\images\igsli_MinusDisableV.gif" />
+    <Content Include="ig_res\Default\images\igsli_MinusFocusH.gif" />
+    <Content Include="ig_res\Default\images\igsli_MinusFocusV.gif" />
+    <Content Include="ig_res\Default\images\igsli_MinusH.gif" />
+    <Content Include="ig_res\Default\images\igsli_MinusHoverH.gif" />
+    <Content Include="ig_res\Default\images\igsli_MinusHoverV.gif" />
+    <Content Include="ig_res\Default\images\igsli_MinusPressH.gif" />
+    <Content Include="ig_res\Default\images\igsli_MinusPressV.gif" />
+    <Content Include="ig_res\Default\images\igsli_MinusV.gif" />
+    <Content Include="ig_res\Default\images\igsli_PlusDisableH.gif" />
+    <Content Include="ig_res\Default\images\igsli_PlusDisableV.gif" />
+    <Content Include="ig_res\Default\images\igsli_PlusFocusH.gif" />
+    <Content Include="ig_res\Default\images\igsli_PlusFocusV.gif" />
+    <Content Include="ig_res\Default\images\igsli_PlusH.gif" />
+    <Content Include="ig_res\Default\images\igsli_PlusHoverH.gif" />
+    <Content Include="ig_res\Default\images\igsli_PlusHoverV.gif" />
+    <Content Include="ig_res\Default\images\igsli_PlusPressH.gif" />
+    <Content Include="ig_res\Default\images\igsli_PlusPressV.gif" />
+    <Content Include="ig_res\Default\images\igsli_PlusV.gif" />
+    <Content Include="ig_res\Default\images\igsli_ThumbDisableH.gif" />
+    <Content Include="ig_res\Default\images\igsli_ThumbDisableV.gif" />
+    <Content Include="ig_res\Default\images\igsli_ThumbFocusH.gif" />
+    <Content Include="ig_res\Default\images\igsli_ThumbFocusV.gif" />
+    <Content Include="ig_res\Default\images\igsli_ThumbH.gif" />
+    <Content Include="ig_res\Default\images\igsli_ThumbHoverH.gif" />
+    <Content Include="ig_res\Default\images\igsli_ThumbHoverV.gif" />
+    <Content Include="ig_res\Default\images\igsli_ThumbPressH.gif" />
+    <Content Include="ig_res\Default\images\igsli_ThumbPressV.gif" />
+    <Content Include="ig_res\Default\images\igsli_ThumbV.gif" />
+    <Content Include="ig_res\Default\images\igsli_TrackEdges.gif" />
+    <Content Include="ig_res\Default\images\igsli_TrackEdgesV.gif" />
+    <Content Include="ig_res\Default\images\igsli_TrackFill.gif" />
+    <Content Include="ig_res\Default\images\igsli_TrackFillV.gif" />
+    <Content Include="ig_res\Default\images\igsli_TrackValueEdges2H.gif" />
+    <Content Include="ig_res\Default\images\igsli_TrackValueEdges2V.gif" />
+    <Content Include="ig_res\Default\images\igsli_TrackValueEdgesH.gif" />
+    <Content Include="ig_res\Default\images\igsli_TrackValueEdgesV.gif" />
+    <Content Include="ig_res\Default\images\igsli_TrackValueFill2H.gif" />
+    <Content Include="ig_res\Default\images\igsli_TrackValueFill2V.gif" />
+    <Content Include="ig_res\Default\images\igsli_TrackValueFillH.gif" />
+    <Content Include="ig_res\Default\images\igsli_TrackValueFillV.gif" />
+    <Content Include="ig_res\Default\images\igspl_CollapseDown.gif" />
+    <Content Include="ig_res\Default\images\igspl_CollapseDownHover.gif" />
+    <Content Include="ig_res\Default\images\igspl_CollapseLeft.gif" />
+    <Content Include="ig_res\Default\images\igspl_CollapseLeftHover.gif" />
+    <Content Include="ig_res\Default\images\igspl_CollapseRight.gif" />
+    <Content Include="ig_res\Default\images\igspl_CollapseRightHover.gif" />
+    <Content Include="ig_res\Default\images\igspl_CollapseUp.gif" />
+    <Content Include="ig_res\Default\images\igspl_CollapseUpHover.gif" />
+    <Content Include="ig_res\Default\images\igspl_ExpandDown.gif" />
+    <Content Include="ig_res\Default\images\igspl_ExpandDownHover.gif" />
+    <Content Include="ig_res\Default\images\igspl_ExpandLeft.gif" />
+    <Content Include="ig_res\Default\images\igspl_ExpandLeftHover.gif" />
+    <Content Include="ig_res\Default\images\igspl_ExpandRight.gif" />
+    <Content Include="ig_res\Default\images\igspl_ExpandRightHover.gif" />
+    <Content Include="ig_res\Default\images\igspl_ExpandUp.gif" />
+    <Content Include="ig_res\Default\images\igspl_ExpandUpHover.gif" />
+    <Content Include="ig_res\Default\images\igspl_splitHoriz.gif" />
+    <Content Include="ig_res\Default\images\igspl_splitHorizHover.gif" />
+    <Content Include="ig_res\Default\images\igspl_splitHorizPressed.gif" />
+    <Content Include="ig_res\Default\images\igspl_splitVerPressed.gif" />
+    <Content Include="ig_res\Default\images\igspl_splitVert.gif" />
+    <Content Include="ig_res\Default\images\igspl_splitVertHover.gif" />
+    <Content Include="ig_res\Default\images\igspl_splitVertPressed.gif" />
+    <Content Include="ig_res\Default\images\igtab_add.gif" />
+    <Content Include="ig_res\Default\images\igtab_addHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_BHBorder.gif" />
+    <Content Include="ig_res\Default\images\igtab_BHCenter.gif" />
+    <Content Include="ig_res\Default\images\igtab_BHCenterDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_BHCenterHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_BHCenterSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_BHLeft.gif" />
+    <Content Include="ig_res\Default\images\igtab_BHLeftDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_BHLeftHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_BHLeftSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_BHRight.gif" />
+    <Content Include="ig_res\Default\images\igtab_BHRightDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_BHRightHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_BHRightSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_BRoundCorners.gif" />
+    <Content Include="ig_res\Default\images\igtab_BRoundFill.gif" />
+    <Content Include="ig_res\Default\images\igtab_BRoundLeftRight.gif" />
+    <Content Include="ig_res\Default\images\igtab_BRoundTopBot.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVBorder.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVLeft.jpg" />
+    <Content Include="ig_res\Default\images\igtab_BVLeftBot.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVLeftBotDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVLeftBotHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVLeftBotSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVLeftDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVLeftHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVLeftSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVRight.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVRightBot.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVRightBotDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVRightBotHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVRightBotSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVRightDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVRightHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_BVRightSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_close.gif" />
+    <Content Include="ig_res\Default\images\igtab_closeHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_HolderBorder.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHBot.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHBotDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHBotHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHBotLeft.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHBotLeftDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHBotLeftHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHBotLeftSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHBotSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHTop.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHTopDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHTopHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHTopLeft.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHTopLeftDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHTopLeftHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHTopLeftSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_LHTopSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_LVBot.gif" />
+    <Content Include="ig_res\Default\images\igtab_LVBotDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_LVBotHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_LVBotSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_LVCenter.gif" />
+    <Content Include="ig_res\Default\images\igtab_LVCenterDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_LVCenterHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_LVCenterSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_LVTop.gif" />
+    <Content Include="ig_res\Default\images\igtab_LVTopDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_LVTopHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_LVTopSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHBot.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHBotDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHBotHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHBotRight.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHBotRightDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHBotRightHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHBotRightSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHBotSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHTop.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHTopDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHTopHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHTopRight.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHTopRightDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHTopRightHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHTopRightSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_RHTopSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_RVBot.gif" />
+    <Content Include="ig_res\Default\images\igtab_RVBotDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_RVBotHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_RVBotSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_RVCenter.gif" />
+    <Content Include="ig_res\Default\images\igtab_RVCenterDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_RVCenterHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_RVCenterSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_RVTop.gif" />
+    <Content Include="ig_res\Default\images\igtab_RVTopDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_RVTopHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_RVTopSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollDown.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollDownDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollDownHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollDownPres.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollLeft.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollLeftDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollLeftHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollLeftPres.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollRight.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollRightDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollRightHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollRightPres.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollUp.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollUpDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollUpHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_scrollUpPres.gif" />
+    <Content Include="ig_res\Default\images\igtab_THBorder.gif" />
+    <Content Include="ig_res\Default\images\igtab_THCenter.jpg" />
+    <Content Include="ig_res\Default\images\igtab_THCenterDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_THCenterHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_THCenterSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_THCenter_new.jpg" />
+    <Content Include="ig_res\Default\images\igtab_THCenter_old.jpg" />
+    <Content Include="ig_res\Default\images\igtab_THContentBackground.jpg" />
+    <Content Include="ig_res\Default\images\igtab_THLeft.gif" />
+    <Content Include="ig_res\Default\images\igtab_THLeft.png" />
+    <Content Include="ig_res\Default\images\igtab_THLeftDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_THLeftHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_THLeftSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_THRight.gif" />
+    <Content Include="ig_res\Default\images\igtab_THRightDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_THRightHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_THRightSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_TRoundCorners.gif" />
+    <Content Include="ig_res\Default\images\igtab_TRoundFill.gif" />
+    <Content Include="ig_res\Default\images\igtab_TRoundLeftRight.gif" />
+    <Content Include="ig_res\Default\images\igtab_TRoundTopBot.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVBorder.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVLeft.jpg" />
+    <Content Include="ig_res\Default\images\igtab_TVLeftDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVLeftHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVLeftSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVLeftTop.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVLeftTopDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVLeftTopHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVLeftTopSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVRight.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVRightDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVRightHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVRightSel.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVRightTop.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVRightTopDis.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVRightTopHov.gif" />
+    <Content Include="ig_res\Default\images\igtab_TVRightTopSel.gif" />
+    <Content Include="ig_res\Default\images\igte_custom.gif" />
+    <Content Include="ig_res\Default\images\igte_customDisable.gif" />
+    <Content Include="ig_res\Default\images\igte_customHover.gif" />
+    <Content Include="ig_res\Default\images\igte_customPress.gif" />
+    <Content Include="ig_res\Default\images\igte_lower.gif" />
+    <Content Include="ig_res\Default\images\igte_lowerDisable.gif" />
+    <Content Include="ig_res\Default\images\igte_lowerHover.gif" />
+    <Content Include="ig_res\Default\images\igte_lowerPress.gif" />
+    <Content Include="ig_res\Default\images\igte_spinbuttonbg.gif" />
+    <Content Include="ig_res\Default\images\igte_spinbuttonbghover.gif" />
+    <Content Include="ig_res\Default\images\igte_spinbuttonbgpressed.gif" />
+    <Content Include="ig_res\Default\images\igte_upper.gif" />
+    <Content Include="ig_res\Default\images\igte_upperDisable.gif" />
+    <Content Include="ig_res\Default\images\igte_upperHover.gif" />
+    <Content Include="ig_res\Default\images\igte_upperPress.gif" />
+    <Content Include="ig_res\Default\images\igwdm_SubMenuIndicator.gif" />
+    <Content Include="ig_res\Default\images\igws_arrowLeft.gif" />
+    <Content Include="ig_res\Default\images\igws_arrowRight.gif" />
+    <Content Include="ig_res\Default\images\igws_r10bg.png" />
+    <Content Include="ig_res\Default\images\igws_r1bg.png" />
+    <Content Include="ig_res\Default\images\igws_r2bg.png" />
+    <Content Include="ig_res\Default\images\igws_r3bg.png" />
+    <Content Include="ig_res\Default\images\igws_r4bg.png" />
+    <Content Include="ig_res\Default\images\igws_r5bg.png" />
+    <Content Include="ig_res\Default\images\igws_r6bg.png" />
+    <Content Include="ig_res\Default\images\igws_r7bg.png" />
+    <Content Include="ig_res\Default\images\igws_r8bg.png" />
+    <Content Include="ig_res\Default\images\igws_r9bg.png" />
+    <Content Include="ig_res\Default\images\igwt_tab_hover.jpg" />
+    <Content Include="ig_res\Default\images\igwt_tab_normal.jpg" />
+    <Content Include="ig_res\Default\images\igwt_tab_selected.jpg" />
+    <Content Include="ig_res\Default\images\ig_ajaxIndicator.gif" />
+    <Content Include="ig_res\Default\images\ig_cal_next.gif" />
+    <Content Include="ig_res\Default\images\ig_cal_prev.gif" />
+    <Content Include="ig_res\Default\images\ig_checkbox_off.gif" />
+    <Content Include="ig_res\Default\images\ig_checkbox_on.gif" />
+    <Content Include="ig_res\Default\images\ig_checkbox_partial.gif" />
+    <Content Include="ig_res\Default\images\ig_cmboDown1.png" />
+    <Content Include="ig_res\Default\images\ig_cmboDown2.png" />
+    <Content Include="ig_res\Default\images\ig_cmboDownXP1.png" />
+    <Content Include="ig_res\Default\images\ig_cmboDownXP2.png" />
+    <Content Include="ig_res\Default\images\ig_edit_0.gif" />
+    <Content Include="ig_res\Default\images\ig_edit_01.gif" />
+    <Content Include="ig_res\Default\images\ig_edit_1.gif" />
+    <Content Include="ig_res\Default\images\ig_edit_11.gif" />
+    <Content Include="ig_res\Default\images\ig_edit_2.gif" />
+    <Content Include="ig_res\Default\images\ig_edit_21.gif" />
+    <Content Include="ig_res\Default\images\ig_menutri.gif" />
+    <Content Include="ig_res\Default\images\ig_menu_scrolldown.gif" />
+    <Content Include="ig_res\Default\images\ig_menu_scrolldown_disabled.gif" />
+    <Content Include="ig_res\Default\images\ig_menu_scrollup.gif" />
+    <Content Include="ig_res\Default\images\ig_menu_scrollup_disabled.gif" />
+    <Content Include="ig_res\Default\images\ig_progressIndicator.gif" />
+    <Content Include="ig_res\Default\images\ig_sched_next.gif" />
+    <Content Include="ig_res\Default\images\ig_sched_prev.gif" />
+    <Content Include="ig_res\Default\images\ig_sched_recurrence.gif" />
+    <Content Include="ig_res\Default\images\ig_sched_reminder.gif" />
+    <Content Include="ig_res\Default\images\ig_sched_variance.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_BottomHover.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_BottomNormal.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_BottomSelected.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_scroll0.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_scroll1.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_scroll2.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_scroll3.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_scrollXP0.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_scrollXP1.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_scrollXP2.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_scrollXP3.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_TopHover.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_TopNormal.gif" />
+    <Content Include="ig_res\Default\images\ig_tab_TopSelected.gif" />
+    <Content Include="ig_res\Default\images\ig_tblBlank.gif" />
+    <Content Include="ig_res\Default\images\ig_tblFilter.gif" />
+    <Content Include="ig_res\Default\images\ig_tblFilterApplied.gif" />
+    <Content Include="ig_res\Default\images\ig_tblFilterContains.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterDoesNotContain.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterDoesNotEndWith.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterDoesNotMatch.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterDoesNotMatch2.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterDoesNotStartWith.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterEndsWith.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterEqual.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterGreaterThan.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterGreaterThanOrEqualTo.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterLessThan.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterLessThanOrEqualTo.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterLike.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterMatch.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterMatch2.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterNotEqual.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterNotLike.png" />
+    <Content Include="ig_res\Default\images\ig_tblFilterStartsWith.png" />
+    <Content Include="ig_res\Default\images\ig_tblFixedOff.gif" />
+    <Content Include="ig_res\Default\images\ig_tblFixedOn.gif" />
+    <Content Include="ig_res\Default\images\ig_tblGroupBy.gif" />
+    <Content Include="ig_res\Default\images\ig_tblMinus.gif" />
+    <Content Include="ig_res\Default\images\ig_tblNewrow.gif" />
+    <Content Include="ig_res\Default\images\ig_tblPimgDn.gif" />
+    <Content Include="ig_res\Default\images\ig_tblPimgUp.gif" />
+    <Content Include="ig_res\Default\images\ig_tblPlus.gif" />
+    <Content Include="ig_res\Default\images\ig_tblSortAsc.gif" />
+    <Content Include="ig_res\Default\images\ig_tblSortDesc.gif" />
+    <Content Include="ig_res\Default\images\ig_tblTri.gif" />
+    <Content Include="ig_res\Default\images\ig_tblTriEdit.gif" />
+    <Content Include="ig_res\Default\images\ig_treeBlack_box.gif" />
+    <Content Include="ig_res\Default\images\ig_treeDownArrow.gif" />
+    <Content Include="ig_res\Default\images\ig_treeF.gif" />
+    <Content Include="ig_res\Default\images\ig_treeFminus.gif" />
+    <Content Include="ig_res\Default\images\ig_treeFplus.gif" />
+    <Content Include="ig_res\Default\images\ig_treeI.gif" />
+    <Content Include="ig_res\Default\images\ig_treeL.gif" />
+    <Content Include="ig_res\Default\images\ig_treeLminus.gif" />
+    <Content Include="ig_res\Default\images\ig_treeLplus.gif" />
+    <Content Include="ig_res\Default\images\ig_treeMinus.gif" />
+    <Content Include="ig_res\Default\images\ig_treeMinus2.gif" />
+    <Content Include="ig_res\Default\images\ig_treeMminus.gif" />
+    <Content Include="ig_res\Default\images\ig_treeMplus.gif" />
+    <Content Include="ig_res\Default\images\ig_treeMsdn_minus.gif" />
+    <Content Include="ig_res\Default\images\ig_treeMsdn_plus.gif" />
+    <Content Include="ig_res\Default\images\ig_treeOminus.gif" />
+    <Content Include="ig_res\Default\images\ig_treeOplus.gif" />
+    <Content Include="ig_res\Default\images\ig_treePlus.gif" />
+    <Content Include="ig_res\Default\images\ig_treePlus2.gif" />
+    <Content Include="ig_res\Default\images\ig_treeRightArrow.gif" />
+    <Content Include="ig_res\Default\images\ig_treeS.gif" />
+    <Content Include="ig_res\Default\images\ig_treeT.gif" />
+    <Content Include="ig_res\Default\images\ig_treeTri.gif" />
+    <Content Include="ig_res\Default\images\ig_treeUpArrow.gif" />
+    <Content Include="ig_res\Default\images\ig_treeWhite.gif" />
+    <Content Include="ig_res\Default\images\ig_treeXPMinus.GIF" />
+    <Content Include="ig_res\Default\images\ig_treeXPPlus.GIF" />
+    <Content Include="ig_res\Default\images\ig_tree_copy.gif" />
+    <Content Include="ig_res\Default\images\ig_tree_move.gif" />
+    <Content Include="ig_res\Default\images\ItemBackground.gif" />
+    <Content Include="ig_res\Default\images\next_disabled.gif" />
+    <Content Include="ig_res\Default\images\next_down.gif" />
+    <Content Include="ig_res\Default\images\next_hover.gif" />
+    <Content Include="ig_res\Default\images\next_up.gif" />
+    <Content Include="ig_res\Default\images\officeBlue.jpg" />
+    <Content Include="ig_res\Default\images\office_grid_header.jpg" />
+    <Content Include="ig_res\Default\images\page_bg.jpg" />
+    <Content Include="ig_res\Default\images\prev_disabled.gif" />
+    <Content Include="ig_res\Default\images\prev_down.gif" />
+    <Content Include="ig_res\Default\images\prev_hover.gif" />
+    <Content Include="ig_res\Default\images\prev_up.gif" />
+    <Content Include="ig_res\Default\images\rew_disabled.gif" />
+    <Content Include="ig_res\Default\images\rew_down.gif" />
+    <Content Include="ig_res\Default\images\rew_hover.gif" />
+    <Content Include="ig_res\Default\images\rew_up.gif" />
+    <Content Include="ig_res\Default\images\SelectedRowSelector.gif" />
+    <Content Include="ig_res\Default\images\start_disabled.gif" />
+    <Content Include="ig_res\Default\images\start_down.gif" />
+    <Content Include="ig_res\Default\images\start_hover.gif" />
+    <Content Include="ig_res\Default\images\start_up.gif" />
+    <Content Include="ig_res\Default\images\submit_disable.gif" />
+    <Content Include="ig_res\Default\images\submit_disabled.gif" />
+    <Content Include="ig_res\Default\images\submit_down.gif" />
+    <Content Include="ig_res\Default\images\submit_hover.gif" />
+    <Content Include="ig_res\Default\images\submit_up.gif" />
+    <Content Include="ig_res\Default\images\tabBG.jpg" />
+    <Content Include="ig_res\Default\images\tabbottom_hover.jpg" />
+    <Content Include="ig_res\Default\images\tabbottom_hover_F.jpg" />
+    <Content Include="ig_res\Default\images\tabbottom_normal.jpg" />
+    <Content Include="ig_res\Default\images\tabbottom_normal_F.jpg" />
+    <Content Include="ig_res\Default\images\tabbottom_selected.jpg" />
+    <Content Include="ig_res\Default\images\tabbottom_selected_f.jpg" />
+    <Content Include="ig_res\Default\images\tabtob_selected_f.jpg" />
+    <Content Include="ig_res\Default\images\tabtop_hover_F.jpg" />
+    <Content Include="ig_res\Default\images\tabtop_normal_F.jpg" />
+    <Content Include="ig_res\Default\images\tab_bottom.gif" />
+    <Content Include="ig_res\Default\images\tab_bottom_f.gif" />
+    <Content Include="ig_res\Default\images\tab_bottom_hover.gif" />
+    <Content Include="ig_res\Default\images\tab_left.gif" />
+    <Content Include="ig_res\Default\images\tab_left_f.gif" />
+    <Content Include="ig_res\Default\images\tab_left_hover.gif" />
+    <Content Include="ig_res\Default\images\tab_left_hover_f.gif" />
+    <Content Include="ig_res\Default\images\tab_left_normal.gif" />
+    <Content Include="ig_res\Default\images\tab_left_normal_f.gif" />
+    <Content Include="ig_res\Default\images\tab_right.gif" />
+    <Content Include="ig_res\Default\images\tab_right_f.gif" />
+    <Content Include="ig_res\Default\images\tab_right_hover.gif" />
+    <Content Include="ig_res\Default\images\tab_right_hover_f.gif" />
+    <Content Include="ig_res\Default\images\tab_right_normal.gif" />
+    <Content Include="ig_res\Default\images\tab_right_normal_f.gif" />
+    <Content Include="ig_res\Default\images\tab_top.gif" />
+    <Content Include="ig_res\Default\images\tab_top_f.gif" />
+    <Content Include="ig_res\Default\images\tab_top_hover.gif" />
+    <Content Include="ig_res\Default\images\uparrows_white.gif" />
+    <Content Include="Views\_Layout-SmartAdmin-Empty.cshtml" />
+    <Content Include="Views\_Layout-SmartAdmin.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Navigation-Public.cshtml" />
+    <Content Include="Views\Shared\Navigation-Secure-SmartAdmin.cshtml" />
+    <Content Include="Views\Shared\Navigation-Secure.cshtml" />
+    <Content Include="XMLGrids\Clients.xml" />
+    <Content Include="XMLGrids\CustomerCoverages.xml" />
+    <Content Include="XMLGrids\DataTags.xml" />
+    <Content Include="XMLGrids\FileData.xml" />
+    <Content Include="XMLGrids\FileTypes.xml" />
+    <Content Include="XMLGrids\HistoryLogs.xml" />
+    <Content Include="XMLGrids\Memberships.xml" />
+    <Content Include="XMLGrids\NavIcons.xml" />
+    <Content Include="XMLGrids\Navigations.xml" />
+    <Content Include="XMLGrids\NavItems.xml" />
+    <Content Include="XMLGrids\NavSubItems.xml" />
+    <Content Include="XMLGrids\PayloadTypes.xml" />
+    <Content Include="XMLGrids\Replacements.xml" />
+    <Content Include="XMLGrids\Settings.xml" />
+    <Content Include="XMLGrids\SimpleHTMLPages.xml" />
+    <Content Include="XMLGrids\StoredFile.xml" />
+    <Content Include="XMLGrids\TradingUnitCoverages.xml" />
+    <Content Include="XMLGrids\UploadedItems.xml" />
+    <Content Include="XMLGrids\UserGroups.xml" />
+    <Content Include="XMLGrids\Users.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\Admin\Controllers\fredsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\fredsController.generated.cs">
+      <DependentUpon>fredsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\UploadedItemValidationsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UploadedItemValidationsController.generated.cs">
+      <DependentUpon>UploadedItemValidationsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\ValidationErrorsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ValidationErrorsController.generated.cs">
+      <DependentUpon>ValidationErrorsController.cs</DependentUpon>
+    </Compile>
+    <Content Include="Areas\Admin\Views\freds\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\freds\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\freds\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\freds\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\freds\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\freds\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\freds\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemValidations\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemValidations\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemValidations\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemValidations\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemValidations\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemValidations\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemValidations\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\ValidationErrors\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ValidationErrors\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ValidationErrors\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ValidationErrors\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ValidationErrors\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\ValidationErrors\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\ValidationErrors\_List.cshtml" />
+    <Compile Include="Areas\API\v1\Controllers\fredsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\fredsController.generated.cs">
+      <DependentUpon>fredsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\UploadedItemValidationsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\UploadedItemValidationsController.generated.cs">
+      <DependentUpon>UploadedItemValidationsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\ValidationErrorsController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\ValidationErrorsController.generated.cs">
+      <DependentUpon>ValidationErrorsController.cs</DependentUpon>
+    </Compile>
+    <Content Include="XMLGrids\freds.xml" />
+    <Content Include="XMLGrids\UploadedItemValidations.xml" />
+    <Content Include="XMLGrids\ValidationErrors.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\Admin\Controllers\GlacierStoragesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GlacierStoragesController.generated.cs">
+      <DependentUpon>GlacierStoragesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Controllers\UploadedItemStatussController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UploadedItemStatussController.generated.cs">
+      <DependentUpon>UploadedItemStatussController.cs</DependentUpon>
+    </Compile>
+    <Content Include="Areas\Admin\Views\GlacierStorages\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\GlacierStorages\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\GlacierStorages\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\GlacierStorages\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\GlacierStorages\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\GlacierStorages\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\GlacierStorages\_List.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemStatuss\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemStatuss\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemStatuss\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemStatuss\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemStatuss\_CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemStatuss\_Display.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadedItemStatuss\_List.cshtml" />
+    <Compile Include="Areas\API\v1\Controllers\GlacierStoragesController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\GlacierStoragesController.generated.cs">
+      <DependentUpon>GlacierStoragesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\API\v1\Controllers\UploadedItemStatussController.cs" />
+    <Compile Include="Areas\API\v1\Controllers\UploadedItemStatussController.generated.cs">
+      <DependentUpon>UploadedItemStatussController.cs</DependentUpon>
+    </Compile>
+    <Content Include="XMLGrids\GlacierStorages.xml" />
+    <Content Include="XMLGrids\UploadedItemStatuss.xml" />
+  </ItemGroup>
+</Project>
